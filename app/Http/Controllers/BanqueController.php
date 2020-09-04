@@ -49,39 +49,39 @@ class BanqueController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $idbanque
+     * @param  int  $idBanque
      * @return \Illuminate\Http\Response
      */
-    public function show($idbanque)
+    public function show($idBanque)
     {
-        $banque = Banque::findOrFail($idbanque);
+        $banque = Banque::findOrFail($idBanque);
 
-        return view('banque.show', compact('banque'));
+        return view('Banque.show', compact('banque'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $idbanque
+     * @param  int  $idBanque
      * @return \Illuminate\Http\Response
      */
-    public function edit($idbanque)
+    public function edit($idBanque)
     {
-        $banque = Banque::findOrFail($idbanque);
+        $banque = Banque::findOrFail($idBanque);
 
-        return view('banque.edit', compact('banque'));
+        return view('Banque.edit', compact('banque'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $idbanque
+     * @param  int  $idBanque
      * @return \Illuminate\Http\Response
      */
-    public function update($idbanque)
+    public function update($idBanque)
     {
-        $banque = Banque::findOrFail($idbanque);
+        $banque = Banque::findOrFail($idBanque);
         $banque->nom = request('nom_banque');
         $banque->numero_compte = request('numero_compte_banque');
 

@@ -3,6 +3,31 @@
 @section('content')
 <div class="row">
     <div class="col-sm-12">
+        @if(Session::has('success_staff_dirigeant_create'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <h5><strong>{{ Session::get('success_staff_dirigeant_create') }}</strong></h5>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+        @elseif(Session::has('success_staff_dirigeant_modify'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <h5><strong>{{ Session::get('success_staff_dirigeant_modify') }}</strong></h5>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        @elseif(Session::has('success_staff_dirigeant_delete'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <h5><strong>{{ Session::get('success_staff_dirigeant_delete') }}</strong></h5>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        @endif
+        <div class="form-group text-right">
+            <a href="{{ route('staff.dirigeant.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Ajouter une Entreprise</a>
+        </div>
         <div class="card card-table">
             <div class="card-header">
                 <h4 class="card-title">Liste des Staffs Dirigeants</h4>
@@ -13,42 +38,33 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Purchased</th>
-                                <th>Name</th>
-                                <th>Amount</th>
-                                <th>Quantity</th>
-                                <th>Shipment</th>
-                                <th>Status</th>
+                                <th>Nom</th>
+                                <th>Prénoms</th>
+                                <th>Qualités</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @php $count = 1; @endphp
+                            @foreach ($dirigeants as $dirigeant)
                             <tr>
-                                <td>#0001</td>
-                                <td>1 Jan 2019</td>
-                                <td>Justin Lee</td>
-                                <td>$312</td>
-                                <td>28</td>
-                                <td>2 Jan 2019</td>
-                                <td><span class="badge badge-success">Paid</span></td>
+                                <td>#{{ $count++ }}</td>
+                                <td>{{ $dirigeant->nom }}</td>
+                                <td>{{ $dirigeant->prenom }}</td>
+                                <td>{{ $dirigeant->qualite }}</td>
+                                <td>
+                                    <a href="{{ route('staff.dirigeant.show', $dirigeant->id) }}" class="btn btn-success btn-sm mr-1" title="Voir">
+                                        <i class="fa fa-eye text-light"></i>
+                                    </a>
+                                    <a href="{{ route('staff.dirigeant.edit', $dirigeant->id) }}" class="btn btn-warning btn-sm mr-1" title="Modifier">
+                                        <i class="fa fa-pencil-square-o text-light"></i>
+                                    </a>
+                                    <a href="{{ route('staff.dirigeant.delete', $dirigeant->id) }}" class="btn btn-danger btn-sm" data-toggle="modals" data-target="#deleteEntreprises" title="Supprimer">
+                                        <i class="fa fa-close text-light"></i>
+                                    </a>
+                                </td>
                             </tr>
-                            <tr>
-                                <td>#0002</td>
-                                <td>10 Jan 2019</td>
-                                <td>Joe Edwards</td>
-                                <td>$62</td>
-                                <td>88</td>
-                                <td>14 Jan 2019</td>
-                                <td><span class="badge badge-success">Paid</span></td>
-                            </tr>
-                            <tr>
-                                <td>#0003</td>
-                                <td>19 Feb 2019</td>
-                                <td>Mary Wiley</td>
-                                <td>$78</td>
-                                <td>14</td>
-                                <td>21 Feb 2019</td>
-                                <td><span class="badge badge-danger">Cancelled</span></td>
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
 

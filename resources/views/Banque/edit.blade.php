@@ -8,7 +8,7 @@
                 <h4 class="card-title">Modifier les informations sur la Banque</h4>
             </div>
             <div class="card-body">
-                <form action="{{ route('banque.edit') }}" method="POST">
+                <form action="{{ route('banque.edit', $banque->id) }}" method="POST">
                     @csrf
                     <div class="row">
                         <div class="col-md-12">

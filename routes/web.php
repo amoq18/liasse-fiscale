@@ -33,14 +33,28 @@ Route::group(['prefix' => 'entreprise'], function () {
     Route::get('entreprise/{idEntreprise}/delete', 'EntrepriseController@delete')->name('entreprise.delete');
 });
 
+// Route sur staff
+Route::group(['prefix' => 'staff'], function () {
     // Routes sur Staff Dirigeant
-    Route::get('staff/dirigeant/create', 'StaffDirigeantController@create')->name('staff.dirigeant.create');
-    Route::get('staff//dirigeant/index', 'StaffDirigeantController@index')->name('staff.dirigeant.index');
+    Route::group(['prefix' => 'dirigeant'], function () {
+        // Creer et enregistrer un Staff Dirigeant
+        Route::get('create', 'StaffDirigeantController@create')->name('staff.dirigeant.create');
+        Route::post('create', 'StaffDirigeantController@store')->name('staff.dirigeant.create');
+        // liste de toutes les Staffs Dirigeants
+        Route::get('index', 'StaffDirigeantController@index')->name('staff.dirigeant.index');
+        // modifier un Staff Dirigeant
+        Route::get('{idDirigeant}/edit', 'StaffDirigeantController@edit')->name('staff.dirigeant.edit');
+        Route::post('{idDirigeant}/edit', 'StaffDirigeantController@update')->name('staff.dirigeant.edit');
+        //information sur un Staff Dirigeant
+        Route::get('{idDirigeant}/show', 'StaffDirigeantController@show')->name('staff.dirigeant.show');
+        // supprimer un Staff Dirigeant
+        Route::get('{idDirigeant}/delete', 'StaffDirigeantController@delete')->name('staff.dirigeant.delete');
+    });
 
     // Routes sur Staff Conseil Administration
     Route::get('staff/conseil-administration/create', 'ConseilAdminController@create')->name('staff.ca.create');
     Route::get('staff/conseil-administration/index', 'ConseilAdminController@index')->name('staff.ca.index');
-
+});
 
 // Routes sur Banque
 Route::group(['prefix' => 'banque'], function () {
@@ -53,7 +67,7 @@ Route::group(['prefix' => 'banque'], function () {
     Route::get('{idBanque}/edit', 'BanqueController@edit')->name('banque.edit');
     Route::post('{idBanque}/edit', 'BanqueController@update')->name('banque.edit');
     //information sur une banque
-    Route::get('{idBanque}/index', 'BanqueController@show')->name('banque.show');
+    Route::get('{idBanque}/show', 'BanqueController@show')->name('banque.show');
     // supprimer une banque
     Route::get('{idBanque}/delete', 'BanqueController@delete')->name('banque.delete');
 });

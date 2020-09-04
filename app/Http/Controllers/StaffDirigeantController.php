@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\StaffDirigeant;
 use Illuminate\Http\Request;
 
 class StaffDirigeantController extends Controller
@@ -13,7 +14,9 @@ class StaffDirigeantController extends Controller
      */
     public function index()
     {
-        return view('Staff.Dirigeant.index');
+        $dirigeants = StaffDirigeant::all();
+
+        return view('Staff.Dirigeant.index', compact('dirigeants'));
     }
 
     /**
@@ -34,7 +37,14 @@ class StaffDirigeantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dirigeant = new StaffDirigeant();
+        $dirigeant->nom = request('nom_staff_dirigeant');
+        $dirigeant->prenom = request('prenom_staff_dirigeant');
+        $dirigeant->qualite = request('qualite_staff_dirigeant');
+
+        $dirigeant->save();
+
+        return redirect()->route('staff.dirigeant.index')->with(['success_staff_dirigeant_create' => 'Staff dirigeant créée avec succès']);
     }
 
     /**
@@ -43,9 +53,11 @@ class StaffDirigeantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($idDirigeant)
     {
-        //
+        $dirigeant = StaffDirigeant::findOrFail($idDirigeant);
+
+        return view('staff.dirigeant.show', compact('dirigeant'));
     }
 
     /**
@@ -54,9 +66,11 @@ class StaffDirigeantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($idDirigeant)
     {
-        //
+        $dirigeant = StaffDirigeant::findOrFail($idDirigeant);
+
+        return view('staff.dirigeant.edit', compact('dirigeant'));
     }
 
     /**
@@ -66,9 +80,16 @@ class StaffDirigeantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($idDirigeant)
     {
-        //
+        $dirigeant = StaffDirigeant::findOrFail($idDirigeant);
+        $dirigeant->nom = request('nom_staff_dirigeant');
+        $dirigeant->prenom = request('prenom_staff_dirigeant');
+        $dirigeant->qualite = request('qualite_staff_dirigeant');
+
+        $dirigeant->save();
+
+        return redirect()->route('staff.dirigeant.index')->with(['success_staff_dirigeant_modify' => 'Staff dirigeant modifié avec succès']);
     }
 
     /**
@@ -77,8 +98,10 @@ class StaffDirigeantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($idDirigeant)
     {
-        //
+        StaffDirigeant::findOrFail($idDirigeant)->delete();
+
+        return redirect()->route('staff.dirigeant.index')->with(['success_staff_dirigeant_delete' => 'Staff dirigeant supprimé avec succès']);
     }
 }
