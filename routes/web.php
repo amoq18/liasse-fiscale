@@ -19,7 +19,9 @@ Route::get('/', function () {
 
 // Routes sur Entreprise
 Route::get('entreprise/create', 'EntrepriseController@create')->name('entreprise.create');
+Route::post('entreprise/create', 'EntrepriseController@store')->name('entreprise.create');
 Route::get('entreprise/index', 'EntrepriseController@index')->name('entreprise.index');
+Route::get('entreprise/{idEntreprise}/index', 'EntrepriseController@show')->name('entreprise.show');
 
 // Routes sur Staff Dirigeant
 Route::get('staff/dirigeant/create', 'StaffDirigeantController@create')->name('staff.dirigeant.create');

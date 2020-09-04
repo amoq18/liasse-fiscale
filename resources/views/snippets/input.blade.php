@@ -3,5 +3,12 @@
     <input
         type = {{ $type ?? 'text' }}
         name = {{ $name }}
-        class = "form-control">
+        class = "form-control"
+        @if(isset($disabled))
+            disabled
+        @endif
+        value= {{ $value ?? '' }}
+
+
+    >
 </div>

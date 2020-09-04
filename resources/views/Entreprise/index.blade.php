@@ -3,6 +3,14 @@
 @section('content')
 <div class="row">
     <div class="col-sm-12">
+        @if(Session::has('success_entreprise_create'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <h5><strong>{{ Session::get('success_entreprise_create') }}</strong></h5>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+        @endif
         <div class="card card-table">
             <div class="card-header">
                 <h4 class="card-title">Liste des Entreprises</h4>
@@ -13,96 +21,38 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Purchased</th>
-                                <th>Name</th>
-                                <th>Amount</th>
-                                <th>Quantity</th>
-                                <th>Shipment</th>
-                                <th>Status</th>
+                                <th>Cigle</th>
+                                <th>Désignation</th>
+                                <th>N° Rue</th>
+                                <th>Téléphone</th>
+                                <th>IFU</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
+
                         <tbody>
+                            @php $count = 1; @endphp
+                            @foreach ($entreprises as $entreprise)
                             <tr>
-                                <td>#0001</td>
-                                <td>1 Jan 2019</td>
-                                <td>Justin Lee</td>
-                                <td>$312</td>
-                                <td>28</td>
-                                <td>2 Jan 2019</td>
-                                <td><span class="badge badge-success">Paid</span></td>
+                                <td>#{{ $count++ }}</td>
+                                <td>{{ $entreprise->cigle }}</td>
+                                <td>{{ $entreprise->denomination }}</td>
+                                <td>{{ $entreprise->numero_rue }}</td>
+                                <td>{{ $entreprise->telephone }}</td>
+                                <td>{{ $entreprise->ifu }}</td>
+                                <td>
+                                    <a href="{{ route('entreprise.show', $entreprise->id) }}" class="btn btn-success btn-sm mr-1" title="Voir">
+                                        <i class="fa fa-eye text-light"></i>
+                                    </a>
+                                    <a href="" class="btn btn-warning btn-sm mr-1" title="Modifier">
+                                        <i class="fa fa-pencil-square-o text-light"></i>
+                                    </a>
+                                    <a href="" class="btn btn-danger btn-sm" title="Supprimer">
+                                        <i class="fa fa-close text-light"></i>
+                                    </a>
+                                </td>
                             </tr>
-                            <tr>
-                                <td>#0002</td>
-                                <td>10 Jan 2019</td>
-                                <td>Joe Edwards</td>
-                                <td>$62</td>
-                                <td>88</td>
-                                <td>14 Jan 2019</td>
-                                <td><span class="badge badge-success">Paid</span></td>
-                            </tr>
-                            <tr>
-                                <td>#0003</td>
-                                <td>19 Feb 2019</td>
-                                <td>Mary Wiley</td>
-                                <td>$78</td>
-                                <td>14</td>
-                                <td>21 Feb 2019</td>
-                                <td><span class="badge badge-danger">Cancelled</span></td>
-                            </tr>
-                            <tr>
-                                <td>#0004</td>
-                                <td>25 Feb 2019</td>
-                                <td>Amy Bond</td>
-                                <td>$1057</td>
-                                <td>75</td>
-                                <td>-</td>
-                                <td><span class="badge badge-danger">Cancelled</span></td>
-                            </tr>
-                            <tr>
-                                <td>#0005</td>
-                                <td>3 Mar 2019</td>
-                                <td>Clara Brady</td>
-                                <td>$3018</td>
-                                <td>115</td>
-                                <td>-</td>
-                                <td><span class="badge badge-warning text-white">Shipped</span></td>
-                            </tr>
-                            <tr>
-                                <td>#0006</td>
-                                <td>22 Apr 2019</td>
-                                <td>Robert Martin</td>
-                                <td>$511</td>
-                                <td>94</td>
-                                <td>-</td>
-                                <td><span class="badge badge-danger">Cancelled</span></td>
-                            </tr>
-                            <tr>
-                                <td>#0007</td>
-                                <td>11 May 2019</td>
-                                <td>Nora Lambert</td>
-                                <td>$988</td>
-                                <td>35</td>
-                                <td>15 May 2019</td>
-                                <td><span class="badge badge-success">Paid</span></td>
-                            </tr>
-                            <tr>
-                                <td>#0008</td>
-                                <td>19 Jun 2019</td>
-                                <td>Shelly Robertson</td>
-                                <td>$635</td>
-                                <td>52</td>
-                                <td>-</td>
-                                <td><span class="badge badge-danger">Cancelled</span></td>
-                            </tr>
-                            <tr>
-                                <td>#0009</td>
-                                <td>24 Jul 2019</td>
-                                <td>Everett Garcia</td>
-                                <td>$222</td>
-                                <td>18</td>
-                                <td>24 Jul 2019</td>
-                                <td><span class="badge badge-success">Paid</span></td>
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
 

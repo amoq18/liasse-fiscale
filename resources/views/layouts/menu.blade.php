@@ -9,7 +9,7 @@
                     <a href="#"><i class="fe fe-home"></i> <span>Accueil</span></a>
                 </li>
                 <li class="submenu">
-                    <a href="#"><i class="fe fe-cart"></i> <span> Fichier Entreprise</span> <span class="menu-arrow"></span></a>
+                    <a href="#"><i class="fa fa-building-o"></i> <span> Fichier Entreprise</span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
                         <li><a href="{{ route('entreprise.create') }}">Créer</a></li>
                         <li><a href="{{ route('entreprise.index') }}">Voir</a></li>
