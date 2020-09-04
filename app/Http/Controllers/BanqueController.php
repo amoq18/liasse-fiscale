@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Banque;
 use Illuminate\Http\Request;
 
 class BanqueController extends Controller
@@ -13,7 +14,9 @@ class BanqueController extends Controller
      */
     public function index()
     {
-        return view('Banque.index');
+        $banques = Banque::all();
+
+        return view('Banque.index', compact('banques'));
     }
 
     /**
@@ -34,51 +37,69 @@ class BanqueController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $banque = new Banque();
+        $banque->nom = request('nom_banque');
+        $banque->numero_compte = request('numero_compte_banque');
+
+        $banque->save();
+
+        return redirect()->route('banque.index')->with(['success_banque_create' => 'Banque créée avec succès']);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $idbanque
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($idbanque)
     {
-        //
+        $banque = Banque::findOrFail($idbanque);
+
+        return view('banque.show', compact('banque'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $idbanque
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($idbanque)
     {
-        //
+        $banque = Banque::findOrFail($idbanque);
+
+        return view('banque.edit', compact('banque'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  $idbanque
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($idbanque)
     {
-        //
+        $banque = Banque::findOrFail($idbanque);
+        $banque->nom = request('nom_banque');
+        $banque->numero_compte = request('numero_compte_banque');
+
+        $banque->save();
+
+        return redirect()->route('banque.index')->with(['success_banque_modify' => 'Banque modifiée avec succès']);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int  $idBanque
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($idBanque)
     {
-        //
+        Banque::findOrFail($idBanque)->delete();
+
+        return redirect()->route('banque.index')->with(['success_banque_delete' => 'Banque supprimée avec succès']);
     }
 }

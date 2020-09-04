@@ -51,7 +51,7 @@
                             @php $count = 1; @endphp
                             @foreach ($entreprises as $entreprise)
                                 <tr>
-                                    {{-- <td>#{{ $count++ }}</td> --}}
+                                    <td>#{{ $count++ }}</td>
                                     <td>{{ $entreprise->id }}</td>
                                     <td>{{ $entreprise->cigle }}</td>
                                     <td>{{ $entreprise->denomination }}</td>

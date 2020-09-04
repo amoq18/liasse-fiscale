@@ -23,6 +23,7 @@ class ExerciceController extends Controller
      */
     public function create()
     {
+        dd(request()->all());
         return view('Exercice.create');
     }
 
