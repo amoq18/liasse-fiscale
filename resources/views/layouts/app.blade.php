@@ -70,7 +70,8 @@
 		<script src="{{ asset('assets/js/chart.morris.js') }}"></script>
 
 		<!-- Custom JS -->
-		<script  src="{{ asset('assets/js/script.js') }}"></script>
+        <script  src="{{ asset('assets/js/script.js') }}"></script>
+        @yield('js')
 
     </body>
 

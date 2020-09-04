@@ -8,211 +8,154 @@
                 <h4 class="card-title">Informations générale sur l'Entreprise</h4>
             </div>
             <div class="card-body">
-                {{-- <form action="{{ route('entreprise.create') }}" method="POST"> --}}
-                    {{-- @csrf --}}
-                    {{-- @dd($entreprise->cigle) --}}
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h4 class="card-title">Informations sur l'Entreprise</h4>
-                            @include('snippets.input', [
-                                'label' => 'Cigle',
-                                'name' => 'cigle_entreprise',
-                                'disabled' => 'yes',
-                                'value' => $entreprise->cigle,
-                            ])
-                            @include('snippets.input', [
-                                'label' => 'Denomination',
-                                'name' => 'denomination_entreprise',
-                                'disabled' => 'yes',
-                                'value' => $entreprise->denomination,
-                            ])
-                            @include('snippets.input', [
-                                'label' => 'Forme juridique',
-                                'name' => 'forme_juridique_entreprise',
-                                'disabled' => 'yes',
-                                'value' => $entreprise->forme_juridique,
-                            ])
-                            <div class="row">
-                                <div class="col-md-6">
-                                    @include('snippets.input', [
-                                        'label' => 'Boîte postale',
-                                        'name' => 'boite_postale_entreprise',
-                                        'disabled' => 'yes',
-                                        'value' => $entreprise->boite_postale,
-                                    ])
-                                </div>
-                                <div class="col-md-6">
-                                    @include('snippets.input', [
-                                        'label' => 'Ville',
-                                        'name' => 'ville_entreprise',
-                                        'disabled' => 'yes',
-                                        'value' => $entreprise->ville,
-                                    ])
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4 class="card-title">Informations sur l'Entreprise</h4>
+                        <div class="form-group">
+                            <label> Cigle:</label>
+                            <input type="text" disabled name="cigle_entreprise" class="form-control" value="{{ $entreprise->cigle }}" aut />
+                        </div>
+                        <div class="form-group">
+                            <label> Denomination:</label>
+                            <input type="text" disabled name="denomination_entreprise" class="form-control" value="{{ $entreprise->denomination }}" aliqu />
+                        </div>
+                        <div class="form-group">
+                            <label> Forme juridique:</label>
+                            <input type="text" disabled name="forme_juridique_entreprise" class="form-control" value="{{ $entreprise->forme_juridique }}" />
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label> Boîte postale:</label>
+                                    <input type="text" disabled name="boite_postale_entreprise" class="form-control" value="{{ $entreprise->boite_postale }}" deser />
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    @include('snippets.input', [
-                                        'label' => 'Numéro du répertoire',
-                                        'name' => 'numero_repertoire_entreprise',
-                                        'disabled' => 'yes',
-                                        'value' => $entreprise->numero_repertoire,
-                                    ])
-                                </div>
-                                <div class="col-md-6">
-                                    @include('snippets.input', [
-                                        'label' => 'Code contribuable',
-                                        'name' => 'code_contribuable_entreprise',
-                                        'disabled' => 'yes',
-                                        'value' => $entreprise->code_contribuable,
-                                    ])
-                                </div>
-                            </div>
-                            @include('snippets.input', [
-                                'label' => 'Nom du professionnel salarié',
-                                'name' => 'nom_professionnel_salarier_entreprise',
-                                'disabled' => 'yes',
-                                'value' => $entreprise->nom_professionnel_salarier,
-                            ])
-                            @include('snippets.input', [
-                                'label' => 'Email',
-                                'name' => 'email_entreprise',
-                                'disabled' => 'yes',
-                                'value' => $entreprise->mail,
-                            ])
-                            @include('snippets.input', [
-                                'label' => 'Activité principale',
-                                'name' => 'activite_principale_entreprise',
-                                'disabled' => 'yes',
-                                'value' => $entreprise->activite_principale,
-                            ])
-                            @include('snippets.input', [
-                                'label' => 'Centre des Impôts',
-                                'name' => 'centre_impots_entreprise',
-                                'disabled' => 'yes',
-                                'value' => $entreprise->centre_impots,
-                            ])
-                            <div class="row">
-                                <div class="col-md-6">
-                                    @include('snippets.input', [
-                                        'label' => 'IFU',
-                                        'name' => 'ifu_entreprise',
-                                        'disabled' => 'yes',
-                                        'value' => $entreprise->ifu,
-                                    ])
-                                </div>
-                                <div class="col-md-6">
-                                    @include('snippets.input', [
-                                        'label' => 'Registre de Commerce',
-                                        'name' => 'registre_commerce_entreprise',
-                                        'disabled' => 'yes',
-                                        'value' => $entreprise->registre_commerce,
-                                    ])
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    @include('snippets.input', [
-                                        'label' => 'N° CNSS',
-                                        'name' => 'numero_cnss_entreprise',
-                                        'disabled' => 'yes',
-                                        'value' => $entreprise->numero_cnss,
-                                    ])
-                                </div>
-                                <div class="col-md-6">
-                                    @include('snippets.input', [
-                                        'label' => 'Téléphone',
-                                        'name' => 'telephone_entreprise',
-                                        'disabled' => 'yes',
-                                        'value' => $entreprise->telephone,
-                                    ])
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label> Ville:</label>
+                                    <input type="text" disabled name="ville_entreprise" class="form-control" value="{{ $entreprise->ville }}" quod es />
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <h4>Adresse Géographique</h4>
-                            @include('snippets.input', [
-                                'label' => 'N° Rue',
-                                'name' => 'numero_rue_entreprise',
-                                'disabled' => 'yes',
-                                'value' => $entreprise->numero_rue,
-                            ])
-                            @include('snippets.input', [
-                                'label' => 'Quartier',
-                                'name' => 'quartier_entreprise',
-                                'disabled' => 'yes',
-                                'value' => $entreprise->quartier,
-                            ])
-                            @include('snippets.input', [
-                                'label' => 'N° Lot',
-                                'name' => 'numero_lot_entreprise',
-                                'disabled' => 'yes',
-                                'value' => $entreprise->numero_lot,
-                            ])
-                            <h4>Informartions sur le Gérant</h4>
-                            @include('snippets.input', [
-                                'label' => 'Nom',
-                                'name' => 'nom_gerant_entreprise',
-                                'disabled' => 'yes',
-                                'value' => $entreprise->nom_gerant,
-                            ])
-                            <div class="row">
-                                <div class="col-md-6">
-                                    @include('snippets.input', [
-                                        'label' => 'Adresse',
-                                        'name' => 'adresse_gerant_entreprise',
-                                        'disabled' => 'yes',
-                                        'value' => $entreprise->adresse_gerant,
-                                    ])
-                                </div>
-                                <div class="col-md-6">
-                                    @include('snippets.input', [
-                                        'label' => 'Qualification',
-                                        'name' => 'qualification_gerant_entreprise',
-                                        'disabled' => 'yes',
-                                        'value' => $entreprise->qualification_gerant,
-                                    ])
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label> Numéro du répertoire:</label>
+                                    <input type="text" disabled name="numero_repertoire_entreprise" class="form-control" value="{{ $entreprise->numero_repertoire }}" aut temp />
                                 </div>
                             </div>
-                            <h4>Informations sur l'Expert</h4>
-                            @include('snippets.input', [
-                                'label' => 'Nom',
-                                'name' => 'nom_expert_entreprise',
-                                'disabled' => 'yes',
-                                'value' => $entreprise->nom_expert,
-                            ])
-                            @include('snippets.input', [
-                                'label' => 'Adresse',
-                                'name' => 'adresse_expert_entreprise',
-                                'disabled' => 'yes',
-                                'value' => $entreprise->adresse_expert,
-                            ])
-                            <h4>Informations sur le Signataire</h4>
-                            @include('snippets.input', [
-                                'label' => 'Nom',
-                                'name' => 'nom_signataire_entreprise',
-                                'disabled' => 'yes',
-                                'value' => $entreprise->nom_signataire,
-                            ])
-                            @include('snippets.input', [
-                                'label' => 'Prénoms',
-                                'name' => 'prenom_signataire_entreprise',
-                                'disabled' => 'yes',
-                                'value' => $entreprise->prenom_signataire,
-                            ])
-                            @include('snippets.input', [
-                                'label' => 'Qualité',
-                                'name' => 'qualite_signataire_entreprise',
-                                'disabled' => 'yes',
-                                'value' => $entreprise->qualite_signataire,
-                            ])
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label> Code contribuable:</label>
+                                    <input type="text" disabled name="code_contribuable_entreprise" class="form-control" value="{{ $entreprise->code_contribuable }}" exerci />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label> Nom du professionnel salarié:</label>
+                            <input type="text" disabled name="nom_professionnel_salarier_entreprise" class="form-control" value="{{ $entreprise->nom_professionnel_salarier }}" r />
+                        </div>
+                        <div class="form-group">
+                            <label> Email:</label>
+                            <input type="text" disabled name="email_entreprise" class="form-control" value="{{ $entreprise->email }}@mailinator.com" />
+                        </div>
+                        <div class="form-group">
+                            <label> Activité principale:</label>
+                            <input type="text" disabled name="activite_principale_entreprise" class="form-control" value="{{ $entreprise->activite_principale }}" no />
+                        </div>
+                        <div class="form-group">
+                            <label> Centre des Impôts:</label>
+                            <input type="text" disabled name="centre_impots_entreprise" class="form-control" value="{{ $entreprise->centre_impots }}" blandi />
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label> IFU:</label>
+                                    <input type="text" disabled name="ifu_entreprise" class="form-control" value="{{ $entreprise->ifu }}" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label> Registre de Commerce:</label>
+                                    <input type="text" disabled name="registre_commerce_entreprise" class="form-control" value="{{ $entreprise->registre_commerce }}" est />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label> N° CNSS:</label>
+                                    <input type="text" disabled name="numero_cnss_entreprise" class="form-control" value="{{ $entreprise->numero_cnss }}" duc />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label> Téléphone:</label>
+                                    <input type="text" disabled name="telephone_entreprise" class="form-control" value="+{{ $entreprise->telephone }}" (141) 908-4579 />
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="text-right">
-                        <a href=""></a>
-                        <input type="submit" class="btn btn-primary" value="Enregistrer">
+                    <div class="col-md-6">
+                        <h4>Adresse Géographique</h4>
+                        <div class="form-group">
+                            <label> N° Rue:</label>
+                            <input type="text" disabled name="numero_rue_entreprise" class="form-control" value="{{ $entreprise->numero_rue }}" />
+                        </div>
+                        <div class="form-group">
+                            <label> Quartier:</label>
+                            <input type="text" disabled name="quartier_entreprise" class="form-control" value="{{ $entreprise->quartier }}" tempo />
+                        </div>
+                        <div class="form-group">
+                            <label> N° Lot:</label>
+                            <input type="text" disabled name="numero_lot_entreprise" class="form-control" value="{{ $entreprise->numero_lot }}" vol />
+                        </div>
+                        <h4>Informartions sur le Gérant</h4>
+                        <div class="form-group">
+                            <label> Nom:</label>
+                            <input type="text" disabled name="nom_gerant_entreprise" class="form-control" value="{{ $entreprise->nom_gerant }}" s />
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label> Adresse:</label>
+                                    <input type="text" disabled name="adresse_gerant_entreprise" class="form-control" value="{{ $entreprise->adresse_gerant }}" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label> Qualification:</label>
+                                    <input type="text" disabled name="qualification_gerant_entreprise" class="form-control" value="{{ $entreprise->qualification_gerant }}" ni />
+                                </div>
+                            </div>
+                        </div>
+                        <h4>Informations sur l'Expert</h4>
+                        <div class="form-group">
+                            <label> Nom:</label>
+                            <input type="text" disabled name="nom_expert_entreprise" class="form-control" value="{{ $entreprise->nom_expert }}" susc />
+                        </div>
+                        <div class="form-group">
+                            <label> Adresse:</label>
+                            <input type="text" disabled name="adresse_expert_entreprise" class="form-control" value="{{ $entreprise->adresse_expert }}" est />
+                        </div>
+                        <h4>Informations sur le Signataire</h4>
+                        <div class="form-group">
+                            <label> Nom:</label>
+                            <input type="text" disabled name="nom_signataire_entreprise" class="form-control" value="{{ $entreprise->nom_signataire }}" />
+                        </div>
+                        <div class="form-group">
+                            <label> Prénoms:</label>
+                            <input type="text" disabled name="prenom_signataire_entreprise" class="form-control" value="{{ $entreprise->prenom_signataire }}" m />
+                        </div>
+                        <div class="form-group">
+                            <label> Qualité:</label>
+                            <input type="text" disabled name="qualite_signataire_entreprise" class="form-control" value="{{ $entreprise->qualite_signataire }}" maiore />
+                        </div>
                     </div>
-                {{-- </form> --}}
+                </div>
+                <div class="text-right">
+                    <a href="{{ url()->previous() }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Retour</a>
+                </div>
             </div>
         </div>
     </div>

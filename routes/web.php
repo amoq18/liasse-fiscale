@@ -15,13 +15,20 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 // Routes sur Entreprise
 Route::get('entreprise/create', 'EntrepriseController@create')->name('entreprise.create');
 Route::post('entreprise/create', 'EntrepriseController@store')->name('entreprise.create');
+
+Route::get('entreprise/{idEntreprise}/edit', 'EntrepriseController@edit')->name('entreprise.edit');
+Route::post('entreprise/{idEntreprise}/edit', 'EntrepriseController@update')->name('entreprise.edit');
+
 Route::get('entreprise/index', 'EntrepriseController@index')->name('entreprise.index');
+
 Route::get('entreprise/{idEntreprise}/index', 'EntrepriseController@show')->name('entreprise.show');
+
+Route::get('entreprise/{idEntreprise}/delete', 'EntrepriseController@delete')->name('entreprise.delete');
 
 // Routes sur Staff Dirigeant
 Route::get('staff/dirigeant/create', 'StaffDirigeantController@create')->name('staff.dirigeant.create');
