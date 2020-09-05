@@ -18,6 +18,17 @@
             <div class="card-body">
                 <form action="{{ route('banque.create') }}" method="POST">
                     @csrf
+                    <div class="form-group row">
+                        <label class="col-form-label col-md-1">Entreprise:</label>
+                        <div class="col-md-11">
+                            <select class="form-control" name="entreprise_id">
+                                <option>-- Choisir --</option>
+                                @foreach ($entreprises as $entreprise)
+                                    <option value="{{ $entreprise->id }}">{{ $entreprise->denomination }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-sm-12">
                             <h4 class="card-title">Informations sur la nouvelle Banque</h4>

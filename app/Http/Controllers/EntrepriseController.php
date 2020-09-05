@@ -53,6 +53,10 @@ class EntrepriseController extends Controller
     {
         $entreprises = Entreprise::all();
 
+        if(request('query') == 'ajax') {
+            return response()->json('200');
+        }
+
         return view('Entreprise.index', compact('entreprises'));
     }
 

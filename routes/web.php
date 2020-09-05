@@ -35,6 +35,10 @@ Route::group(['prefix' => 'entreprise'], function () {
 
 // Route sur staff
 Route::group(['prefix' => 'staff'], function () {
+    // Creer et enregistrer un Staff
+    Route::get('create', 'StaffController@create')->name('staff.create');
+    Route::post('create', 'StaffController@store')->name('staff.create');
+
     // Routes sur Staff Dirigeant
     Route::group(['prefix' => 'dirigeant'], function () {
         // Creer et enregistrer un Staff Dirigeant

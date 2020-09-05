@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\ConseilAdmin;
+use App\Model\Entreprise;
 use Illuminate\Http\Request;
 
 class ConseilAdminController extends Controller
@@ -26,7 +27,9 @@ class ConseilAdminController extends Controller
      */
     public function create()
     {
-        return view('Staff.CA.create');
+        $entreprises = Entreprise::all();
+
+        return view('Staff.CA.create', compact('entreprises'));
     }
 
     /**

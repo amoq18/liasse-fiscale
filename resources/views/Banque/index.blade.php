@@ -21,9 +21,10 @@
         <div class="form-group text-right">
             <a href="{{ route('banque.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Ajouter une Banque</a>
         </div>
+        @foreach ($entreprises as $entreprise)
         <div class="card card-table">
             <div class="card-header">
-                <h4 class="card-title">Liste des Banques</h4>
+                <h4 class="card-title">Liste des Banques de {{ $entreprise->denomination }}</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -39,7 +40,7 @@
                         </thead>
                         <tbody>
                             @php $count = 1; @endphp
-                            @foreach ($banques as $banque)
+                            @foreach ($entreprise->banques as $banque)
                             <tr>
                                 <td>#{{ $count++ }}</td>
                                 <td>{{ $banque->nom }}</td>
@@ -64,6 +65,7 @@
                 </div>
             </div>
         </div>
+        @endforeach
     </div>
 </div>
 @endsection

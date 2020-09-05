@@ -7,4 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Exercice extends Model
 {
     protected $guarded = [];
+
+    public function entreprise()
+    {
+        return $this->belongsTo(Entreprise::class);
+    }
 }

@@ -15,13 +15,16 @@ class CreateExercicesTable extends Migration
     {
         Schema::create('exercices', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('entreprise_id');
             $table->date('date_debut');
             $table->date('date_fin');
             $table->string('exercice_precedent');
             $table->string('impot_minimum');
             $table->string('taux_proportionnel');
             $table->string('taux_impot');
+
             $table->timestamps();
+
         });
     }
 

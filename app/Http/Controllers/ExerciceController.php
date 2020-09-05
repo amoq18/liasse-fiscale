@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Entreprise;
 use App\Model\Exercice;
 use Illuminate\Http\Request;
 
@@ -14,9 +15,9 @@ class ExerciceController extends Controller
      */
     public function index()
     {
-        $exercices = Exercice::all();
+        $entreprises = Entreprise::all();
 
-        return view('Exercice.index', compact('exercices'));
+        return view('Exercice.index', compact('entreprises'));
     }
 
     /**
@@ -26,7 +27,9 @@ class ExerciceController extends Controller
      */
     public function create()
     {
-        return view('Exercice.create');
+        $entreprises = Entreprise::all();
+
+        return view('Exercice.create', compact('entreprises'));
     }
 
     /**
@@ -45,6 +48,7 @@ class ExerciceController extends Controller
         $exercice->impot_minimum = request('impot_minimum_exercice');
         $exercice->taux_proportionnel = request('taux_proportionnel_exercice');
         $exercice->taux_impot = request('taux_impot_exercice');
+        $exercice->entreprise_id = request('entreprise_id');
 
         $exercice->save();
 

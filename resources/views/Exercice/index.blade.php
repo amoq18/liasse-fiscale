@@ -21,9 +21,10 @@
         <div class="form-group text-right">
             <a href="{{ route('exercice.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Ajouter un Exercice</a>
         </div>
+        @foreach ($entreprises as $entreprise)
         <div class="card card-table">
             <div class="card-header">
-                <h4 class="card-title">Liste des Exercices</h4>
+                <h4 class="card-title">Liste des Exercices de {{ $entreprise->denomination }}</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -42,7 +43,7 @@
                         </thead>
                         <tbody>
                             @php $count = 1; @endphp
-                            @foreach ($exercices as $exercice)
+                            @foreach ($entreprise->exercices as $exercice)
                             <tr>
                                 <td>#{{ $count++ }}</td>
                                 <td>{{ $exercice->date_debut }}</td>
@@ -70,6 +71,7 @@
                 </div>
             </div>
         </div>
+        @endforeach
     </div>
 </div>
 @endsection

@@ -3,9 +3,9 @@
 @section('content')
 <div class="row">
     <div class="col-md-12">
-        @if(Session::has('success_conseil_admin_create'))
+        @if(Session::has('success_staff_create'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <h5><strong>{{ Session::get('success_conseil_admin_create') }}</strong></h5>
+                <h5><strong>{{ Session::get('success_staff_create') }}</strong></h5>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -16,7 +16,7 @@
                 <h4 class="card-title text-center text-light">Créer un Staff</h4>
             </div>
             <div class="card-body">
-                <form action="{{ route('staff.ca.create') }}" method="POST">
+                <form action="{{ route('staff.create') }}" method="POST">
                     @csrf
                     <div class="form-group row">
                         <label class="col-form-label col-md-1">Entreprise:</label>

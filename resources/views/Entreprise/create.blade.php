@@ -20,7 +20,7 @@
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
-                            <h4 class="card-title">Informations générales</h4>
+                            <h4 class="card-title">Informations Générales</h4>
                             @include('snippets.input', [
                                 'label' => 'Cigle',
                                 'name' => 'cigle_entreprise',

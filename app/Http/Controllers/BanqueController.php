@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Banque;
+use App\Model\Entreprise;
 use Illuminate\Http\Request;
 
 class BanqueController extends Controller
@@ -14,9 +15,9 @@ class BanqueController extends Controller
      */
     public function index()
     {
-        $banques = Banque::all();
+        $entreprises = Entreprise::all();
 
-        return view('Banque.index', compact('banques'));
+        return view('Banque.index', compact('entreprises'));
     }
 
     /**
@@ -26,7 +27,9 @@ class BanqueController extends Controller
      */
     public function create()
     {
-        return view('Banque.create');
+        $entreprises = Entreprise::all();
+
+        return view('Banque.create', compact('entreprises'));
     }
 
     /**
@@ -37,11 +40,14 @@ class BanqueController extends Controller
      */
     public function store(Request $request)
     {
+        // @dd(request()->all());
         $banque = new Banque();
         $banque->nom = request('nom_banque');
         $banque->numero_compte = request('numero_compte_banque');
 
         $banque->save();
+
+        Banque::findOrFail($banque->id)->entreprises()->sync(request('entreprise_id'));
 
         return redirect()->back()->with(['success_banque_create' => 'Banque créée avec succès']);
     }

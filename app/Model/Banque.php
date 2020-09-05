@@ -7,4 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Banque extends Model
 {
     protected $guarded = [];
+
+    public function entreprises()
+    {
+        return $this->belongsToMany(Entreprise::class);
+    }
 }

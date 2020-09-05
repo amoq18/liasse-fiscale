@@ -3,16 +3,16 @@
 @section('content')
 <div class="row">
     <div class="col-sm-12">
-        @if(Session::has('success_conseil_admin_modify'))
+        @if(Session::has('success_staff_modify'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <h5><strong>{{ Session::get('success_conseil_admin_modify') }}</strong></h5>
+            <h5><strong>{{ Session::get('success_staff_modify') }}</strong></h5>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">×</span>
             </button>
         </div>
-        @elseif(Session::has('success_conseil_admin_delete'))
+        @elseif(Session::has('success_staff_delete'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <h5><strong>{{ Session::get('success_conseil_admin_delete') }}</strong></h5>
+            <h5><strong>{{ Session::get('success_staff_delete') }}</strong></h5>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">×</span>
             </button>
@@ -23,7 +23,7 @@
         </div>
         <div class="card card-table">
             <div class="card-header">
-                <h4 class="card-title">Liste des Conseils d'Administrations</h4>
+                <h4 class="card-title">Liste des Staffs</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">

@@ -45,7 +45,6 @@
                             @foreach ($entreprises as $entreprise)
                                 <tr>
                                     <td>#{{ $count++ }}</td>
-                                    <td>{{ $entreprise->id }}</td>
                                     <td>{{ $entreprise->cigle }}</td>
                                     <td>{{ $entreprise->denomination }}</td>
                                     <td>{{ $entreprise->numero_rue }}</td>
