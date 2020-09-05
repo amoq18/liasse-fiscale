@@ -43,7 +43,7 @@ class BanqueController extends Controller
 
         $banque->save();
 
-        return redirect()->route('banque.index')->with(['success_banque_create' => 'Banque créée avec succès']);
+        return redirect()->back()->with(['success_banque_create' => 'Banque créée avec succès']);
     }
 
     /**

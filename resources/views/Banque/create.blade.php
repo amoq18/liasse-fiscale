@@ -2,7 +2,15 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-sm-12">
+        @if(Session::has('success_banque_create'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <h5><strong>{{ Session::get('success_banque_create') }}</strong></h5>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+        @endif
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">Créer une nouvelle Banque</h4>
@@ -11,14 +19,14 @@
                 <form action="{{ route('banque.create') }}" method="POST">
                     @csrf
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-sm-12">
                             <h4 class="card-title">Informations sur la nouvelle Banque</h4>
                             @include('snippets.input', [
                                 'label' => 'Nom',
                                 'name' => 'nom_banque',
                             ])
                             </div>
-                        <div class="col-md-12">
+                        <div class="col-sm-12">
                             @include('snippets.input', [
                                 'label' => 'N° de Compte',
                                 'name' => 'numero_compte_banque',

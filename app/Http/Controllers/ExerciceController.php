@@ -48,7 +48,7 @@ class ExerciceController extends Controller
 
         $exercice->save();
 
-        return redirect()->route('exercice.index')->with(['success_exercice_create' => 'Exercice créée avec succès']);
+        return back()->with(['success_exercice_create' => 'Exercice créé avec succès']);
     }
 
     /**

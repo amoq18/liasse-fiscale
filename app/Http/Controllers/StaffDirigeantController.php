@@ -44,7 +44,7 @@ class StaffDirigeantController extends Controller
 
         $dirigeant->save();
 
-        return redirect()->route('staff.dirigeant.index')->with(['success_staff_dirigeant_create' => 'Staff dirigeant créée avec succès']);
+        return back()->with(['success_staff_dirigeant_create' => 'Staff dirigeant créée avec succès']);
     }
 
     /**

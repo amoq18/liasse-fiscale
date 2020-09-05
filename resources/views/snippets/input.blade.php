@@ -1,6 +1,6 @@
 <div class="form-group">
     <label> {{ $label }}:</label>
-    <input
+    <input required
         type = {{ $type ?? 'text' }}
         name = {{ $name }}
         class = "form-control"

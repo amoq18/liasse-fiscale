@@ -48,7 +48,7 @@ class ConseilAdminController extends Controller
 
         $conseilAdmin->save();
 
-        return redirect()->route('staff.ca.index')->with(["success_conseil_admin_create" => "Conseil d'Administration créée avec succès"]);
+        return back()->with(["success_conseil_admin_create" => "Conseil d'Administration créée avec succès"]);
     }
 
     /**

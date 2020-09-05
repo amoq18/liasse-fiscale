@@ -3,14 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-sm-12">
-        @if(Session::has('success_staff_dirigeant_create'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <h5><strong>{{ Session::get('success_staff_dirigeant_create') }}</strong></h5>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-        @elseif(Session::has('success_staff_dirigeant_modify'))
+        @if(Session::has('success_staff_dirigeant_modify'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <h5><strong>{{ Session::get('success_staff_dirigeant_modify') }}</strong></h5>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -26,7 +19,7 @@
         </div>
         @endif
         <div class="form-group text-right">
-            <a href="{{ route('staff.dirigeant.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Ajouter une Entreprise</a>
+            <a href="{{ route('staff.dirigeant.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Ajouter un Staff</a>
         </div>
         <div class="card card-table">
             <div class="card-header">

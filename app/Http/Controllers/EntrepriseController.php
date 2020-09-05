@@ -45,7 +45,7 @@ class EntrepriseController extends Controller
 
         $entreprise->save();
 
-        return redirect()->route('entreprise.index')->with(['success_entreprise_create' => 'Entreprise créée avec succès']);
+        return back()->with(['success_entreprise_create' => 'Entreprise créée avec succès']);
 
     }
 
@@ -109,7 +109,7 @@ class EntrepriseController extends Controller
     public function delete($idEntreprise)
     {
         Entreprise::findOrFail($idEntreprise)->delete();
-        
+
         return redirect()->route('entreprise.index')->with(['success_entreprise_delete' => 'Entreprise supprimée avec succès']);
     }
 }

@@ -3,14 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-sm-12">
-        @if(Session::has('success_banque_create'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <h5><strong>{{ Session::get('success_banque_create') }}</strong></h5>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-        @elseif(Session::has('success_banque_modify'))
+        @if(Session::has('success_banque_modify'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <h5><strong>{{ Session::get('success_banque_modify') }}</strong></h5>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
