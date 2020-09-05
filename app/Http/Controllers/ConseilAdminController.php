@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\ConseilAdmin;
 use Illuminate\Http\Request;
 
 class ConseilAdminController extends Controller
@@ -13,7 +14,9 @@ class ConseilAdminController extends Controller
      */
     public function index()
     {
-        return view('Staff.CA.index');
+        $conseilAdmins = ConseilAdmin::all();
+
+        return view('Staff.CA.index', compact('conseilAdmins'));
     }
 
     /**
@@ -34,51 +37,79 @@ class ConseilAdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $conseilAdmin = new ConseilAdmin();
+
+        $conseilAdmin->nom = request('nom_conseil_admin');
+        $conseilAdmin->prenom = request('prenom_conseil_admin');
+        $conseilAdmin->qualite = request('qualite_conseil_admin');
+        $conseilAdmin->nature_apport = request('nature_apport_conseil_admin');
+        $conseilAdmin->pourcentage_apport = request('pourcentage_apport_conseil_admin');
+        $conseilAdmin->valeur_apport = request('valeur_apport_conseil_admin');
+
+        $conseilAdmin->save();
+
+        return redirect()->route('staff.ca.index')->with(["success_conseil_admin_create" => "Conseil d'Administration créée avec succès"]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $idConseil
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($idConseil)
     {
-        //
+        $conseilAdmin = ConseilAdmin::findOrFail($idConseil);
+
+        return view('Staff.CA.show', compact('conseilAdmin'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $idConseil
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($idConseil)
     {
-        //
+        $conseilAdmin = ConseilAdmin::findOrFail($idConseil);
+
+        return view('Staff.CA.edit', compact('conseilAdmin'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  $idConseil
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($idConseil)
     {
-        //
+        $conseilAdmin = ConseilAdmin::findOrFail($idConseil);
+
+        $conseilAdmin->nom = request('nom_conseil_admin');
+        $conseilAdmin->prenom = request('prenom_conseil_admin');
+        $conseilAdmin->qualite = request('qualite_conseil_admin');
+        $conseilAdmin->nature_apport = request('nature_apport_conseil_admin');
+        $conseilAdmin->pourcentage_apport = request('pourcentage_apport_conseil_admin');
+        $conseilAdmin->valeur_apport = request('valeur_apport_conseil_admin');
+
+        $conseilAdmin->save();
+
+        return redirect()->route('staff.ca.index')->with(["success_conseil_admin_modify" => "Conseil d'Administration modifié avec succès"]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int  $idConseil
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($idConseil)
     {
-        //
+        ConseilAdmin::findOrFail($idConseil)->delete();
+
+        return redirect()->route('staff.ca.index')->with(["success_conseil_admin_delete" => "Cet Conseil d'Administration a été supprimé avec succès"]);
     }
 }

@@ -5,12 +5,11 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Modifier les informations sur la Banque</h4>
+                <h4 class="card-title">Informations sur le Staff dirigeant</h4>
             </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <h4 class="card-title">Informations sur le nouveau Staff dirigeant</h4>
                         <div class="form-group">
                             <label> Nom:</label>
                             <input disabled type = text name = nom_staff_dirigeant class = "form-control" value="{{ $dirigeant->nom }}" >
