@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Exercice;
 use Illuminate\Http\Request;
 
 class ExerciceController extends Controller
@@ -13,7 +14,9 @@ class ExerciceController extends Controller
      */
     public function index()
     {
-        return view('Exercice.index');
+        $exercices = Exercice::all();
+
+        return view('Exercice.index', compact('exercices'));
     }
 
     /**
@@ -34,7 +37,19 @@ class ExerciceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd(request()->all());
+        $exercice = new Exercice();
+
+        $exercice->date_debut = request('date_debut_exercice');
+        $exercice->date_fin = request('date_fin_exercice');
+        $exercice->exercice_precedent = request('exercice_precedent_exercice');
+        $exercice->impot_minimum = request('impot_minimum_exercice');
+        $exercice->taux_proportionnel = request('taux_proportionnel_exercice');
+        $exercice->taux_impot = request('taux_impot_exercice');
+
+        $exercice->save();
+
+        return redirect()->route('exercice.index')->with(['success_exercice_create' => 'Exercice créée avec succès']);
     }
 
     /**

@@ -9,14 +9,14 @@
                     <a href="#"><i class="fe fe-home"></i> <span>Accueil</span></a>
                 </li>
                 <li class="submenu">
-                    <a href="#"><i class="fa fa-building-o"></i> <span> Fichier Entreprise</span> <span class="menu-arrow"></span></a>
+                    <a href="#"><i class="fe fe-building"></i> <span> Entreprise</span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
                         <li><a href="{{ route('entreprise.create') }}">Créer</a></li>
                         <li><a href="{{ route('entreprise.index') }}">Voir</a></li>
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a href="javascript:void(0);"><i class="fe fe-code"></i> <span>Staff</span> <span class="menu-arrow"></span></a>
+                    <a href="javascript:void(0);"><i class="fe fe-users"></i> <span>Staff</span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
                         <li class="submenu">
                             <a href="javascript:void(0);"> <span>Staff dirigeant</span> <span class="menu-arrow"></span></a>
@@ -35,14 +35,14 @@
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a href="#"><i class="fe fe-cart"></i> <span> Banque</span> <span class="menu-arrow"></span></a>
+                    <a href="#"><i class="fe fe-building"></i> <span> Banque</span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
                         <li><a href="{{ route('banque.create') }}">Créer</a></li>
                         <li><a href="{{ route('banque.index') }}">Voir</a></li>
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a href="#"><i class="fe fe-cart"></i> <span> Exercice</span> <span class="menu-arrow"></span></a>
+                    <a href="#"><i class="fe fe-document"></i> <span> Exercice</span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
                         <li><a href="{{ route('exercice.create') }}">Créer</a></li>
                         <li><a href="{{ route('exercice.index') }}">Voir</a></li>

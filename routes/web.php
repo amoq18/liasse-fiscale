@@ -86,6 +86,10 @@ Route::group(['prefix' => 'banque'], function () {
 
 
 // Routes sur Exercice
-Route::get('exercice/create', 'ExerciceController@create')->name('exercice.create');
-Route::post('exercice/create', 'ExerciceController@store')->name('exercice.create');
-Route::get('exercice/index', 'ExerciceController@index')->name('exercice.index');
+Route::group(['prefix' => 'exercice'], function () {
+    // Creer et enregistrer un exercice
+    Route::get('create', 'ExerciceController@create')->name('exercice.create');
+    Route::post('create', 'ExerciceController@store')->name('exercice.create');
+    // liste de toutes les exercices
+    Route::get('index', 'ExerciceController@index')->name('exercice.index');
+});
