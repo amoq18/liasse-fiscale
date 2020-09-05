@@ -4,15 +4,15 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">Créer une nouvelle Entreprise</h4>
+            <div class="card-header bg-primary">
+                <h4 class="card-title text-center text-light">FICHE ENTREPRISE</h4>
             </div>
             <div class="card-body">
                 <form action="{{ route('entreprise.create') }}" method="POST">
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
-                            <h4 class="card-title">Informations sur la nouvelle Entreprise</h4>
+                            <h4 class="card-title">Informations générales</h4>
                             @include('snippets.input', [
                                 'label' => 'Cigle',
                                 'name' => 'cigle_entreprise',
@@ -136,7 +136,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     @include('snippets.input', [
-                                        'label' => 'Qualification',
+                                        'label' => 'Fonction',
                                         'name' => 'qualification_gerant_entreprise',
                                     ])
                                 </div>
@@ -160,13 +160,16 @@
                                 'name' => 'prenom_signataire_entreprise',
                             ])
                             @include('snippets.input', [
-                                'label' => 'Qualité',
+                                'label' => 'Fonction',
                                 'name' => 'qualite_signataire_entreprise',
                             ])
                         </div>
                     </div>
                     <div class="text-right">
-                        <input type="submit" class="btn btn-primary" value="Enregistrer">
+                        <a href="{{ route('entreprise.index') }}" class="btn btn-danger"><i class="fa fa-close"></i> Fermer</a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa fa-floppy-o"></i> Enregistrer
+                        </button>
                     </div>
                 </form>
             </div>

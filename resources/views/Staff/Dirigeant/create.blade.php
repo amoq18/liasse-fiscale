@@ -39,7 +39,10 @@
                     </div>
                     <div class="col-md-12">
                         <div class="text-right">
-                            <input type="submit" class="btn btn-primary" value="Enregistrer">
+                            <a href="{{ route('staff.dirigeant.index') }}" class="btn btn-danger"><i class="fa fa-close"></i> Fermer</a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa fa-floppy-o"></i> Enregistrer
+                        </button>
                         </div>
                     </div>
                 </form>

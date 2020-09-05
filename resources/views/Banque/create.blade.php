@@ -26,7 +26,10 @@
                         </div>
                     </div>
                     <div class="text-right">
-                        <input type="submit" class="btn btn-primary" value="Enregistrer">
+                        <a href="{{ route('banque.index') }}" class="btn btn-danger"><i class="fa fa-close"></i> Fermer</a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa fa-floppy-o"></i> Enregistrer
+                        </button>
                     </div>
                 </form>
             </div>
