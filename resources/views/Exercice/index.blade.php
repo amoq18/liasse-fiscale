@@ -34,6 +34,8 @@
                                 <th>ID</th>
                                 <th>Date de début</th>
                                 <th>Date de fin</th>
+                                <th>Nombre de mois</th>
+                                <th>Année de référence</th>
                                 <th>Exercice précédent</th>
                                 <th>Impôt minimum</th>
                                 <th>Taux proportionnel</th>

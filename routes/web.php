@@ -104,3 +104,8 @@ Route::group(['prefix' => 'exercice'], function () {
     // supprimer un exercice
     Route::get('{idExercice}/delete', 'ExerciceController@delete')->name('exercice.delete');
 });
+
+// Routes sur Importation
+Route::group(['prefix' => 'importation'], function () {
+    Route::get('/', 'ImportationController@index')->name('importation.index');
+});

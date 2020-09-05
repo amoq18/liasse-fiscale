@@ -48,6 +48,16 @@
                         <li><a href="{{ route('exercice.index') }}">Voir</a></li>
                     </ul>
                 </li>
+                <li class="submenu">
+                    <a href="#"><i class="fa fa-cogs"></i> <span> Traitement</span> <span class="menu-arrow"></span></a>
+                    <ul style="display: none;">
+                        <li><a href="{{ route('importation.index') }}">Importation Balance</a></li>
+                        <li><a href="#">Contrôle de conformité</a></li>
+                        <li><a href="#">Contrôle de cohérence</a></li>
+                        <li><a href="#">Génération Liasse</a></li>
+                        <li><a href="#"></a></li>
+                    </ul>
+                </li>
                 <li class="menu-title">
                     <span>Compte</span>
                 </li>
