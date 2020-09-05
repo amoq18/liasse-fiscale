@@ -92,4 +92,11 @@ Route::group(['prefix' => 'exercice'], function () {
     Route::post('create', 'ExerciceController@store')->name('exercice.create');
     // liste de toutes les exercices
     Route::get('index', 'ExerciceController@index')->name('exercice.index');
+    // modifier un exercice
+    Route::get('{idExercice}/edit', 'ExerciceController@edit')->name('exercice.edit');
+    Route::post('{idExercice}/edit', 'ExerciceController@update')->name('exercice.edit');
+    //information sur un eercice
+    Route::get('{idExercice}/show', 'ExerciceController@show')->name('exercice.show');
+    // supprimer un exercice
+    Route::get('{idExercice}/delete', 'ExerciceController@delete')->name('exercice.delete');
 });
