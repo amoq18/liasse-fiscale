@@ -109,3 +109,11 @@ Route::group(['prefix' => 'exercice'], function () {
 Route::group(['prefix' => 'importation'], function () {
     Route::get('/', 'ImportationController@index')->name('importation.index');
 });
+
+// Routes sur Structure
+Route::group(['prefix' => 'structure'], function () {
+    Route::get('pays', 'StructureController@index_pays')->name('structure.pays.index');
+    Route::get('banques', 'StructureController@index_banques')->name('structure.banques.index');
+    Route::get('plans-comptables', 'StructureController@index_comptables')->name('structure.comptables.index');
+    Route::get('impots', 'StructureController@index_impots')->name('structure.impots.index');
+});
