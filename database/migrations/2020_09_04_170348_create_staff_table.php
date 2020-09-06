@@ -18,9 +18,9 @@ class CreateStaffTable extends Migration
             $table->string('nom');
             $table->string('prenom');
             $table->string('qualite');
-            $table->string('nature_apport');
-            $table->string('pourcentage_apport');
-            $table->string('valeur_apport');
+            $table->string('nature_apport')->nullable();
+            $table->string('pourcentage_apport')->nullable();
+            $table->string('valeur_apport')->nullable();
             $table->string('type');
             $table->timestamps();
         });

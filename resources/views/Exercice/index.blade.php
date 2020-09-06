@@ -40,6 +40,8 @@
                                 <th>Impôt minimum</th>
                                 <th>Taux proportionnel</th>
                                 <th>Taux d'Impôt</th>
+                                <th>Type Liasse Comptable</th>
+                                <th>Type Liasse Fiscale</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -50,10 +52,14 @@
                                 <td>#{{ $count++ }}</td>
                                 <td>{{ $exercice->date_debut }}</td>
                                 <td>{{ $exercice->date_fin }}</td>
+                                <td>{{ $exercice->date_fin }}</td>
+                                <td>{{ $exercice->date_fin }}</td>
                                 <td>{{ $exercice->exercice_precedent }}</td>
                                 <td>{{ $exercice->impot_minimum }}</td>
                                 <td>{{ $exercice->taux_proportionnel }}</td>
                                 <td>{{ $exercice->taux_impot }}</td>
+                                <td>{{ $exercice->liasse_comptable }}</td>
+                                <td>{{ $exercice->liasse_fiscale }}</td>
                                 <td>
                                     <a href="{{ route('exercice.show', $exercice->id) }}" class="btn btn-success btn-sm mr-1" title="Voir">
                                         <i class="fa fa-eye text-light"></i>

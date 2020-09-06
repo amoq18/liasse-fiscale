@@ -38,38 +38,12 @@ Route::group(['prefix' => 'staff'], function () {
     // Creer et enregistrer un Staff
     Route::get('create', 'StaffController@create')->name('staff.create');
     Route::post('create', 'StaffController@store')->name('staff.create');
-
-    // Routes sur Staff Dirigeant
-    Route::group(['prefix' => 'dirigeant'], function () {
-        // Creer et enregistrer un Staff Dirigeant
-        Route::get('create', 'StaffDirigeantController@create')->name('staff.dirigeant.create');
-        Route::post('create', 'StaffDirigeantController@store')->name('staff.dirigeant.create');
-        // liste de toutes les Staffs Dirigeants
-        Route::get('index', 'StaffDirigeantController@index')->name('staff.dirigeant.index');
-        // modifier un Staff Dirigeant
-        Route::get('{idDirigeant}/edit', 'StaffDirigeantController@edit')->name('staff.dirigeant.edit');
-        Route::post('{idDirigeant}/edit', 'StaffDirigeantController@update')->name('staff.dirigeant.edit');
-        //information sur un Staff Dirigeant
-        Route::get('{idDirigeant}/show', 'StaffDirigeantController@show')->name('staff.dirigeant.show');
-        // supprimer un Staff Dirigeant
-        Route::get('{idDirigeant}/delete', 'StaffDirigeantController@delete')->name('staff.dirigeant.delete');
-    });
-
-    // Routes sur Staff Conseil Administration
-    Route::group(['prefix' => 'conseil-administration'], function () {
-        // Creer et enregistrer un Conseil Administration
-        Route::get('create', 'ConseilAdminController@create')->name('staff.ca.create');
-        Route::post('create', 'ConseilAdminController@store')->name('staff.ca.create');
-        // modifier un Conseil Administration
-        Route::get('{idConseil}/edit', 'ConseilAdminController@edit')->name('staff.ca.edit');
-        Route::post('{idConseil}/edit', 'ConseilAdminController@update')->name('staff.ca.edit');
-        // liste de toutes les Conseils Administrations
-        Route::get('index', 'ConseilAdminController@index')->name('staff.ca.index');
-        //information sur un Staff Dirigeant
-        Route::get('{idConseil}/show', 'ConseilAdminController@show')->name('staff.ca.show');
-        // supprimer un Conseil Administration
-        Route::get('{idConseil}/delete', 'ConseilAdminController@delete')->name('staff.ca.delete');
-    });
+    // liste de tout les Staffs
+    Route::get('index', 'StaffController@index')->name('staff.index');
+    //information sur un staff
+    Route::get('{idStaff}/show', 'StaffController@show')->name('staff.show');
+    // supprimer un staff
+    Route::get('{idStaff}/delete', 'StaffController@delete')->name('staff.delete');
 });
 
 // Routes sur Banque

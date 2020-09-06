@@ -29,7 +29,12 @@ class ExerciceController extends Controller
     {
         $entreprises = Entreprise::all();
 
-        return view('Exercice.create', compact('entreprises'));
+        if(empty($entreprises['0'])) {
+            return redirect()->route('entreprise.create')->with(['alert_entreprise_create' => "Vous devez créer premièrement l'Entreprise"]);
+        } else {
+            return view('Exercice.create', compact('entreprises'));
+        }
+
     }
 
     /**
@@ -40,6 +45,7 @@ class ExerciceController extends Controller
      */
     public function store(Request $request)
     {
+        // dd(request()->all());
         $exercice = new Exercice();
 
         $exercice->date_debut = request('date_debut_exercice');
@@ -49,6 +55,8 @@ class ExerciceController extends Controller
         $exercice->taux_proportionnel = request('taux_proportionnel_exercice');
         $exercice->taux_impot = request('taux_impot_exercice');
         $exercice->entreprise_id = request('entreprise_id');
+        $exercice->liasse_comptable = request('type_liasse_comptable');
+        $exercice->liasse_fiscale = request('type_liasse_fiscale');
 
         $exercice->save();
 

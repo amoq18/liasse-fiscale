@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\ConseilAdmin;
 use App\Model\Entreprise;
 use App\Model\StaffDirigeant;
+use App\Staff;
 use Illuminate\Http\Request;
 
 class StaffController extends Controller
@@ -16,7 +17,9 @@ class StaffController extends Controller
      */
     public function index()
     {
-        //
+        $staffs = Staff::all();
+
+        return view('Staff.index', compact('staffs'));
     }
 
     /**
@@ -28,7 +31,12 @@ class StaffController extends Controller
     {
         $entreprises = Entreprise::all();
 
-        return view('Staff.create', compact('entreprises'));
+        if(empty($entreprises['0'])) {
+            return redirect()->route('entreprise.create')->with(['alert_entreprise_create' => "Vous devez créer premièrement l'Entreprise"]);
+        } else {
+            return view('Staff.create', compact('entreprises'));
+        }
+
     }
 
     /**
@@ -40,30 +48,26 @@ class StaffController extends Controller
     public function store(Request $request)
     {
         // dd(request()->all());
-        $res = "";
-        if (request('dirigeant')) {
-            $dirigeant = new StaffDirigeant();
-            $dirigeant->nom = request('nom_staff');
-            $dirigeant->prenom = request('prenom_staff');
-            $dirigeant->qualite = request('qualite_staff');
 
-            $dirigeant->save();
-            $res = 'dirigeant';
+        $staff = new Staff();
+        $staff->nom = request('nom_staff');
+        $staff->prenom = request('prenom_staff');
+        $staff->qualite = request('qualite_staff');
+        $staff->nature_apport = request('nature_apport_staff');
+        $staff->pourcentage_apport = request('pourcentage_apport_staff');
+        $staff->valeur_apport = request('valeur_apport_staff');
+        if (request('dirigeant') == 'on')
+        {
+            $staff->type = 'Dirigeant';
         }
-        if(request('conseilAdmin')) {
-            $conseilAdmin = new ConseilAdmin();
-            $conseilAdmin->nom = request('nom_staff');
-            $conseilAdmin->prenom = request('prenom_staff');
-            $conseilAdmin->qualite = request('qualite_staff');
-            $conseilAdmin->nature_apport = request('nature_apport_staff');
-            $conseilAdmin->pourcentage_apport = request('pourcentage_apport_staff');
-            $conseilAdmin->valeur_apport = request('valeur_apport_staff');
-
-            $conseilAdmin->save();
-
-            $res= $res.' conseilAdmin';
+        elseif (request('conseilAdmin') == 'on')
+        {
+            $staff->type = "Conseil d'Administration";
         }
-        // return $res;
+
+        // reste relation 1-n, 1-n entre Staff et Entreprise
+
+        $staff->save();
 
         return back()->with(["success_staff_create" => "Staff créée avec succès"]);
     }
@@ -76,47 +80,38 @@ class StaffController extends Controller
      */
     public function show($idStaff)
     {
-        if(request('dirigeant')) {
-
-        }
-        if(request('conseilAdmin')) {
-            $staff = ConseilAdmin::findOrFail($idStaff);
-        }
+        $staff = Staff::findOrFail($idStaff);
 
         return view('Staff.show', compact('staff'));
     }
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  \App\ConseilAdmin  $conseilAdmin
      * @return \Illuminate\Http\Response
      */
-    public function edit(ConseilAdmin $conseilAdmin)
+    public function edit()
     {
         //
     }
 
     /**
      * Update the specified resource in storage.
-     *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ConseilAdmin  $conseilAdmin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ConseilAdmin $conseilAdmin)
+    public function update()
     {
         //
     }
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  \App\ConseilAdmin  $conseilAdmin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ConseilAdmin $conseilAdmin)
+    public function delete($idStaff)
     {
-        //
+        $staff = Staff::findOrFail($idStaff)->delete();
+
+        return back()->with(["success_staff_delete" => "Staff supprimé avec succès"]);
     }
 }

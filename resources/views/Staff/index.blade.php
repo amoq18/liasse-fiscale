@@ -33,6 +33,7 @@
                                 <th>ID</th>
                                 <th>Noms et Prénoms</th>
                                 <th>Qualité</th>
+                                <th>Type</th>
                                 <th>Nature apport</th>
                                 <th>Pourcentage apport</th>
                                 <th>Valeur apport</th>
@@ -41,22 +42,23 @@
                         </thead>
                         <tbody>
                             @php $count = 1; @endphp
-                            @foreach ($conseilAdmins as $conseilAdmin)
+                            @foreach ($staffs as $staff)
                             <tr>
                                 <td>#{{ $count++ }}</td>
-                                <td>{{ $conseilAdmin->nom.' '.$conseilAdmin->prenom }}</td>
-                                <td>{{ $conseilAdmin->qualite }}</td>
-                                <td>{{ $conseilAdmin->nature_apport }}</td>
-                                <td>{{ $conseilAdmin->pourcentage_apport }}</td>
-                                <td>{{ $conseilAdmin->valeur_apport }}</td>
+                                <td>{{ $staff->nom.' '.$staff->prenom }}</td>
+                                <td>{{ $staff->qualite }}</td>
+                                <td>{{ $staff->type }}</td>
+                                <td>{{ $staff->nature_apport }}</td>
+                                <td>{{ $staff->pourcentage_apport }}</td>
+                                <td>{{ $staff->valeur_apport }}</td>
                                 <td>
-                                    <a href="{{ route('staff.ca.show', $conseilAdmin->id) }}" class="btn btn-success btn-sm mr-1" title="Voir">
+                                    <a href="{{ route('staff.show', $staff->id) }}" class="btn btn-success btn-sm mr-1" title="Voir">
                                         <i class="fa fa-eye text-light"></i>
                                     </a>
-                                    <a href="{{ route('staff.ca.edit', $conseilAdmin->id) }}" class="btn btn-warning btn-sm mr-1" title="Modifier">
+                                    <a href="{{ route('staff.index', $staff->id) }}" class="btn btn-warning btn-sm mr-1" title="Modifier">
                                         <i class="fa fa-pencil-square-o text-light"></i>
                                     </a>
-                                    <a href="{{ route('staff.ca.delete', $conseilAdmin->id) }}" class="btn btn-danger btn-sm" data-toggle="modals" data-target="#deleteEntreprises" title="Supprimer">
+                                    <a href="{{ route('staff.delete', $staff->id) }}" class="btn btn-danger btn-sm" data-toggle="modals" data-target="#deleteEntreprises" title="Supprimer">
                                         <i class="fa fa-close text-light"></i>
                                     </a>
                                 </td>

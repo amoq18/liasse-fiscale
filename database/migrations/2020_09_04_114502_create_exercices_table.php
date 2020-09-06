@@ -22,6 +22,8 @@ class CreateExercicesTable extends Migration
             $table->string('impot_minimum');
             $table->string('taux_proportionnel');
             $table->string('taux_impot');
+            $table->string('liasse_comptable');
+            $table->string('liasse_fiscale');
 
             $table->timestamps();
 

@@ -27,20 +27,8 @@
                 <li class="submenu">
                     <a href="javascript:void(0);"><i class="fe fe-users"></i> <span>Staff</span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
-                        <li class="submenu">
-                            <a href="javascript:void(0);"> <span>Staff dirigeant</span> <span class="menu-arrow"></span></a>
-                            <ul style="display: none;">
-                                <li><a href="{{ route('staff.dirigeant.create') }}">Créer</a></li>
-                                <li><a href="{{ route('staff.dirigeant.index') }}">Voir</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);"> <span>CA </span> <span class="menu-arrow"></span></a>
-                            <ul style="display: none;">
-                                <li><a href="{{ route('staff.ca.create') }}">Créer</a></li>
-                                <li><a href="{{ route('staff.ca.index') }}">Voir</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="{{ route('staff.create') }}">Créer</a></li>
+                        <li><a href="{{ route('staff.index') }}">Voir</a></li>
                     </ul>
                 </li>
                 <li class="submenu">

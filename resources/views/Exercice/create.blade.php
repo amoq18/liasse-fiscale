@@ -74,6 +74,35 @@
                             </div>
                         </div>
                         <div class="row">
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <label class="col-form-label col-md-4">Type de Liasse Comptable:</label>
+                                    <div class="col-md-8">
+                                        <select class="form-control" name="type_liasse_comptable" id="select_liasse_comptable">
+                                            <option>-- Choisir --</option>
+                                            <option value="normale">Normale</option>
+                                            <option value="smt">SMT</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <label class="col-form-label col-md-4">Type de Liasse Fiscale:</label>
+                                    <div class="col-md-8">
+                                        <select class="form-control" name="type_liasse_fiscale" id="select_liasse_fiscale">
+                                            <option>-- Choisir --</option>
+                                            <option class="type_normal" value="irpp">IRPP</option>
+                                            <option class="type_normal" value="is">IS</option>
+                                            <option class="type_normal" value="bic">BIC</option>
+                                            <option class="type_smt" value="tps_pe">TPS / PE</option>
+                                            <option class="type_smt" value="tps_me">TPS / ME</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
                             <div class="col-md-12">
                                 <div class="text-right">
                                     <a href="{{ route('exercice.index') }}" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Retour</a>
@@ -92,11 +121,21 @@
 
 @section('js')
     <script>
-        // $(document).ready(function () {
-        //     $('#testBtn').hide();
-        //     $('#showListeEntreprise').click(function () {
-        //         $('#testBtn').show();
-        //     });
-        // });
+        $(document).ready(function () {
+            $('.type_normal').hide();
+            $('.type_smt').hide();
+
+            $('#select_liasse_comptable').on('change', function() {
+                if (this.value == 'normale') {
+                    $('.type_normal').show();
+                    $('.type_smt').hide();
+                }
+                else if (this.value == 'smt') {
+                    $('.type_smt').show();
+                    $('.type_normal').hide();
+
+                }
+            });
+        });
     </script>
 @endsection
