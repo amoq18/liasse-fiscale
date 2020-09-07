@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\ConseilAdmin;
 use App\Model\Entreprise;
 use App\Model\StaffDirigeant;
-use App\Staff;
+use App\Model\Staff;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class StaffController extends Controller
@@ -32,7 +33,8 @@ class StaffController extends Controller
         $entreprises = Entreprise::all();
 
         if(empty($entreprises['0'])) {
-            return redirect()->route('entreprise.create')->with(['alert_entreprise_create' => "Vous devez créer premièrement l'Entreprise"]);
+            Toastr::warning("Vous devez créer premièrement l'Entreprise", "Entreprise");
+            return redirect()->route('entreprise.create');
         } else {
             return view('Staff.create', compact('entreprises'));
         }
@@ -47,6 +49,7 @@ class StaffController extends Controller
      */
     public function store(Request $request)
     {
+        // dd(request()->all());
         $staff = new Staff();
         $staff->nom = request('nom_staff');
         $staff->prenom = request('prenom_staff');
@@ -54,6 +57,7 @@ class StaffController extends Controller
         $staff->nature_apport = request('nature_apport_staff');
         $staff->pourcentage_apport = request('pourcentage_apport_staff');
         $staff->valeur_apport = request('valeur_apport_staff');
+
         if (request('dirigeant') == 'on')
         {
             $staff->type = 'Dirigeant';
@@ -63,11 +67,14 @@ class StaffController extends Controller
             $staff->type = "Conseil d'Administration";
         }
 
-        // reste relation 1-n, 1-n entre Staff et Entreprise
-
         $staff->save();
 
-        return back()->with(["success_staff_create" => "Staff créée avec succès"]);
+        // Relation 1-n, 1-n entre Staff et Entreprise
+        Staff::findOrFail($staff->id)->entreprises()->sync(request('entreprise_id'));
+
+        Toastr::success("Staff créée avec succès", "Staff");
+
+        return back();
     }
 
     /**

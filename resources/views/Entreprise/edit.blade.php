@@ -43,13 +43,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label> Numéro du répertoire:</label>
-                                        <input type="text" name="numero_repertoire_entreprise" class="form-control" value="{{ $entreprise->numero_repertoire }}" aut temp />
+                                        <input type="number" min="0" name="numero_repertoire_entreprise" class="form-control" value="{{ $entreprise->numero_repertoire }}" aut temp />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label> Code contribuable:</label>
-                                        <input type="text" name="code_contribuable_entreprise" class="form-control" value="{{ $entreprise->code_contribuable }}" exerci />
+                                        <input type="number" min="0" name="code_contribuable_entreprise" class="form-control" value="{{ $entreprise->code_contribuable }}" exerci />
                                     </div>
                                 </div>
                             </div>
@@ -73,7 +73,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label> IFU:</label>
-                                        <input type="text" name="ifu_entreprise" class="form-control" value="{{ $entreprise->ifu }}" />
+                                        <input type="number" min="0" name="ifu_entreprise" class="form-control" value="{{ $entreprise->ifu }}" />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -102,7 +102,7 @@
                             <h4>Adresse Géographique</h4>
                             <div class="form-group">
                                 <label> N° Rue:</label>
-                                <input type="text" name="numero_rue_entreprise" class="form-control" value="{{ $entreprise->numero_rue }}" />
+                                <input type="number" min="0" name="numero_rue_entreprise" class="form-control" value="{{ $entreprise->numero_rue }}" />
                             </div>
                             <div class="form-group">
                                 <label> Quartier:</label>
@@ -110,7 +110,7 @@
                             </div>
                             <div class="form-group">
                                 <label> N° Lot:</label>
-                                <input type="text" name="numero_lot_entreprise" class="form-control" value="{{ $entreprise->numero_lot }}" vol />
+                                <input type="number" min="0" name="numero_lot_entreprise" class="form-control" value="{{ $entreprise->numero_lot }}" vol />
                             </div>
                             <h4>Informartions sur le Gérant</h4>
                             <div class="form-group">
@@ -121,42 +121,42 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label> Adresse:</label>
-                                        <input type="text" name="adresse_gerant_entreprise" class="form-control" value="{{ $entreprise->adresse_gerant }}" />
+                                        <input type="text" name="adresse_gerant_entreprise" class="form-control" value="{{ $entreprise->adresse_gerant }}"/>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label> Qualification:</label>
-                                        <input type="text" name="qualification_gerant_entreprise" class="form-control" value="{{ $entreprise->qualification_gerant }}" ni />
+                                        <input type="text" name="qualification_gerant_entreprise" class="form-control" value="{{ $entreprise->qualification_gerant }}"/>
                                     </div>
                                 </div>
                             </div>
                             <h4>Informations sur l'Expert</h4>
                             <div class="form-group">
                                 <label> Nom:</label>
-                                <input type="text" name="nom_expert_entreprise" class="form-control" value="{{ $entreprise->nom_expert }}" susc />
+                                <input type="text" name="nom_expert_entreprise" class="form-control" value="{{ $entreprise->nom_expert }}" />
                             </div>
                             <div class="form-group">
                                 <label> Adresse:</label>
-                                <input type="text" name="adresse_expert_entreprise" class="form-control" value="{{ $entreprise->adresse_expert }}" est />
+                                <input type="text" name="adresse_expert_entreprise" class="form-control" value="{{ $entreprise->adresse_expert }}"/>
                             </div>
                             <h4>Informations sur le Signataire</h4>
                             <div class="form-group">
                                 <label> Nom:</label>
-                                <input type="text" name="nom_signataire_entreprise" class="form-control" value="{{ $entreprise->nom_signataire }}" />
+                                <input type="text" name="nom_signataire_entreprise" class="form-control" value="{{ $entreprise->nom_signataire }}"/>
                             </div>
                             <div class="form-group">
                                 <label> Prénoms:</label>
-                                <input type="text" name="prenom_signataire_entreprise" class="form-control" value="{{ $entreprise->prenom_signataire }}" m />
+                                <input type="text" name="prenom_signataire_entreprise" class="form-control" value="{{ $entreprise->prenom_signataire }}"/>
                             </div>
                             <div class="form-group">
                                 <label> Qualité:</label>
-                                <input type="text" name="qualite_signataire_entreprise" class="form-control" value="{{ $entreprise->qualite_signataire }}" maiore />
+                                <input type="text" name="qualite_signataire_entreprise" class="form-control" value="{{ $entreprise->qualite_signataire }}"/>
                             </div>
                         </div>
                     </div>
                     <div class="text-right">
-                        <a href=""></a>
+                        <a href="{{ route('entreprise.index') }}"></a>
                         <input type="submit" class="btn btn-primary" value="Enregistrer" />
                     </div>
                 </form>

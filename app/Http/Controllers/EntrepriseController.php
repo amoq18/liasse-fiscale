@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Entreprise;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class EntrepriseController extends Controller
@@ -45,8 +46,8 @@ class EntrepriseController extends Controller
 
         $entreprise->save();
 
-        return back()->with(['success_entreprise_create' => 'Entreprise créée avec succès']);
-
+        Toastr::success('Entreprise créée avec succès', 'Entreprise');
+        return back();
     }
 
     public function index()

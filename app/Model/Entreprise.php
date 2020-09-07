@@ -17,4 +17,9 @@ class Entreprise extends Model
     {
         return $this->belongsToMany(Banque::class);
     }
+
+    public function staffs()
+    {
+        return $this->belongsToMany(Staff::class);
+    }
 }

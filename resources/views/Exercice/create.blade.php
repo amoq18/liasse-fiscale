@@ -35,7 +35,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label> Date de début:</label>
-                                    <input required type = date name = date_debut_exercice class = "form-control" >
+                                    <input required type="date" name=date_debut_exercice class="form-control" >
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -49,13 +49,13 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label> Exercice précedent:</label>
-                                    <input required type = text name = exercice_precedent_exercice class = "form-control">
+                                    <input required min="2019/12/01" type = date name = exercice_precedent_exercice class = "form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label> Impot minimum:</label>
-                                    <input required type = text name = impot_minimum_exercice class = "form-control">
+                                    <input required type = number name = impot_minimum_exercice class = "form-control">
                                 </div>
                             </div>
                         </div>
@@ -63,13 +63,13 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label> Taux proportionnel:</label>
-                                    <input required type = text name = taux_proportionnel_exercice class = "form-control">
+                                    <input required type="number" min="0" name = taux_proportionnel_exercice placeholder="En %" class = "form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label> Taux impot:</label>
-                                    <input required type = text name = taux_impot_exercice class = "form-control">
+                                    <input required type="number" min="0" name = taux_impot_exercice placeholder="En %" class = "form-control">
                                 </div>
                             </div>
                         </div>
@@ -122,6 +122,7 @@
 @section('js')
     <script>
         $(document).ready(function () {
+
             $('.type_normal').hide();
             $('.type_smt').hide();
 
@@ -136,6 +137,19 @@
 
                 }
             });
+            // []
+
+            // var today = moment().format('YYYY-MM-DD');
+
+            // $('#datePicker').val(today);
+
+            // $('#date_debut_exercice').val('today')
+            $('input[name=date_debut_exercice]').val("2020-01-01")
+            // $('date_fin_exercice').val('2020-01-03')
+            // $('exercice_precedent_exercice').val('2020-12-31')
+
+
+
         });
     </script>
 @endsection
