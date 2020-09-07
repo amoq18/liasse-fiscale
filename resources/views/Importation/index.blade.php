@@ -2,9 +2,9 @@
 
 @section('css')
 <style>
-    input[type="file"] {
+    /* input[type="file"] {
         display: none;
-    }
+    } */
     .custom-file-upload {
         border: 1px solid #ccc;
         display: inline-block;
@@ -54,12 +54,12 @@
                         <form action="{{ route('importation.excel') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             {{-- <label for="">Importer</label> --}}
-                            {{-- <input type="file" name="excel_file" id="excel_file" value="Importer"> --}}
-                            {{-- <button type="submit">Envoyer</button> --}}
-                            <label for="file-upload" class="custom-file-upload">
+                            <input type="file" name="excel_file" id="excel_file">
+                            <button type="submit">Envoyer</button>
+                            {{-- <label for="file-upload" class="custom-file-upload">
                                 <i class="fa fa-cloud-upload"></i> Custom Upload
                             </label>
-                            <input id="file-upload" type="file"/>
+                            <input id="file-upload" type="file"/> --}}
                         </form>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
                                     $total_fin_periode_c = 0;
                                     $total_fin_periode_d = 0;
                                 @endphp
-                                {{-- @dd($balances) --}}
+
                                 @foreach ($balances as $balance)
                                 <tr>
                                     <td>#{{ $count++ }}</td>
@@ -126,6 +126,13 @@
                             @endif
                         </tbody>
                     </table>
+                    <div class="text-right mt-4">
+                        {{-- <a href="#" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Retour</a> --}}
+                        <a href="" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Enregistrer</a>
+                        {{-- @php
+                            Brian2694\Toastr\Facades\Toastr::success('ook','Importation Excel');
+                        @endphp --}}
+                    </div>
                 </div>
             </div>
         </div>

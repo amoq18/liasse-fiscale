@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model\Entreprise;
 use App\Model\Exercice;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class ExerciceController extends Controller
@@ -30,7 +31,8 @@ class ExerciceController extends Controller
         $entreprises = Entreprise::all();
 
         if(empty($entreprises['0'])) {
-            return redirect()->route('entreprise.create')->with(['warning_entreprise_create' => "Vous devez créer premièrement l'Entreprise"]);
+            Toastr::error("Vous devez créer premièrement l'Entreprise", "Entreprise");
+            return redirect()->route('entreprise.create');
         } else {
             return view('Exercice.create', compact('entreprises'));
         }
@@ -45,7 +47,6 @@ class ExerciceController extends Controller
      */
     public function store(Request $request)
     {
-        // dd(request()->all());
         $exercice = new Exercice();
 
         $exercice->date_debut = request('date_debut_exercice');
@@ -60,7 +61,8 @@ class ExerciceController extends Controller
 
         $exercice->save();
 
-        return back()->with(['success_exercice_create' => 'Exercice créé avec succès']);
+        Toastr::success('Exercice créé avec succès','Exercice');
+        return back();
     }
 
     /**
@@ -109,7 +111,9 @@ class ExerciceController extends Controller
 
         $exercice->save();
 
-        return redirect()->route('exercice.index')->with(['success_exercice_modify' => 'Exercice modifié avec succès']);
+        Toastr::success('Exercice modifié avec succès', 'Exercice');
+        
+        return redirect()->route('exercice.index');
     }
 
     /**
@@ -122,6 +126,7 @@ class ExerciceController extends Controller
     {
         $exercice = Exercice::findOrFail($idExercice)->delete();
 
-        return redirect()->route('exercice.index')->with(['success_exercice_delete' => 'Exercice supprimé avec succès']);
+        Toastr::success('Exercice supprimé avec succès', 'Exercice');
+        return redirect()->route('exercice.index');
     }
 }

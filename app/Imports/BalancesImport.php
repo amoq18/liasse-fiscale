@@ -16,9 +16,33 @@ class BalancesImport implements ToModel
     */
     public function model(array $row)
     {
-        if (condition) {
-            # code...
+        if ($row[0] == 'N° COMPTE') {
+            return null;
         }
+        if ($row[1] == 'INTITULE DES COMPTES') {
+            return null;
+        }
+        if ($row[2] == 'DEB PERIODE (D)') {
+            return null;
+        }
+        if ($row[3] == 'DEB PERIODE (C)') {
+            return null;
+        }
+        if ($row[4] == 'MVT PERIODE (D)') {
+            return null;
+        }
+        if ($row[5] == 'MVT PERIODE (C)') {
+            return null;
+        }
+        if ($row[6] == 'FIN PERIODE (D)') {
+            return null;
+        }
+        if ($row[7] == 'FIN PERIODE (C)') {
+            return null;
+        }
+
+        // dd($row[2]);
+
         return new Balance([
             'numero_compte' => $row[0],
             'intitule_compte' => $row[1],
