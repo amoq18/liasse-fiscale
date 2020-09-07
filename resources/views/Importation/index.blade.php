@@ -1,5 +1,18 @@
 @extends('layouts.app')
 
+@section('css')
+<style>
+    input[type="file"] {
+        display: none;
+    }
+    .custom-file-upload {
+        border: 1px solid #ccc;
+        display: inline-block;
+        padding: 6px 12px;
+        cursor: pointer;
+    }
+</style>
+@endsection
 @section('content')
 <div class="row">
     <div class="col-md-12">
@@ -16,11 +29,10 @@
                                 <select class="form-control" name="entreprise_exercice" id="entreprise_exercice">
                                     <option>-- Choisir --</option>
                                     @foreach ($entreprises as $entreprise)
-                                        {{-- <option value="{{ $entreprise->id }}">{{ $entreprise->denomination }}</option> --}}
                                         <optgroup label="{{ $entreprise->denomination }}">
                                             @foreach ($entreprise->exercices as $exercice)
                                                 <option value="{{ (new Carbon\Carbon($exercice->date_fin))->format('Y') }}">
-                                                    {{ (new Carbon\Carbon($exercice->date_fin))->format('d-m-Y') }}
+                                                    Exercice {{ (new Carbon\Carbon($exercice->date_fin))->format('d/m/Y') }}
                                                 </option>
                                             @endforeach
                                         </optgroup>
@@ -28,19 +40,12 @@
                                 </select>
                             </div>
                         </div>
-                        {{-- (new Carbon\Carbon($exercice->date_fin))->format('Y') --}}
                     </div>
                     <div class="col-md-3">
                         <div class="row">
                             <label class="col-form-label col-md-5">Exercice:</label>
                             <div class="col-md-7">
                                 <input type="text" class="form-control" id="exercice">
-                                {{-- <select class="form-control" name="entreprise_id">
-                                    <option>-- Choisir --</option>
-                                    @foreach ($exercices as $exercice)
-                                        <option value="{{ $exercice->id }}">{{ $exercice->date_fin }}</option>
-                                    @endforeach
-                                </select> --}}
                             </div>
                         </div>
                     </div>
@@ -48,24 +53,29 @@
                         {{-- <button class="btn btn-primary">Import</button> --}}
                         <form action="{{ route('importation.excel') }}" method="post" enctype="multipart/form-data">
                             @csrf
-                            <input type="file" name="excel_file" id="" value="Importer">
-                            <button type="submit">Envoyer</button>
+                            {{-- <label for="">Importer</label> --}}
+                            {{-- <input type="file" name="excel_file" id="excel_file" value="Importer"> --}}
+                            {{-- <button type="submit">Envoyer</button> --}}
+                            <label for="file-upload" class="custom-file-upload">
+                                <i class="fa fa-cloud-upload"></i> Custom Upload
+                            </label>
+                            <input id="file-upload" type="file"/>
                         </form>
                     </div>
                 </div>
                 <div class="table-responsive">
                     <table class="table mb-0 table-hover table-sm table-bordered">
                         <thead>
-                            <tr class="table-danger">
+                            <tr class="table-primary">
                                 <th>ID</th>
-                                <th>Numero de Compte</th>
-                                <th>Intitule_compte</th>
-                                <th>Début Période C</th>
-                                <th>Début Période D</th>
-                                <th>Mouvement Période C</th>
-                                <th>Mouvement Période D</th>
-                                <th>Fin Période C</th>
-                                <th>Fin Période D</th>
+                                <th>N° Compte</th>
+                                <th>Intitulé</th>
+                                <th>Debit Début</th>
+                                <th>Crédit Début</th>
+                                <th>Debit MVT</th>
+                                <th>Crédit MVT</th>
+                                <th>Debit Fin</th>
+                                <th>Crédit Fin</th>
                                 {{-- <th>Actions</th> --}}
                             </tr>
                         </thead>

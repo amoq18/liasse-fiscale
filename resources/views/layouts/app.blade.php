@@ -26,6 +26,9 @@
 		<!-- Main CSS -->
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
+        <!-- Toastr JS -->
+        <link rel="stylesheet" href="{{ asset('assets/css/toastr.min.css') }}">
+
         @yield('css')
 
 		<!--[if lt IE 9]>
@@ -61,7 +64,7 @@
 		<!-- jQuery -->
         <script src="{{ asset('assets/js/jquery-3.2.1.min.js') }}"></script>
         @yield('js')
-        
+
 		<!-- Bootstrap Core JS -->
         <script src="{{ asset('assets/js/popper.min.js') }}"></script>
         <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
@@ -76,7 +79,9 @@
 		<!-- Custom JS -->
         <script  src="{{ asset('assets/js/script.js') }}"></script>
 
-    </body>
+        <!-- Toastr JS -->
+        <script src="{{ asset('assets/js/toastr.min.js') }}"></script>
+        {!! Toastr::message() !!}
 
-<!-- Mirrored from dreamguys.co.in/demo/ventura/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 14 Oct 2019 17:26:05 GMT -->
+    </body>
 </html>

@@ -6,6 +6,7 @@ use App\Imports\BalancesImport;
 use App\Model\Balance;
 use App\Model\Entreprise;
 use App\Model\Exercice;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -24,9 +25,10 @@ class ImportationController extends Controller
 
     public function excel()
     {
-        // dd(request()->all());
         Excel::import(new BalancesImport, request()->file('excel_file')->store('tempo'));
-        return redirect()->route('importation.index')->with(['success_excel_import', 'le fichier a été bien importé']);
+        Toastr::success('Le fichier excel a été bien importé','Importation Excel');
+
+        return redirect()->route('importation.index');
     if (false) {
         # code...
 
