@@ -8,7 +8,7 @@
     .custom-file-upload {
         border: 1px solid #ccc;
         display: inline-block;
-        padding: 6px 12px;
+        padding: 6px 10px;
         cursor: pointer;
     }
 </style>
@@ -68,20 +68,28 @@
                         <thead>
                             <tr class="table-primary">
                                 <th>ID</th>
-                                <th>N° Compte</th>
-                                <th>Intitulé</th>
-                                <th>Debit Début</th>
-                                <th>Crédit Début</th>
-                                <th>Debit MVT</th>
-                                <th>Crédit MVT</th>
-                                <th>Debit Fin</th>
-                                <th>Crédit Fin</th>
+                                <th>N° COMPTE</th>
+                                <th>INTITULÉ</th>
+                                <th>DEBIT DÉBUT</th>
+                                <th>CRÉDIT DÉBUT</th>
+                                <th>DEBIT MVT</th>
+                                <th>CRÉDIT MVT</th>
+                                <th>DEBIT FIN</th>
+                                <th>CRÉDIT FIN</th>
                                 {{-- <th>Actions</th> --}}
                             </tr>
                         </thead>
                         <tbody>
                             @if(!empty($balances['0']))
-                                @php $count = 1; @endphp
+                                @php
+                                    $count = 1;
+                                    $total_deb_periode_c = 0;
+                                    $total_deb_periode_d = 0;
+                                    $total_mvt_periode_c = 0;
+                                    $total_mvt_periode_d = 0;
+                                    $total_fin_periode_c = 0;
+                                    $total_fin_periode_d = 0;
+                                @endphp
                                 {{-- @dd($balances) --}}
                                 @foreach ($balances as $balance)
                                 <tr>
@@ -94,8 +102,27 @@
                                     <td>{{ $balance->mvt_periode_d }}</td>
                                     <td>{{ $balance->fin_periode_c }}</td>
                                     <td>{{ $balance->fin_periode_d }}</td>
+                                    @php
+                                        $total_deb_periode_c += (int)$balance->deb_periode_c;
+                                        $total_deb_periode_d += (int)$balance->deb_periode_d;
+                                        $total_mvt_periode_c += (int)$balance->mvt_periode_c;
+                                        $total_mvt_periode_d += (int)$balance->mvt_periode_d;
+                                        $total_fin_periode_c += (int)$balance->fin_periode_c;
+                                        $total_fin_periode_d += (int)$balance->fin_periode_d;
+                                    @endphp
                                 </tr>
                                 @endforeach
+                                <tr class="table-success">
+                                    <th>#{{ $count++ }}</th>
+                                    <th> - </th>
+                                    <th>TOTAL</th>
+                                    <th>{{ $total_deb_periode_c }}</th>
+                                    <th>{{ $total_deb_periode_d }}</th>
+                                    <th>{{ $total_mvt_periode_c }}</th>
+                                    <th>{{ $total_mvt_periode_d }}</th>
+                                    <th>{{ $total_fin_periode_c }}</th>
+                                    <th>{{ $total_fin_periode_d }}</th>
+                                </tr>
                             @endif
                         </tbody>
                     </table>
