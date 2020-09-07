@@ -18,6 +18,8 @@ class ImportationController extends Controller
 
         $exercices = Exercice::all();
 
+        Balance::where('intitule_compte', null)->delete();
+
         $balances = Balance::all();
 
         return view('Importation.index', compact('entreprises', 'exercices', 'balances'));
@@ -25,6 +27,7 @@ class ImportationController extends Controller
 
     public function excel()
     {
+        // return response('ok');
         Excel::import(new BalancesImport, request()->file('excel_file')->store('temp'));
 
         Toastr::success('Le fichier excel a été bien importé','Importation Excel');
