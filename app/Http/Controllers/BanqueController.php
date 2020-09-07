@@ -29,7 +29,13 @@ class BanqueController extends Controller
     {
         $entreprises = Entreprise::all();
 
-        return view('Banque.create', compact('entreprises'));
+        $banques = Banque::all();
+
+        if(empty($entreprises['0'])) {
+            return redirect()->route('entreprise.create')->with(['warning_entreprise_create' => "Vous devez créer premièrement l'Entreprise"]);
+        } else {
+            return view('Banque.create', compact('entreprises', 'banques'));
+        }
     }
 
     /**
@@ -41,15 +47,17 @@ class BanqueController extends Controller
     public function store(Request $request)
     {
         // @dd(request()->all());
-        $banque = new Banque();
-        $banque->nom = request('nom_banque');
-        $banque->numero_compte = request('numero_compte_banque');
+        // $banque = new Banque();
+        // $banque->nom = request('nom_banque');
 
+        $banque = Banque::findOrFail(request('banque_id'));
+
+        $banque->entreprises()->sync(request('entreprise_id'));
+
+        $banque->numero_compte = request('numero_compte_banque');
         $banque->save();
 
-        Banque::findOrFail($banque->id)->entreprises()->sync(request('entreprise_id'));
-
-        return redirect()->back()->with(['success_banque_create' => 'Banque créée avec succès']);
+        return back()->with(['success_banque_create' => 'Numéro de compte créée avec succès']);
     }
 
     /**

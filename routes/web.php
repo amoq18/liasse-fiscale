@@ -82,12 +82,29 @@ Route::group(['prefix' => 'exercice'], function () {
 // Routes sur Importation
 Route::group(['prefix' => 'importation'], function () {
     Route::get('/', 'ImportationController@index')->name('importation.index');
+    Route::post('excel', 'ImportationController@excel')->name('importation.excel');
+});
+
+// Routes sur Pays
+Route::group(['prefix' => 'pays'], function () {
+    Route::get('index', 'PaysController@index')->name('pays.index');
+    Route::get('create', 'PaysController@create')->name('pays.create');
+    Route::post('create', 'PaysController@store')->name('pays.create');
+
 });
 
 // Routes sur Structure
 Route::group(['prefix' => 'structure'], function () {
     Route::get('pays', 'StructureController@index_pays')->name('structure.pays.index');
+
     Route::get('banques', 'StructureController@index_banques')->name('structure.banques.index');
+    Route::get('banque/create', 'StructureController@create_banque')->name('structure.banque.create');
+    Route::post('banque/create', 'StructureController@create_banque')->name('structure.banque.create');
+
+    Route::get('centre_impots', 'StructureController@index_centre_impots')->name('structure.centre_impots.index');
+    Route::get('centre_impots/create', 'StructureController@create_centre_impots')->name('structure.centre_impots.create');
+    Route::post('centre_impots/create', 'StructureController@create_centre_impots')->name('structure.centre_impots.create');
+
     Route::get('plans-comptables', 'StructureController@index_comptables')->name('structure.comptables.index');
     Route::get('impots', 'StructureController@index_impots')->name('structure.impots.index');
 });

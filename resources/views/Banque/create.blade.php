@@ -12,15 +12,15 @@
             </div>
         @endif
         <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">Créer une nouvelle Banque</h4>
+            <div class="card-header bg-primary">
+                <h4 class="card-title text-center text-light">Créer un Numéro de Compte pour la Banque</h4>
             </div>
             <div class="card-body">
                 <form action="{{ route('banque.create') }}" method="POST">
                     @csrf
                     <div class="form-group row">
-                        <label class="col-form-label col-md-1">Entreprise:</label>
-                        <div class="col-md-11">
+                        <label class="col-form-label col-md-2">Entreprise:</label>
+                        <div class="col-md-10">
                             <select class="form-control" name="entreprise_id">
                                 <option>-- Choisir --</option>
                                 @foreach ($entreprises as $entreprise)
@@ -29,21 +29,24 @@
                             </select>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <h4 class="card-title">Informations sur la nouvelle Banque</h4>
-                            @include('snippets.input', [
-                                'label' => 'Nom',
-                                'name' => 'nom_banque',
-                            ])
-                            </div>
-                        <div class="col-sm-12">
-                            @include('snippets.input', [
-                                'label' => 'N° de Compte',
-                                'name' => 'numero_compte_banque',
-                            ])
+                    <div class="form-group row">
+                        <label class="col-form-label col-md-2">Banque:</label>
+                        <div class="col-md-10">
+                            <select class="form-control" name="banque_id">
+                                <option>-- Choisir --</option>
+                                @foreach ($banques as $banque)
+                                    <option value="{{ $banque->id }}">{{ $banque->nom }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-md-2">N° de Compte</label>
+                        <div class="col-md-10">
+                            <input type="number" min="0" name="numero_compte_banque" class="form-control">
+                        </div>
+                    </div>
+                    {{-- submit --}}
                     <div class="text-right">
                         <a href="{{ route('banque.index') }}" class="btn btn-danger"><i class="fa fa-close"></i> Fermer</a>
                         <button type="submit" class="btn btn-primary">

@@ -11,10 +11,10 @@
                 <li class="submenu">
                     <a href="#"><i class="fe fe-building"></i> <span> Structure</span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
-                        <li><a href="{{ route('structure.pays.index') }}">Liste des Pays</a></li>
+                        <li><a href="{{ route('pays.index') }}">Liste des Pays</a></li>
                         <li><a href="{{ route('structure.banques.index') }}">Liste des Banques</a></li>
                         <li><a href="{{ route('structure.comptables.index') }}">Liste Plans Comptables</a></li>
-                        <li><a href="{{ route('structure.impots.index') }}">Liste Centres d'Impôts</a></li>
+                        <li><a href="{{ route('structure.centre_impots.index') }}">Liste Centres d'Impôts</a></li>
                     </ul>
                 </li>
                 <li class="submenu">

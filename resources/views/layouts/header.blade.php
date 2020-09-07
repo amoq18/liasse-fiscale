@@ -2,11 +2,11 @@
 
     <!-- Logo -->
     <div class="header-left">
-        <a href="index-2.html" class="logo">
-            <img src="assets/img/logo.png" alt="Logo">
+        <a href="#" class="logo">
+            <img src="{{ asset('assets/img/logo.png') }}" alt="Logo">
         </a>
-        <a href="index-2.html" class="logo logo-small">
-            <img src="assets/img/logo-small.png" alt="Logo" width="30" height="30">
+        <a href="#" class="logo logo-small">
+            <img src="{{ asset('assets/img/logo-small.png') }}" alt="Logo" width="30" height="30">
         </a>
     </div>
     <!-- /Logo -->
@@ -30,24 +30,6 @@
 
     <!-- Header Right Menu -->
     <ul class="nav user-menu">
-
-        <!-- App Lists -->
-        <li class="nav-item dropdown app-dropdown">
-            <a class="nav-link dropdown-toggle" aria-expanded="false" role="button" data-toggle="dropdown" href="#"><i class="fe fe-app-menu"></i></a>
-            <ul class="dropdown-menu app-dropdown-menu">
-                <li>
-                    <div class="app-list">
-                        <div class="row">
-                            <div class="col"><a class="app-item" href="inbox.html"><i class="fa fa-envelope"></i><span>Email</span></a></div>
-                            <div class="col"><a class="app-item" href="calendar.html"><i class="fa fa-calendar"></i><span>Calendar</span></a></div>
-                            <div class="col"><a class="app-item" href="chat.html"><i class="fa fa-comments"></i><span>Chat</span></a></div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </li>
-        <!-- /App Lists -->
-
         <!-- Notifications -->
         <li class="nav-item dropdown noti-dropdown">
             <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
@@ -124,21 +106,18 @@
         <!-- User Menu -->
         <li class="nav-item dropdown has-arrow">
             <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                <span class="user-img"><img class="rounded-circle" src="assets/img/profiles/avatar-01.jpg" width="31" alt="Ryan Taylor"></span>
+                <span class="user-img">Ryan Taylor</span>
             </a>
             <div class="dropdown-menu">
                 <div class="user-header">
-                    <div class="avatar avatar-sm">
-                        <img src="assets/img/profiles/avatar-01.jpg" alt="User Image" class="avatar-img rounded-circle">
-                    </div>
                     <div class="user-text">
                         <h6>Ryan Taylor</h6>
                         <p class="text-muted mb-0">Administrator</p>
                     </div>
                 </div>
-                <a class="dropdown-item" href="profile.html">My Profile</a>
-                <a class="dropdown-item" href="profile.html">Account Settings</a>
-                <a class="dropdown-item" href="login.html">Logout</a>
+                <a class="dropdown-item" href="#">My Profile</a>
+                <a class="dropdown-item" href="#">Account Settings</a>
+                <a class="dropdown-item" href="#">Logout</a>
             </div>
         </li>
         <!-- /User Menu -->

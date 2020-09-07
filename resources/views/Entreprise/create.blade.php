@@ -10,9 +10,9 @@
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-        @elseif(Session::has('alert_entreprise_create'))
+        @elseif(Session::has('warning_entreprise_create'))
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <h5><strong>{{ Session::get('alert_entreprise_create') }}</strong></h5>
+            <h5><strong>{{ Session::get('warning_entreprise_create') }}</strong></h5>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">×</span>
             </button>

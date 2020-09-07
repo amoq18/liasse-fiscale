@@ -47,8 +47,6 @@ class StaffController extends Controller
      */
     public function store(Request $request)
     {
-        // dd(request()->all());
-
         $staff = new Staff();
         $staff->nom = request('nom_staff');
         $staff->prenom = request('prenom_staff');

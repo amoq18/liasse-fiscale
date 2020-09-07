@@ -30,7 +30,7 @@ class ExerciceController extends Controller
         $entreprises = Entreprise::all();
 
         if(empty($entreprises['0'])) {
-            return redirect()->route('entreprise.create')->with(['alert_entreprise_create' => "Vous devez créer premièrement l'Entreprise"]);
+            return redirect()->route('entreprise.create')->with(['warning_entreprise_create' => "Vous devez créer premièrement l'Entreprise"]);
         } else {
             return view('Exercice.create', compact('entreprises'));
         }

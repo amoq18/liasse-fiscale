@@ -19,7 +19,7 @@
         </div>
         @endif
         <div class="form-group text-right">
-            <a href="{{ route('banque.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Ajouter une Banque</a>
+            <a href="{{ route('structure.banque.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Ajouter une Banque</a>
         </div>
         {{-- @foreach ($entreprises as $entreprise) --}}
         <div class="card card-table">
