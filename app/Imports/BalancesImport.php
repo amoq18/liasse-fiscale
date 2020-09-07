@@ -16,6 +16,9 @@ class BalancesImport implements ToModel
     */
     public function model(array $row)
     {
+        if (condition) {
+            # code...
+        }
         return new Balance([
             'numero_compte' => $row[0],
             'intitule_compte' => $row[1],

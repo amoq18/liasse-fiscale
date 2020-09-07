@@ -25,7 +25,8 @@ class ImportationController extends Controller
 
     public function excel()
     {
-        Excel::import(new BalancesImport, request()->file('excel_file')->store('tempo'));
+        Excel::import(new BalancesImport, request()->file('excel_file')->store('temp'));
+
         Toastr::success('Le fichier excel a été bien importé','Importation Excel');
 
         return redirect()->route('importation.index');
