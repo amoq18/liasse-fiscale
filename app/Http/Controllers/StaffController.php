@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\ConseilAdmin;
 use App\Model\Entreprise;
-use App\Model\StaffDirigeant;
 use App\Model\Staff;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
@@ -20,7 +19,9 @@ class StaffController extends Controller
     {
         $staffs = Staff::all();
 
-        return view('Staff.index', compact('staffs'));
+        $entreprises = Entreprise::all();
+
+        return view('Staff.index', compact('staffs', 'entreprises'));
     }
 
     /**
@@ -32,10 +33,14 @@ class StaffController extends Controller
     {
         $entreprises = Entreprise::all();
 
-        if(empty($entreprises['0'])) {
+        if(empty($entreprises['0']))
+        {
             Toastr::warning("Vous devez créer premièrement l'Entreprise", "Entreprise");
-            return redirect()->route('entreprise.create');
-        } else {
+
+            return redirect()->route('entreprise.create')->withRedirect('staff');
+        }
+        else
+        {
             return view('Staff.create', compact('entreprises'));
         }
 
@@ -70,7 +75,7 @@ class StaffController extends Controller
         $staff->save();
 
         // Relation 1-n, 1-n entre Staff et Entreprise
-        Staff::findOrFail($staff->id)->entreprises()->sync(request('entreprise_id'));
+        // Staff::findOrFail($staff->id)->entreprises()->sync(request('entreprise_id'));
 
         Toastr::success("Staff créée avec succès", "Staff");
 

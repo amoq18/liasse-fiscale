@@ -14,7 +14,7 @@ class CreateExercicesTable extends Migration
     public function up()
     {
         Schema::create('exercices', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->unsignedInteger('entreprise_id');
             $table->date('date_debut');
             $table->date('date_fin');
@@ -27,6 +27,7 @@ class CreateExercicesTable extends Migration
 
             $table->timestamps();
 
+            $table->foreign('entreprise_id')->references('id')->on('entreprises')->onDelete('cascade');
         });
     }
 

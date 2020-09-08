@@ -156,7 +156,7 @@
                         </div>
                     </div>
                     <div class="text-right">
-                        <a href="{{ route('entreprise.index') }}"></a>
+                        <a href="{{ route('entreprise.index') }}" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Retour</a>
                         <input type="submit" class="btn btn-primary" value="Enregistrer" />
                     </div>
                 </form>

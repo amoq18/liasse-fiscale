@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model\Banque;
 use App\Model\Entreprise;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class StructureController extends Controller
@@ -26,12 +27,16 @@ class StructureController extends Controller
             $banque = new Banque();
 
             $banque->nom = request('nom_banque');
+            $banque->denomination = request('denomination_banque');
+            $banque->code = request('code_banque');
             $banque->save();
 
-            return back()->with(['success_banque_create' => 'Banque créée avec succès']);
+            Toastr::success('Banque créée avec succès', 'success');
+
+            return back();
         }
 
-        return view('Structure.creer_banque');
+        return view('Structure.create_banque');
     }
 
 

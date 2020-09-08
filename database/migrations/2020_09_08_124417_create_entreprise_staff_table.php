@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class EntrepriseStaffCreate extends Migration
+class CreateEntrepriseStaffTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,13 +14,15 @@ class EntrepriseStaffCreate extends Migration
     public function up()
     {
         Schema::create('entreprise_staff', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->unsignedInteger('entreprise_id');
             $table->unsignedInteger('staff_id');
             $table->timestamps();
 
+
             $table->foreign('entreprise_id')->references('id')->on('entreprises')->onDelete('cascade');
-            $table->foreign('staff_id')->references('id')->on('staff')->onDelete('cascade');
+            $table->foreign('staff_id')->references('id')->on('staffs')->onDelete('cascade');
+
         });
     }
 

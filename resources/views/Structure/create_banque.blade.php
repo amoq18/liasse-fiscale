@@ -20,10 +20,24 @@
                     @csrf
                     <div class="row">
                         <div class="col-md-12">
-                            {{-- <h4 class="card-title">Informations sur la nouvelle Banque</h4> --}}
+                            <h4 class="card-title">Informations sur la nouvelle Banque</h4>
+                            {{-- Nom banque --}}
                             <div class="form-group">
-                                <label> Nom:</label>
-                                <input type = text name = nom_banque class = "form-control">
+                                <label class="col-form-label">Nom</label>
+                                <input required type="text" name="nom_banque" class="form-control capitalized @error('nom_banque') is-invalid @enderror" value="">
+                                @error('nom_banque') <span class="invalid-feedback">{{ $errors->first('nom_banque') }}</span> @enderror
+                            </div>
+                            {{-- Dénomination banque --}}
+                            <div class="form-group">
+                                <label class="col-form-label">Dénomination</label>
+                                <input required type="text" name="denomination_banque" class="form-control upper @error('denomination_banque') is-invalid @enderror" value="">
+                                @error('denomination_banque') <span class="invalid-feedback">{{ $errors->first('denomination_banque') }}</span> @enderror
+                            </div>
+                            {{-- Code banque --}}
+                            <div class="form-group">
+                                <label class="col-form-label">Code</label>
+                                <input required type="number" name="code_banque" class="form-control @error('code_banque') is-invalid @enderror" value="">
+                                @error('code_banque') <span class="invalid-feedback">{{ $errors->first('code_banque') }}</span> @enderror
                             </div>
                         </div>
                     </div>

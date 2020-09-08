@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model\Banque;
 use App\Model\Entreprise;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class BanqueController extends Controller
@@ -25,16 +26,21 @@ class BanqueController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createCompte()
     {
         $entreprises = Entreprise::all();
 
         $banques = Banque::all();
 
-        if(empty($entreprises['0'])) {
-            return redirect()->route('entreprise.create')->with(['warning_entreprise_create' => "Vous devez créer premièrement l'Entreprise"]);
-        } else {
-            return view('Banque.create', compact('entreprises', 'banques'));
+        if(empty($entreprises['0']))
+        {
+            Toastr::warning("Vous devez créer premièrement l'Entreprise", "Entreprise");
+
+            return redirect()->route('entreprise.create')->withRedirect('banque');
+        }
+        else
+        {
+            return view('Banque.createCompte', compact('entreprises', 'banques'));
         }
     }
 
@@ -44,7 +50,7 @@ class BanqueController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function storeCompte(Request $request)
     {
         // @dd(request()->all());
         // $banque = new Banque();
@@ -54,10 +60,14 @@ class BanqueController extends Controller
 
         $banque->entreprises()->sync(request('entreprise_id'));
 
+        dd($banque->numero_compte);
+
         $banque->numero_compte = request('numero_compte_banque');
         $banque->save();
 
-        return back()->with(['success_banque_create' => 'Numéro de compte créée avec succès']);
+        Toastr::success("Numéro de compte créée avec succès ", "Entreprise");
+
+        return back();
     }
 
     /**

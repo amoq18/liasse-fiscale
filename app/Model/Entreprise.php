@@ -22,4 +22,9 @@ class Entreprise extends Model
     {
         return $this->belongsToMany(Staff::class);
     }
+
+    public function numero_compte()
+    {
+        return $this->hasOne(NumeroCompte::class);
+    }
 }
