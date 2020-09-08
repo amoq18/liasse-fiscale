@@ -60,6 +60,8 @@ class BanqueController extends Controller
 
         $banque->entreprises()->sync(request('entreprise_id'));
 
+        dd($banque->numero_compte);
+
         $banque->numero_compte = request('numero_compte_banque');
         $banque->save();
 

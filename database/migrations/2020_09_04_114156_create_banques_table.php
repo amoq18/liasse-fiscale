@@ -18,7 +18,6 @@ class CreateBanquesTable extends Migration
             $table->string('nom');
             $table->string('code')->unique();
             $table->string('denomination')->unique();
-            $table->string('numero_compte')->nullable();
             $table->timestamps();
         });
     }

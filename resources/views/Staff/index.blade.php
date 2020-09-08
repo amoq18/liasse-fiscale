@@ -21,9 +21,10 @@
         <div class="form-group text-right">
             <a href="{{ route('staff.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Ajouter un Staff</a>
         </div>
+        @foreach ($entreprises as $entreprise)
         <div class="card card-table">
             <div class="card-header">
-                <h4 class="card-title">Liste des Staffs</h4>
+                <h4 class="card-title">Liste des Staffs de {{ $entreprise->denomination }}</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -70,6 +71,7 @@
                 </div>
             </div>
         </div>
+        @endforeach
     </div>
 </div>
 @endsection

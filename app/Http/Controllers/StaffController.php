@@ -19,7 +19,9 @@ class StaffController extends Controller
     {
         $staffs = Staff::all();
 
-        return view('Staff.index', compact('staffs'));
+        $entreprises = Entreprise::all();
+
+        return view('Staff.index', compact('staffs', 'entreprises'));
     }
 
     /**

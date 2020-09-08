@@ -8,8 +8,8 @@ class Banque extends Model
 {
     protected $guarded = [];
 
-    public function entreprises()
+    public function numero_comptes()
     {
-        return $this->belongsToMany(Entreprise::class);
+        return $this->hasMany(NumeroCompte::class);
     }
 }

@@ -50,11 +50,11 @@
                             @foreach ($entreprise->exercices as $exercice)
                             <tr>
                                 <td>#{{ $count++ }}</td>
-                                <td>{{ $exercice->date_debut }}</td>
-                                <td>{{ $exercice->date_fin }}</td>
-                                <td>{{ $exercice->date_fin }}</td>
-                                <td>{{ $exercice->date_fin }}</td>
-                                <td>{{ $exercice->exercice_precedent }}</td>
+                                <td>{{ (new Carbon\Carbon($exercice->date_debut))->format('d/m/Y') }}</td>
+                                <td>{{ (new Carbon\Carbon($exercice->date_fin))->format('d/m/Y') }}</td>
+                                <td>{{ (new Carbon\Carbon($exercice->date_fin))->diffInMonths((new Carbon\Carbon($exercice->date_debut))->format('d/m/Y')) }}</td>
+                                <td>{{ (new Carbon\Carbon($exercice->date_fin))->format('Y') }}</td>
+                                <td>{{ (new Carbon\Carbon($exercice->date_debut))->subDays(1)->format('d/m/Y') }}</td>
                                 <td>{{ $exercice->impot_minimum }}</td>
                                 <td>{{ $exercice->taux_proportionnel }}</td>
                                 <td>{{ $exercice->taux_impot }}</td>

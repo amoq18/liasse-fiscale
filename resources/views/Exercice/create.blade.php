@@ -24,7 +24,7 @@
                         <label class="col-form-label col-md-1">Entreprise:</label>
                         <div class="col-md-11">
                             <select class="form-control" name="entreprise_id">
-                                <option>-- Choisir --</option>
+                                <option value="0">-- Choisir --</option>
                                 @foreach ($entreprises as $entreprise)
                                     <option value="{{ $entreprise->id }}">{{ $entreprise->denomination }}</option>
                                 @endforeach
@@ -49,13 +49,13 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label> Exercice précedent:</label>
-                                    <input required min="2019/12/01" type = date name = exercice_precedent_exercice class = "form-control">
+                                    <input required min="2019/12/01" type = date name = exercice_precedent_exercice class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label> Impot minimum:</label>
-                                    <input required type = number name = impot_minimum_exercice class = "form-control">
+                                    <label> Impôt minimum:</label>
+                                    <input required type = number min="0" name = impot_minimum_exercice class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -106,7 +106,7 @@
                             <div class="col-md-12">
                                 <div class="text-right">
                                     <a href="{{ route('exercice.index') }}" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Retour</a>
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" class="btn btn-primary" id="exerciceSubmit">
                                         <i class="fa fa-floppy-o"></i> Enregistrer
                                     </button>
                                 </div>
@@ -137,7 +137,21 @@
 
                 }
             });
-            // []
+
+            $('#exerciceSubmit').prop('disabled', true)
+            
+            $('select[name=entreprise_id]').change(function ()
+            {
+                if ($('select[name=entreprise_id]').val() == 0)
+                {
+                    $('#exerciceSubmit').prop('disabled', true)
+                }
+                else
+                {
+                    $('#exerciceSubmit').prop('disabled', false)
+                }
+            });
+
 
             // var today = moment().format('YYYY-MM-DD');
 
