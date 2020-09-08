@@ -8,6 +8,13 @@
     </div>
 </div>
 
+{{-- Un field sur une ligne --}}
+<div class="row">
+    <div class="col-md-12">
+        {{-- content --}}
+    </div>
+</div>
+
 {{-- Select option avec label a coté --}}
 <div class="form-group">
     <label>Blood Group</label>
@@ -21,15 +28,27 @@
 </div>
 
 {{-- Input avec label en haut --}}
+{{-- Text input --}}
 <div class="form-group">
-    <label> Nom:</label>
-    <input type = text name = nom_banque class = "form-control" value="{{ $banque->nom }}" >
+    <label> Text input:</label>
+    <input required type="text" name="" class="form-control @error('') is-invalid @enderror" value="">
+    @error('') <span class="invalid-feedback">{{ $errors->first('') }}</span> @enderror
 </div>
 
 {{-- input avec label a coté --}}
+{{-- Text input --}}
 <div class="form-group row">
     <label class="col-form-label col-md-2">Text Input</label>
     <div class="col-md-10">
-        <input type="text" class="form-control">
+        <input required type="text" name="" class="form-control @error('') is-invalid @enderror" value="">
+        @error('') <span class="invalid-feedback">{{ $errors->first('') }}</span> @enderror
     </div>
+</div>
+
+ {{-- Submit --}}
+ <div class="text-right">
+    <a href="" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Retour</a>
+    <button type="submit" class="btn btn-primary">
+        <i class="fa fa-floppy-o"></i> Enregistrer
+    </button>
 </div>

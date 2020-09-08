@@ -49,8 +49,8 @@ Route::group(['prefix' => 'staff'], function () {
 // Routes sur Banque
 Route::group(['prefix' => 'banque'], function () {
     // Creer et enregistrer la banque
-    Route::get('create', 'BanqueController@create')->name('banque.create');
-    Route::post('create', 'BanqueController@store')->name('banque.create');
+    Route::get('create', 'BanqueController@createCompte')->name('banque.create');
+    Route::post('create', 'BanqueController@storeCompte')->name('banque.create');
     // liste de toutes les banques
     Route::get('index', 'BanqueController@index')->name('banque.index');
     // modifier une banque

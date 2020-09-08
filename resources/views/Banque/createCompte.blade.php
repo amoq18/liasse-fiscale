@@ -3,17 +3,9 @@
 @section('content')
 <div class="row">
     <div class="col-sm-12">
-        @if(Session::has('success_banque_create'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <h5><strong>{{ Session::get('success_banque_create') }}</strong></h5>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-        @endif
         <div class="card">
             <div class="card-header bg-primary">
-                <h4 class="card-title text-center text-light">Créer un Numéro de Compte pour la Banque</h4>
+                <h4 class="card-title text-center text-light">Numéro de Compte pour la Banque</h4>
             </div>
             <div class="card-body">
                 <form action="{{ route('banque.create') }}" method="POST">
@@ -22,7 +14,7 @@
                         <label class="col-form-label col-md-2">Entreprise:</label>
                         <div class="col-md-10">
                             <select class="form-control" name="entreprise_id">
-                                <option>-- Choisir --</option>
+                                <option value="0">-- Choisir --</option>
                                 @foreach ($entreprises as $entreprise)
                                     <option value="{{ $entreprise->id }}">{{ $entreprise->denomination }}</option>
                                 @endforeach
@@ -33,7 +25,7 @@
                         <label class="col-form-label col-md-2">Banque:</label>
                         <div class="col-md-10">
                             <select class="form-control" name="banque_id">
-                                <option>-- Choisir --</option>
+                                <option value="0">-- Choisir --</option>
                                 @foreach ($banques as $banque)
                                     <option value="{{ $banque->id }}">{{ $banque->nom }}</option>
                                 @endforeach
@@ -49,7 +41,7 @@
                     {{-- submit --}}
                     <div class="text-right">
                         <a href="{{ route('banque.index') }}" class="btn btn-danger"><i class="fa fa-close"></i> Fermer</a>
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary" id="submit">
                             <i class="fa fa-floppy-o"></i> Enregistrer
                         </button>
                     </div>
@@ -58,4 +50,30 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('js')
+    <script>
+        $(document).ready(function () {
+            $('#submit').prop('disabled', true);
+
+            $('select[name=entreprise_id]').change(function () {
+                if (this.value == 0) {
+                    $('#submit').prop('disabled', true);
+                }
+                else {
+                    $('#submit').prop('disabled', false);
+                }
+            });
+
+            $('select[name=banque_id]').change(function () {
+                if (this.value == 0) {
+                    $('#submit').prop('disabled', true);
+                }
+                else {
+                    $('#submit').prop('disabled', false);
+                }
+            });
+        });
+    </script>
 @endsection

@@ -15,6 +15,20 @@ class EntrepriseController extends Controller
 
     public function store()
     {
+        request()->validate([
+            'cigle_entreprise' => 'unique:entreprises,cigle',
+            'boite_postale_entreprise' => 'unique:entreprises,boite_postale',
+            'numero_repertoire_entreprise' => 'unique:entreprises,numero_repertoire',
+            'code_contribuable_entreprise' => 'unique:entreprises,code_contribuable',
+            'email_entreprise' => 'unique:entreprises,email',
+            'numero_lot_entreprise' => 'unique:entreprises,numero_lot',
+            'ifu_entreprise' => 'unique:entreprises,ifu',
+            'registre_commerce_entreprise' => 'unique:entreprises,registre_commerce',
+            'numero_cnss_entreprise' => 'unique:entreprises,numero_cnss',
+            'telephone_entreprise' => 'unique:entreprises,telephone',
+        ]);
+
+
         $entreprise = new Entreprise;
 
         $entreprise->cigle = request('cigle_entreprise');
@@ -47,6 +61,20 @@ class EntrepriseController extends Controller
         $entreprise->save();
 
         Toastr::success('Entreprise créée avec succès', 'Entreprise');
+
+        if (request('redirect') == 'staff')
+        {
+            Toastr::success('Vous pouvez maintenant créér le Staff', 'Staff');
+
+            return redirect()->route('staff.create');
+        }
+        elseif (request('redirect') == 'banque')
+        {
+            Toastr::success('Vous pouvez maintenant créér la Banque', 'Banque');
+
+            return redirect()->route('banque.create');
+        }
+
         return back();
     }
 
@@ -101,7 +129,9 @@ class EntrepriseController extends Controller
 
         $entreprise->save();
 
-        return redirect()->route('entreprise.index')->with(['success_entreprise_modify' => 'Entreprise modifiée avec succès']);
+        Toastr::success('Entreprise modifiée avec succès', 'Entreprise');
+
+        return redirect()->route('entreprise.index');
     }
 
     public function show($idEntreprise)
@@ -115,6 +145,8 @@ class EntrepriseController extends Controller
     {
         Entreprise::findOrFail($idEntreprise)->delete();
 
-        return redirect()->route('entreprise.index')->with(['success_entreprise_delete' => 'Entreprise supprimée avec succès']);
+        Toastr::success('Entreprise supprimée avec succès', 'Entreprise');
+
+        return redirect()->route('entreprise.index');
     }
 }

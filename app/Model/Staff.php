@@ -8,6 +8,8 @@ class Staff extends Model
 {
     protected $guarded = [];
 
+    protected $table = 'staffs';
+
     public function entreprises()
     {
         return $this->belongsToMany(Entreprise::class);
