@@ -31,7 +31,7 @@ class EntrepriseController extends Controller
 
         $pays = Pays::create([
             'nom' => request('pays_entreprise'),
-            'code' => '+229',
+            'code' => '+'.request('code_pays_entreprise'),
         ]);
 
         $entreprise = new Entreprise;

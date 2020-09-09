@@ -31,6 +31,7 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>Code</th>
                                 <th>Nom</th>
                                 {{-- <th>Actions</th> --}}
                             </tr>
@@ -40,6 +41,7 @@
                             @foreach ($pays as $pay)
                             <tr>
                                 <td>#{{ $count++ }}</td>
+                                <td>{{ $pay->code }}</td>
                                 <td>{{ $pay->nom }}</td>
                                 {{-- <td>
                                     <a href="#" class="btn btn-success btn-sm mr-1" title="Voir">

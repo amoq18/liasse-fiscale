@@ -155,9 +155,9 @@
                                                 <div class="col-md-5">
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
-                                                            <span class="input-group-text font-weight-bold">+</span>
+                                                            <span class="input-group-text font-weight-bold" style="background: whitesmoke">+</span>
                                                         </div>
-                                                        <input required type="number" min="0" class="form-control" >
+                                                        <input required type="number" name="code_pays_entreprise" min="0" class="form-control" >
                                                     </div>
                                                     {{-- <input required type="number" min="0" name="code_pays_entreprise" value="{{ old('code_pays_entreprise') }}"
                                                         class="form-control @error('code_pays_entreprise') is-invalid @enderror" />
