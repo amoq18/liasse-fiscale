@@ -18,6 +18,11 @@ class Entreprise extends Model
     //     return $this->belongsToMany(Banque::class);
     // }
 
+    public function pays()
+    {
+        return $this->belongsTo(Pays::class);
+    }
+
     public function staffs()
     {
         return $this->belongsToMany(Staff::class);

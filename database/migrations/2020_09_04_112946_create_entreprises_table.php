@@ -15,13 +15,14 @@ class CreateEntreprisesTable extends Migration
     {
         Schema::create('entreprises', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('pay_id');
             $table->string('cigle')->unique();
             $table->string('denomination');
             $table->string('forme_juridique');
             $table->string('boite_postale')->unique();
             $table->string('ville');
-            $table->integer('numero_repertoire')->nullable()->unique();
-            $table->integer('code_contribuable')->nullable()->unique();
+            $table->string('numero_repertoire')->nullable()->unique();
+            $table->string('code_contribuable')->nullable()->unique();
             $table->string('email')->nullable()->unique();
             $table->string('nom_gerant');
             $table->string('adresse_gerant');
@@ -32,16 +33,18 @@ class CreateEntreprisesTable extends Migration
             $table->string('nom_signataire');
             $table->string('prenom_signataire');
             $table->string('qualite_signataire');
-            $table->integer('numero_rue');
+            $table->string('numero_rue');
             $table->string('quartier');
-            $table->integer('numero_lot')->unique();
+            $table->string('numero_lot');
             $table->string('activite_principale');
-            $table->integer('ifu')->unique();
+            $table->string('ifu')->unique();
             $table->string('centre_impots');
             $table->string('registre_commerce')->unique();
             $table->integer('numero_cnss')->nullable()->unique();
             $table->string('telephone')->unique();
             $table->timestamps();
+
+            $table->foreign('pay_id')->references('id')->on('pays')->onDelete('cascade');
         });
     }
 

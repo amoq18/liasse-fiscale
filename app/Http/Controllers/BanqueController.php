@@ -79,7 +79,6 @@ class BanqueController extends Controller
 
         $banque = new Banque();
 
-        $banque->cigle = request('cigle_banque');
         $banque->denomination = request('denomination_banque');
         $banque->code = request('code_banque');
         $banque->save();
@@ -124,13 +123,19 @@ class BanqueController extends Controller
      * @param  int  $idBanque
      * @return \Illuminate\Http\Response
      */
-    public function edit($idEntreprise, $idCompte)
+    public function edit($idBanque)
     {
-        $entreprise = Entreprise::findOrFail($idEntreprise);
+        // $idEntreprise, $idCompte
 
-        $compte = $entreprise->numero_comptes->where('id', $idCompte)->first();
+        // $entreprise = Entreprise::findOrFail($idEntreprise);
 
-        return view('Banque.edit', compact('entreprise', 'compte'));
+        // $compte = $entreprise->numero_comptes->where('id', $idCompte)->first();
+
+        // return view('Banque.edit', compact('entreprise', 'compte'));
+
+        $banque = Banque::findOrFail($idBanque);
+
+        return view('Structure.Banque.edit', compact('banque'));
     }
 
     /**
@@ -142,13 +147,23 @@ class BanqueController extends Controller
      */
     public function update($idBanque)
     {
-        $banque = Banque::findOrFail($idBanque);
-        $banque->nom = request('nom_banque');
-        $banque->numero_compte = request('numero_compte_banque');
+        // $banque = Banque::findOrFail($idBanque);
+        // $banque->nom = request('nom_banque');
+        // $banque->numero_compte = request('numero_compte_banque');
 
+        // $banque->save();
+
+        // return redirect()->route('banque.index')->with(['success_banque_modify' => 'Banque modifiée avec succès']);
+
+        $banque = Banque::findOrFail($idBanque);
+
+        $banque->denomination = request('denomination_banque');
+        $banque->code = request('code_banque');
         $banque->save();
 
-        return redirect()->route('banque.index')->with(['success_banque_modify' => 'Banque modifiée avec succès']);
+        Toastr::success('Banque modifiée avec succès', 'Banque');
+
+        return redirect()->route('banque.index');
     }
 
     /**
@@ -161,6 +176,8 @@ class BanqueController extends Controller
     {
         Banque::findOrFail($idBanque)->delete();
 
-        return redirect()->route('banque.index')->with(['success_banque_delete' => 'Banque supprimée avec succès']);
+        Toastr::success('Banque supprimée avec succès', 'Banque');
+
+        return redirect()->route('banque.index');
     }
 }

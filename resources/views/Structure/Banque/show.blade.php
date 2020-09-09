@@ -10,11 +10,6 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-12">
-                        {{-- Nom banque --}}
-                        <div class="form-group">
-                            <label class="col-form-label">Cigle</label>
-                            <input disabled type="text" name="cigle_banque" class="form-control text-capitalize" value="{{ $banque->nom }}">
-                        </div>
                         {{-- Dénomination banque --}}
                         <div class="form-group">
                             <label class="col-form-label">Dénomination</label>

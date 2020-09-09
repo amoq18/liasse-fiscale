@@ -73,7 +73,7 @@ Route::group(['prefix' => 'exercice'], function () {
     // modifier un exercice
     Route::get('{idExercice}/edit', 'ExerciceController@edit')->name('exercice.edit');
     Route::post('{idExercice}/edit', 'ExerciceController@update')->name('exercice.edit');
-    //information sur un eercice
+    //information sur un exercice
     Route::get('{idExercice}/show', 'ExerciceController@show')->name('exercice.show');
     // supprimer un exercice
     Route::get('{idExercice}/delete', 'ExerciceController@delete')->name('exercice.delete');
@@ -100,8 +100,11 @@ Route::group(['prefix' => 'structure'], function () {
     Route::get('banques', 'BanqueController@index')->name('structure.banque.index');
     Route::get('banque/create', 'BanqueController@create')->name('structure.banque.create');
     Route::post('banque/create', 'BanqueController@store')->name('structure.banque.create');
+    Route::get('banque/{idBanque}/edit', 'BanqueController@edit')->name('structure.banque.edit');
+    Route::post('banque/{idBanque}/edit', 'BanqueController@update')->name('structure.banque.edit');
     //information sur une banque
     Route::get('banque/{idBanque}/show', 'BanqueController@show')->name('structure.banque.show');
+    Route::get('banque/{idBanque}/delete', 'BanqueController@delete')->name('structure.banque.delete');
 
     Route::get('centre_impots', 'StructureController@index_centre_impots')->name('structure.centre_impots.index');
     Route::get('centre_impots/create', 'StructureController@create_centre_impots')->name('structure.centre_impots.create');

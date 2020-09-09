@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Entreprise;
+use App\Model\Pays;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
@@ -21,13 +22,17 @@ class EntrepriseController extends Controller
             'numero_repertoire_entreprise' => 'unique:entreprises,numero_repertoire',
             'code_contribuable_entreprise' => 'unique:entreprises,code_contribuable',
             'email_entreprise' => 'unique:entreprises,email',
-            'numero_lot_entreprise' => 'unique:entreprises,numero_lot',
             'ifu_entreprise' => 'unique:entreprises,ifu',
             'registre_commerce_entreprise' => 'unique:entreprises,registre_commerce',
             'numero_cnss_entreprise' => 'unique:entreprises,numero_cnss',
             'telephone_entreprise' => 'unique:entreprises,telephone',
         ]);
 
+
+        $pays = Pays::create([
+            'nom' => request('pays_entreprise'),
+            'code' => '+229',
+        ]);
 
         $entreprise = new Entreprise;
 
@@ -57,6 +62,7 @@ class EntrepriseController extends Controller
         $entreprise->registre_commerce = request('registre_commerce_entreprise');
         $entreprise->numero_cnss = request('numero_cnss_entreprise');
         $entreprise->telephone = request('telephone_entreprise');
+        $entreprise->pay_id = $pays->id;
 
         $entreprise->save();
 
@@ -81,10 +87,6 @@ class EntrepriseController extends Controller
     public function index()
     {
         $entreprises = Entreprise::all();
-
-        if(request('query') == 'ajax') {
-            return response()->json('200');
-        }
 
         return view('Entreprise.index', compact('entreprises'));
     }
