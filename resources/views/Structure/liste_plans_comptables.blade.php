@@ -20,7 +20,7 @@
         @endif
         <div class="form-group text-right">
             {{-- <a href="" class="btn btn-primary"><i class="fa fa-plus"></i> Ajouter un Plan Comptable</a> --}}
-            <form action="{{ route('importation.excel') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('structure.plan-comptable.excel') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 {{-- <label for="">Importer</label> --}}
                 <input type="file" name="excel_file" id="excel_file">
@@ -41,11 +41,12 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Numéro de compte</th>
-                                <th>Libelle</th>
+                                <th>N° de Compte</th>
+                                <th>Poste</th>
+                                <th>Intitulé de compte</th>
                                 <th>Nature</th>
-                                <th>Position</th>
-                                <th>Actions</th>
+                                <th>Solde débiteur</th>
+                                <th>Solde créditeur</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -55,10 +56,12 @@
                                 {{-- @dd($plans_comptables) --}}
                                 <td>#{{ $count++ }}</td>
                                 <td>{{ $plan_comptable->numero_compte }}</td>
-                                <td>{{ $plan_comptable->libelle }}</td>
+                                <td>{{ $plan_comptable->poste }}</td>
+                                <td>{{ $plan_comptable->intitule_compte }}</td>
                                 <td>{{ $plan_comptable->nature }}</td>
-                                <td>{{ $plan_comptable->position }}</td>
-                                <td>
+                                <td>{{ $plan_comptable->solde_debit }}</td>
+                                <td>{{ $plan_comptable->solde_credit }}</td>
+                                {{-- <td> --}}
                                     {{-- <a href="#" class="btn btn-success btn-sm mr-1" title="Voir">
                                         <i class="fa fa-eye text-light"></i>
                                     </a>
@@ -68,7 +71,7 @@
                                     <a href="#" class="btn btn-danger btn-sm" data-toggle="modals" data-target="#deleteEntreprises" title="Supprimer">
                                         <i class="fa fa-close text-light"></i>
                                     </a> --}}
-                                </td>
+                                {{-- </td> --}}
                             </tr>
                             @endforeach
                         </tbody>

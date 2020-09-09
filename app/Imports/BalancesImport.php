@@ -41,8 +41,6 @@ class BalancesImport implements ToModel
             return null;
         }
 
-        // dd($row[2]);
-
         return new Balance([
             'numero_compte' => $row[0],
             'intitule_compte' => $row[1],

@@ -50,12 +50,12 @@ class StructureController extends Controller
     }
 
 
-    public function index_plans_comptables()
-    {
-        $plans_comptables = PlanComptable::all();
-// dd($plans_comptables);
-        return view('Structure.liste_plans_comptables', compact('plans_comptables'));
-    }
+    // public function index_plans_comptables()
+    // {
+    //     $plans_comptables = PlanComptable::all();
+
+    //     return view('Structure.liste_plans_comptables', compact('plans_comptables'));
+    // }
 
     public function index_centre_impots()
     {

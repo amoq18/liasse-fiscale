@@ -110,6 +110,7 @@ Route::group(['prefix' => 'structure'], function () {
     Route::get('centre_impots/create', 'StructureController@create_centre_impots')->name('structure.centre_impots.create');
     Route::post('centre_impots/create', 'StructureController@create_centre_impots')->name('structure.centre_impots.create');
 
-    Route::get('plans-comptables', 'StructureController@index_plans_comptables')->name('structure.plans_comptables.index');
+    Route::get('plans-comptables', 'PlanComptableController@index')->name('structure.plan-comptable.index');
+    Route::post('plans-comptables/excel', 'PlanComptableController@excel')->name('structure.plan-comptable.excel');
     Route::get('impots', 'StructureController@index_impots')->name('structure.impots.index');
 });

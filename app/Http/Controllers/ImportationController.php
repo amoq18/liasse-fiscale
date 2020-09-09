@@ -27,39 +27,39 @@ class ImportationController extends Controller
 
     public function excel()
     {
-        // return response('ok');
         Excel::import(new BalancesImport, request()->file('excel_file')->store('temp'));
 
         Toastr::success('Le fichier excel a été bien importé','Importation Excel');
 
         return redirect()->route('importation.index');
-    if (false) {
-        # code...
 
-            $excel_file = request()->file('excel_file');
+        // if (false) {
+        //     # code...
 
-            //Display File Name
-            echo 'File Name: '.$excel_file->getClientOriginalName();
-            echo '<br>';
+        //         $excel_file = request()->file('excel_file');
 
-            //Display File Extension
-            echo 'File Extension: '.$excel_file->getClientOriginalExtension();
-            echo '<br>';
+        //         //Display File Name
+        //         echo 'File Name: '.$excel_file->getClientOriginalName();
+        //         echo '<br>';
 
-            //Display File Real Path
-            echo 'File Real Path: '.$excel_file->getRealPath();
-            echo '<br>';
+        //         //Display File Extension
+        //         echo 'File Extension: '.$excel_file->getClientOriginalExtension();
+        //         echo '<br>';
 
-            //Display File Size
-            echo 'File Size: '.$excel_file->getSize();
-            echo '<br>';
+        //         //Display File Real Path
+        //         echo 'File Real Path: '.$excel_file->getRealPath();
+        //         echo '<br>';
 
-            //Display File Mime Type
-            echo 'File Mime Type: '.$excel_file->getMimeType();
+        //         //Display File Size
+        //         echo 'File Size: '.$excel_file->getSize();
+        //         echo '<br>';
 
-            //Move Uploaded File
-            $destinationPath = 'uploads';
-            $excel_file->move($destinationPath, time().'_'.$excel_file->getClientOriginalName());
-        }
+        //         //Display File Mime Type
+        //         echo 'File Mime Type: '.$excel_file->getMimeType();
+
+        //         //Move Uploaded File
+        //         $destinationPath = 'uploads';
+        //         $excel_file->move($destinationPath, time().'_'.$excel_file->getClientOriginalName());
+        //}
     }
 }
