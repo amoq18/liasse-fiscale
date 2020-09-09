@@ -30,7 +30,11 @@
         <link rel="stylesheet" href="{{ asset('assets/css/toastr.min.css') }}">
 
         @yield('css')
-
+<style>
+.subdrop {
+    font-weight: bold !important;
+}
+</style>
 		<!--[if lt IE 9]>
 			<script src="assets/js/html5shiv.min.js"></script>
 			<script src="assets/js/respond.min.js"></script>
