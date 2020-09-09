@@ -31,16 +31,23 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Plans Comptables</th>
+                                <th>Numéro de compte</th>
+                                <th>Libelle</th>
+                                <th>Nature</th>
+                                <th>Position</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             @php $count = 1; @endphp
-                            {{-- @foreach ($conseilAdmins as $conseilAdmin) --}}
+                            @foreach ($plans_comptables as $plan_comptable)
                             <tr>
+                                {{-- @dd($plans_comptables) --}}
                                 <td>#{{ $count++ }}</td>
-                                <td></td>
+                                <td>{{ $plan_comptable->numero_compte }}</td>
+                                <td>{{ $plan_comptable->libelle }}</td>
+                                <td>{{ $plan_comptable->nature }}</td>
+                                <td>{{ $plan_comptable->position }}</td>
                                 <td>
                                     {{-- <a href="#" class="btn btn-success btn-sm mr-1" title="Voir">
                                         <i class="fa fa-eye text-light"></i>
@@ -53,7 +60,7 @@
                                     </a> --}}
                                 </td>
                             </tr>
-                            {{-- @endforeach --}}
+                            @endforeach
                         </tbody>
                     </table>
 

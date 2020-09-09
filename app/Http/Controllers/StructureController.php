@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model\Banque;
 use App\Model\Entreprise;
+use App\PlanComptable;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
@@ -40,9 +41,11 @@ class StructureController extends Controller
     }
 
 
-    public function index_comptables()
+    public function index_plans_comptables()
     {
-        return view('Structure.liste_comptables');
+        $plans_comptables = PlanComptable::all();
+// dd($plans_comptables);
+        return view('Structure.liste_plans_comptables', compact('plans_comptables'));
     }
 
     public function index_centre_impots()

@@ -1705,7 +1705,8 @@ html.menu-opened body {
 	padding: 0 20px;
 }
 .sidebar-menu li a:hover {
-    color: #2962ff;
+    color: #2296f3;
+    background: #e2f2fe;
 }
 .sidebar-menu > ul > li > a:hover {
     background-color: #e2f2fe;

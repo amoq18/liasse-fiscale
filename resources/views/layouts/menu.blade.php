@@ -17,7 +17,7 @@
                     <ul style="display: none;">
                         <li><a href="{{ route('pays.index') }}" class="{{ Route::currentRouteName() == 'pays.index' ? 'bg-primary-light font-weight-bold' : '' }}">Liste des Pays</a></li>
                         <li><a href="{{ route('structure.banques.index') }}" class="{{ Route::currentRouteName() == 'structure.banques.index' ? 'bg-primary-light font-weight-bold' : '' }}">Liste des Banques</a></li>
-                        <li><a href="{{ route('structure.comptables.index') }}" class="{{ Route::currentRouteName() == 'structure.comptables.index' ? 'bg-primary-light font-weight-bold' : '' }}">Liste Plans Comptables</a></li>
+                        <li><a href="{{ route('structure.plans_comptables.index') }}" class="{{ Route::currentRouteName() == 'structure.plans_comptables.index' ? 'bg-primary-light font-weight-bold' : '' }}">Liste Plans Comptables</a></li>
                         <li><a href="{{ route('structure.centre_impots.index') }}" class="{{ Route::currentRouteName() == 'structure.centre_impots.index' ? 'bg-primary-light font-weight-bold' : '' }}">Liste Centres d'Impôts</a></li>
                     </ul>
                 </li>
