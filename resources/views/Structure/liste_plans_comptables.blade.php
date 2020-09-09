@@ -55,12 +55,12 @@
                             <tr>
                                 {{-- @dd($plans_comptables) --}}
                                 <td>#{{ $count++ }}</td>
-                                <td>{{ $plan_comptable->numero_compte }}</td>
-                                <td>{{ $plan_comptable->poste }}</td>
-                                <td>{{ $plan_comptable->intitule_compte }}</td>
-                                <td>{{ $plan_comptable->nature }}</td>
-                                <td>{{ $plan_comptable->solde_debit }}</td>
-                                <td>{{ $plan_comptable->solde_credit }}</td>
+                                <td class="{{ (strlen((string)$plan_comptable->numero_compte) <= 3) ? 'font-weight-bold' : '' }}">{{ $plan_comptable->numero_compte }}</td>
+                                <td class="{{ (strlen((string)$plan_comptable->numero_compte) <= 3) ? 'font-weight-bold' : '' }}">{{ $plan_comptable->poste }}</td>
+                                <td class="{{ (strlen((string)$plan_comptable->numero_compte) <= 3) ? 'font-weight-bold' : '' }}">{{ $plan_comptable->intitule_compte }}</td>
+                                <td class="{{ (strlen((string)$plan_comptable->numero_compte) <= 3) ? 'font-weight-bold' : '' }}">{{ $plan_comptable->nature }}</td>
+                                <td class="{{ (strlen((string)$plan_comptable->numero_compte) <= 3) ? 'font-weight-bold' : '' }}">{{ $plan_comptable->solde_debit }}</td>
+                                <td class="{{ (strlen((string)$plan_comptable->numero_compte) <= 3) ? 'font-weight-bold' : '' }}">{{ $plan_comptable->solde_credit }}</td>
                                 {{-- <td> --}}
                                     {{-- <a href="#" class="btn btn-success btn-sm mr-1" title="Voir">
                                         <i class="fa fa-eye text-light"></i>
