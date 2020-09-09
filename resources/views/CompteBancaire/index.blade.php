@@ -18,13 +18,21 @@
             </button>
         </div>
         @endif
-        <div class="form-group text-right">
-            <a href="{{ route('structure.banque.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Ajouter une Banque</a>
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <h2 class="page-title">Banques par Entreprises</h2>
+            </div>
+            <div class="col-md-6">
+                <div class="text-right">
+                    <a href="{{ route('banque.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Ajouter une Banque</a>
+                </div>
+            </div>
         </div>
-        {{-- @foreach ($entreprises as $entreprise) --}}
+
+        @foreach ($entreprises as $entreprise)
         <div class="card card-table">
             <div class="card-header">
-                <h4 class="card-title">Liste des Banques</h4>
+                <h4 class="card-title">Liste des Banques de {{ $entreprise->denomination }}</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -40,20 +48,20 @@
                         </thead>
                         <tbody>
                             @php $count = 1; @endphp
-                            @foreach ($banques as $banque)
+                            @foreach ($entreprise->numero_comptes as $numero_compte)
                             <tr>
                                 <td>#{{ $count++ }}</td>
-                                <td>{{ $banque->nom }}</td>
+                                <td>{{ $numero_compte->banque->nom }}</td>
                                 <td>Entreprise</td>
-                                <td>{{ $banque->numero_compte }}</td>
+                                <td>{{ $numero_compte->numero_compte }}</td>
                                 <td>
-                                    <a href="{{ route('banque.show', $banque->id) }}" class="btn btn-success btn-sm mr-1" title="Voir">
+                                    <a href="{{ route('banque.show', ['idEntreprise' => $entreprise->id, 'idCompte' => $numero_compte->id]) }}" class="btn btn-success btn-sm mr-1" title="Voir">
                                         <i class="fa fa-eye text-light"></i>
                                     </a>
-                                    <a href="{{ route('banque.edit', $banque->id) }}" class="btn btn-warning btn-sm mr-1" title="Modifier">
+                                    <a href="{{ route('banque.edit', ['idEntreprise' => $entreprise->id, 'idCompte' => $numero_compte->id]) }}" class="btn btn-warning btn-sm mr-1" title="Modifier">
                                         <i class="fa fa-pencil-square-o text-light"></i>
                                     </a>
-                                    <a href="{{ route('banque.delete', $banque->id) }}" class="btn btn-danger btn-sm" data-toggle="modals" data-target="#deleteEntreprises" title="Supprimer">
+                                    <a href="{{ route('banque.delete', ['idEntreprise' => $entreprise->id, 'idCompte' => $numero_compte->id]) }}" class="btn btn-danger btn-sm" data-toggle="modals" data-target="#deleteEntreprises" title="Supprimer">
                                         <i class="fa fa-close text-light"></i>
                                     </a>
                                 </td>
@@ -65,7 +73,7 @@
                 </div>
             </div>
         </div>
-        {{-- @endforeach --}}
+        @endforeach
     </div>
 </div>
 @endsection

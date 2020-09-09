@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model\Banque;
 use App\Model\Entreprise;
-use App\PlanComptable;
+use App\Model\PlanComptable;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
@@ -32,9 +32,18 @@ class StructureController extends Controller
             $banque->code = request('code_banque');
             $banque->save();
 
-            Toastr::success('Banque créée avec succès', 'success');
+            Toastr::success('Banque créée avec succès', 'Banque');
 
-            return back();
+            if (request('redirect') == 'compte_bancaire')
+            {
+                Toastr::success('Vous pouvez maintenant créér le Compte Bancaire', 'Compte bancaire');
+
+                return redirect()->route('banque.create');
+            }
+            else
+            {
+                return back();
+            }
         }
 
         return view('Structure.create_banque');

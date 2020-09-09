@@ -72,7 +72,7 @@ class EntrepriseController extends Controller
         {
             Toastr::success('Vous pouvez maintenant créér la Banque', 'Banque');
 
-            return redirect()->route('banque.create');
+            return redirect()->route('structure.banque.create');
         }
 
         return back();

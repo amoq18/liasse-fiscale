@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model\Banque;
 use App\Model\Entreprise;
+use App\Model\NumeroCompte;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
@@ -16,9 +17,13 @@ class BanqueController extends Controller
      */
     public function index()
     {
-        $entreprises = Entreprise::all();
+        // $entreprises = Entreprise::all();
 
-        return view('Banque.index', compact('entreprises'));
+        // return view('Banque.index', compact('entreprises'));
+
+        $banques = Banque::all();
+
+        return view('Structure.Banque.index', compact('banques'));
     }
 
     /**
@@ -26,22 +31,30 @@ class BanqueController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function createCompte()
+    public function create()
     {
-        $entreprises = Entreprise::all();
+        // $entreprises = Entreprise::all();
 
-        $banques = Banque::all();
+        // $banques = Banque::all();
 
-        if(empty($entreprises['0']))
-        {
-            Toastr::warning("Vous devez créer premièrement l'Entreprise", "Entreprise");
+        // if(empty($entreprises['0']))
+        // {
+        //     Toastr::warning("Vous devez créer premièrement l'Entreprise", "Entreprise");
 
-            return redirect()->route('entreprise.create')->withRedirect('banque');
-        }
-        else
-        {
-            return view('Banque.createCompte', compact('entreprises', 'banques'));
-        }
+        //     return redirect()->route('entreprise.create')->withRedirect('banque');
+        // }
+        // else if(empty($banques['0']))
+        // {
+        //     Toastr::warning("Vous devez créer la Banque", "Banque");
+
+        //     return redirect()->route('structure.banque.create')->withRedirect('compte_bancaire');
+        // }
+        // else
+        // {
+        //     return view('Banque.createCompte', compact('entreprises', 'banques'));
+        // }
+
+        return view('Structure.Banque.create');
     }
 
     /**
@@ -50,24 +63,38 @@ class BanqueController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function storeCompte(Request $request)
+    public function store(Request $request)
     {
-        // @dd(request()->all());
-        // $banque = new Banque();
-        // $banque->nom = request('nom_banque');
+        // $numero_compte = new NumeroCompte();
 
-        $banque = Banque::findOrFail(request('banque_id'));
+        // $numero_compte->banque_id = request('banque_id');
+        // $numero_compte->entreprise_id = request('entreprise_id');
+        // $numero_compte->numero_compte = request('numero_compte_banque');
 
-        $banque->entreprises()->sync(request('entreprise_id'));
+        // $numero_compte->save();
 
-        dd($banque->numero_compte);
+        // Toastr::success("Numéro de compte créée avec succès ", "Entreprise");
 
-        $banque->numero_compte = request('numero_compte_banque');
+        // return back();
+
+        $banque = new Banque();
+
+        $banque->cigle = request('cigle_banque');
+        $banque->denomination = request('denomination_banque');
+        $banque->code = request('code_banque');
         $banque->save();
 
-        Toastr::success("Numéro de compte créée avec succès ", "Entreprise");
+        Toastr::success('Banque créée avec succès', 'Banque');
 
-        return back();
+        if (request('redirect') == 'compte_bancaire') {
+            Toastr::success('Vous pouvez maintenant créér le Compte Bancaire', 'Compte bancaire');
+
+            return 'doit retourner sur creer compte bancaire';
+        }
+        else
+        {
+            return back();
+        }
     }
 
     /**
@@ -78,9 +105,17 @@ class BanqueController extends Controller
      */
     public function show($idBanque)
     {
+        // params: $idEntreprise, $idCompte
+
+        // $entreprise = Entreprise::findOrFail($idEntreprise);
+
+        // $compte = $entreprise->numero_comptes->where('id', $idCompte)->first();
+
+        // return view('Banque.show', compact('entreprise', 'compte'));
+
         $banque = Banque::findOrFail($idBanque);
 
-        return view('Banque.show', compact('banque'));
+        return view('Structure.Banque.show', compact('banque'));
     }
 
     /**
@@ -89,11 +124,13 @@ class BanqueController extends Controller
      * @param  int  $idBanque
      * @return \Illuminate\Http\Response
      */
-    public function edit($idBanque)
+    public function edit($idEntreprise, $idCompte)
     {
-        $banque = Banque::findOrFail($idBanque);
+        $entreprise = Entreprise::findOrFail($idEntreprise);
 
-        return view('Banque.edit', compact('banque'));
+        $compte = $entreprise->numero_comptes->where('id', $idCompte)->first();
+
+        return view('Banque.edit', compact('entreprise', 'compte'));
     }
 
     /**

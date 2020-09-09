@@ -950,14 +950,8 @@ button.bg-danger:hover {
     For me
 -----------------------*/
 
-.upper {
-    text-transform: uppercase;
-}
-.lower {
-    text-transform: lowercase;
-}
-.capitalize {
-    text-transform: capitalize;
+.text-primary-light {
+    color: #2196f3 !important;
 }
 
 /*-----------------

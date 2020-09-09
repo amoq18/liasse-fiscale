@@ -12,4 +12,9 @@ class Banque extends Model
     {
         return $this->hasMany(NumeroCompte::class);
     }
+
+    public function compte_bancaires()
+    {
+        return $this->hasMany(CompteBancaire::class);
+    }
 }

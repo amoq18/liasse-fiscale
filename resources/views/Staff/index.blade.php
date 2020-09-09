@@ -43,7 +43,7 @@
                         </thead>
                         <tbody>
                             @php $count = 1; @endphp
-                            @foreach ($staffs as $staff)
+                            @foreach ($entreprise->staffs as $staff)
                             <tr>
                                 <td>#{{ $count++ }}</td>
                                 <td>{{ $staff->nom.' '.$staff->prenom }}</td>

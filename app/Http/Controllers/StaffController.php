@@ -17,11 +17,11 @@ class StaffController extends Controller
      */
     public function index()
     {
-        $staffs = Staff::all();
+        // $staffs = Staff::all();
 
         $entreprises = Entreprise::all();
 
-        return view('Staff.index', compact('staffs', 'entreprises'));
+        return view('Staff.index', compact('entreprises'));
     }
 
     /**
@@ -75,7 +75,7 @@ class StaffController extends Controller
         $staff->save();
 
         // Relation 1-n, 1-n entre Staff et Entreprise
-        // Staff::findOrFail($staff->id)->entreprises()->sync(request('entreprise_id'));
+        Staff::findOrFail($staff->id)->entreprises()->sync(request('entreprise_id'));
 
         Toastr::success("Staff créée avec succès", "Staff");
 

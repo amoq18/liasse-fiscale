@@ -185,7 +185,7 @@
                         </div>
                     </div>
                     <div class="text-right">
-                        <a href="{{ route('entreprise.index') }}" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Retour</a>
+                        <a href="{{ route('entreprise.index') }}" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Fermer</a>
                         <button type="submit" class="btn btn-primary">
                             <i class="fa fa-floppy-o"></i> Enregistrer
                         </button>

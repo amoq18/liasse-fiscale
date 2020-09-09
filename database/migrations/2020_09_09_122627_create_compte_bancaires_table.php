@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEntrepriseStaffTable extends Migration
+class CreateCompteBancairesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class CreateEntrepriseStaffTable extends Migration
      */
     public function up()
     {
-        Schema::create('entreprise_staff', function (Blueprint $table) {
+        Schema::create('compte_bancaires', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('banque_id');
             $table->unsignedInteger('entreprise_id');
-            $table->unsignedInteger('staff_id');
+            $table->integer('numero');
+            $table->string('intitule');
             $table->timestamps();
 
-
+            $table->foreign('banque_id')->references('id')->on('banques')->onDelete('cascade');
             $table->foreign('entreprise_id')->references('id')->on('entreprises')->onDelete('cascade');
-            $table->foreign('staff_id')->references('id')->on('staffs')->onDelete('cascade');
-
         });
     }
 
@@ -33,6 +33,6 @@ class CreateEntrepriseStaffTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('entreprise_staff');
+        Schema::dropIfExists('compte_bancaires');
     }
 }

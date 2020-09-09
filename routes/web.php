@@ -47,20 +47,20 @@ Route::group(['prefix' => 'staff'], function () {
 });
 
 // Routes sur Banque
-Route::group(['prefix' => 'banque'], function () {
-    // Creer et enregistrer la banque
-    Route::get('create', 'BanqueController@createCompte')->name('banque.create');
-    Route::post('create', 'BanqueController@storeCompte')->name('banque.create');
-    // liste de toutes les banques
-    Route::get('index', 'BanqueController@index')->name('banque.index');
-    // modifier une banque
-    Route::get('{idBanque}/edit', 'BanqueController@edit')->name('banque.edit');
-    Route::post('{idBanque}/edit', 'BanqueController@update')->name('banque.edit');
-    //information sur une banque
-    Route::get('{idBanque}/show', 'BanqueController@show')->name('banque.show');
-    // supprimer une banque
-    Route::get('{idBanque}/delete', 'BanqueController@delete')->name('banque.delete');
-});
+// Route::group(['prefix' => 'banque'], function () {
+// Creer et enregistrer la banque
+Route::get('banque/create', 'BanqueController@createCompte')->name('banque.create');
+Route::post('banque/create', 'BanqueController@storeCompte')->name('banque.create');
+// liste de toutes les banques
+Route::get('banque/index', 'BanqueController@index')->name('banque.index');
+// modifier une banque
+Route::get('entreprise/{idEntreprise}/banque/{idCompte}/banque/edit', 'BanqueController@edit')->name('banque.edit');
+Route::post('entreprise/{idEntreprise}/banque/{idCompte}/banque/edit', 'BanqueController@update')->name('banque.edit');
+//information sur une banque
+Route::get('entreprise/{idEntreprise}/compte/{idCompte}/banque/show', 'BanqueController@show')->name('banque.show');
+// supprimer une banque
+Route::get('entreprise/{idEntreprise}/banque/{idCompte}/banque/delete', 'BanqueController@delete')->name('banque.delete');
+// });
 
 
 // Routes sur Exercice
@@ -90,16 +90,18 @@ Route::group(['prefix' => 'pays'], function () {
     Route::get('index', 'PaysController@index')->name('pays.index');
     Route::get('create', 'PaysController@create')->name('pays.create');
     Route::post('create', 'PaysController@store')->name('pays.create');
-
 });
 
 // Routes sur Structure
 Route::group(['prefix' => 'structure'], function () {
     Route::get('pays', 'StructureController@index_pays')->name('structure.pays.index');
 
-    Route::get('banques', 'StructureController@index_banques')->name('structure.banques.index');
-    Route::get('banque/create', 'StructureController@create_banque')->name('structure.banque.create');
-    Route::post('banque/create', 'StructureController@create_banque')->name('structure.banque.create');
+    // Routes sur banque
+    Route::get('banques', 'BanqueController@index')->name('structure.banque.index');
+    Route::get('banque/create', 'BanqueController@create')->name('structure.banque.create');
+    Route::post('banque/create', 'BanqueController@store')->name('structure.banque.create');
+    //information sur une banque
+    Route::get('banque/{idBanque}/show', 'BanqueController@show')->name('structure.banque.show');
 
     Route::get('centre_impots', 'StructureController@index_centre_impots')->name('structure.centre_impots.index');
     Route::get('centre_impots/create', 'StructureController@create_centre_impots')->name('structure.centre_impots.create');

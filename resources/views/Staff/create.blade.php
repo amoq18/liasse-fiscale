@@ -22,7 +22,7 @@
                         <label class="col-form-label col-md-1">Entreprise:</label>
                         <div class="col-md-11">
                             <select class="form-control" name="entreprise_id">
-                                <option>-- Choisir --</option>
+                                <option value="0">-- Choisir --</option>
                                 @foreach ($entreprises as $entreprise)
                                     <option value="{{ $entreprise->id }}">{{ $entreprise->denomination }}</option>
                                 @endforeach
@@ -94,7 +94,7 @@
                         <div class="col-md-12">
                             <div class="text-right">
                                 <a href="{{ route('staff.index') }}" class="btn btn-danger"><i class="fa fa-close"></i> Fermer</a>
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" id="submitStaff" class="btn btn-primary">
                                     <i class="fa fa-floppy-o"></i> Enregistrer
                                 </button>
                             </div>
@@ -126,6 +126,20 @@
 
         $(document).ready(function()
         {
+            $('#submitStaff').prop('disabled', true);
+
+            $($('select[name=entreprise_id]')).change(function ()
+            {
+                if($('select[name=entreprise_id]').val() == 0)
+                {
+                    $('#submitStaff').prop('disabled', true);
+                }
+                else
+                {
+                    $('#submitStaff').prop('disabled', false);
+                }
+            });
+
             // Désactive tout les champs si le type de staff n'est pas selectionné
             $("input[name='nom_staff']").prop('disabled', true);
             $("input[name='prenom_staff']").prop('disabled', true);

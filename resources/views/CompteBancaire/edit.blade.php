@@ -15,13 +15,13 @@
                             {{-- <h4 class="card-title">Informations sur la nouvelle Banque</h4> --}}
                             <div class="form-group">
                                 <label> Nom:</label>
-                                <input type = text name = nom_banque class = "form-control" value="{{ $banque->nom }}" >
+                                <input type="text" name="nom_banque" class = "form-control" value="{{ $banque->nom }}" >
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label> N° de Compte:</label>
-                                <input type = text name = numero_compte_banque class = "form-control" value="{{ $banque->numero_compte }}">
+                                <input type="text" name="numero_compte_banque" class = "form-control" value="{{ $banque->numero_compte }}">
                             </div>
                         </div>
                     </div>
