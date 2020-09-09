@@ -46,11 +46,11 @@ Route::group(['prefix' => 'staff'], function () {
     Route::get('{idStaff}/delete', 'StaffController@delete')->name('staff.delete');
 });
 
-// Routes sur Banque
+// Routes sur Compte bancaire
 // Route::group(['prefix' => 'banque'], function () {
-// Creer et enregistrer la banque
-Route::get('banque/create', 'BanqueController@createCompte')->name('banque.create');
-Route::post('banque/create', 'BanqueController@storeCompte')->name('banque.create');
+// Creer et lier le compte à l'entreprise et la banque
+Route::get('compte/banque/create', 'CompteBancaireController@create')->name('compte-bancaire.create');
+Route::post('compte/banque/create', 'CompteBancaireController@store')->name('compte-bancaire.create');
 // liste de toutes les banques
 Route::get('banque/index', 'BanqueController@index')->name('banque.index');
 // modifier une banque

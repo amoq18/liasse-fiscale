@@ -44,7 +44,7 @@
                         <i class="fe fe-building"></i> <span> Banque</span> <span class="menu-arrow"></span>
                     </a>
                     <ul style="display: none;">
-                        <li><a href="{{ route('banque.create') }}" class="{{ Route::currentRouteName() == 'banque.create' ? 'bg-primary-light font-weight-bold' : '' }}">Créer</a></li>
+                        <li><a href="{{ route('compte-bancaire.create') }}" class="{{ Route::currentRouteName() == 'banque.create' ? 'bg-primary-light font-weight-bold' : '' }}">Créer</a></li>
                         <li><a href="{{ route('banque.index') }}" class="{{ Route::currentRouteName() == 'banque.index' ? 'bg-primary-light font-weight-bold' : '' }}">Voir</a></li>
                     </ul>
                 </li>
