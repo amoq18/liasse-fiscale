@@ -2,6 +2,7 @@
 
 namespace App\Model;
 
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Database\Eloquent\Model;
 
 class CompteBancaire extends Model

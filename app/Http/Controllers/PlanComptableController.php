@@ -12,6 +12,9 @@ class PlanComptableController extends Controller
 {
     public function excel()
     {
+        // Supprime tout le contenu de la bdd
+        PlanComptable::select('*')->delete();
+
         Excel::import(new PlansImport, request()->file('excel_file')->store('temp'));
 
         Toastr::success('Le fichier excel a été bien importé','Importation Excel');
@@ -21,6 +24,8 @@ class PlanComptableController extends Controller
 
     public function index()
     {
+        PlanComptable::where('poste', 'Poste')->delete();
+        
         $plans_comptables = PlanComptable::all();
 
         return view('Structure.liste_plans_comptables', compact('plans_comptables'));

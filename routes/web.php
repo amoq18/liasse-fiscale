@@ -85,16 +85,17 @@ Route::group(['prefix' => 'importation'], function () {
     Route::post('excel', 'ImportationController@excel')->name('importation.excel');
 });
 
-// Routes sur Pays
-Route::group(['prefix' => 'pays'], function () {
-    Route::get('index', 'PaysController@index')->name('pays.index');
-    Route::get('create', 'PaysController@create')->name('pays.create');
-    Route::post('create', 'PaysController@store')->name('pays.create');
-});
 
 // Routes sur Structure
 Route::group(['prefix' => 'structure'], function () {
-    Route::get('pays', 'StructureController@index_pays')->name('structure.pays.index');
+    // Route::get('pays', 'StructureController@index_pays')->name('structure.pays.index');
+
+    // Routes sur Pays
+    Route::group(['prefix' => 'pays'], function () {
+        Route::get('', 'PaysController@index')->name('structure.pays.index');
+        Route::get('create', 'PaysController@create')->name('pays.create');
+        Route::post('create', 'PaysController@store')->name('pays.create');
+    });
 
     // Routes sur banque
     Route::get('banques', 'BanqueController@index')->name('structure.banque.index');

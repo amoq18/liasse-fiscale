@@ -15,7 +15,7 @@
                         <i class="fe fe-building"></i> <span> Structure</span> <span class="menu-arrow"></span>
                     </a>
                     <ul style="display: none;">
-                        <li><a href="{{ route('pays.index') }}" class="{{ Route::currentRouteName() == 'pays.index' ? 'bg-primary-light font-weight-bold' : '' }}">Liste des Pays</a></li>
+                        <li><a href="{{ route('structure.pays.index') }}" class="{{ Route::currentRouteName() == 'structure.pays.index' ? 'bg-primary-light font-weight-bold' : '' }}">Liste des Pays</a></li>
                         <li><a href="{{ route('structure.banque.index') }}" class="{{ Route::currentRouteName() == 'structure.banque.index' ? 'bg-primary-light font-weight-bold' : '' }}">Liste des Banques</a></li>
                         <li><a href="{{ route('structure.plan-comptable.index') }}" class="{{ Route::currentRouteName() == 'structure.plans_comptables.index' ? 'bg-primary-light font-weight-bold' : '' }}">Liste Plans Comptables</a></li>
                         <li><a href="{{ route('structure.centre_impots.index') }}" class="{{ Route::currentRouteName() == 'structure.centre_impots.index' ? 'bg-primary-light font-weight-bold' : '' }}">Liste Centres d'Impôts</a></li>

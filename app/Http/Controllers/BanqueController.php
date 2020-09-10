@@ -88,7 +88,7 @@ class BanqueController extends Controller
         if (request('redirect') == 'compte_bancaire') {
             Toastr::success('Vous pouvez maintenant créér le Compte Bancaire', 'Compte bancaire');
 
-            return 'doit retourner sur creer compte bancaire';
+            return redirect()->route('compte-bancaire.create');
         }
         else
         {

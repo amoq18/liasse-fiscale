@@ -5,7 +5,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header bg-primary">
-                <h4 class="card-title text-center text-light">Informations sur la Banque {{ $banque->nom }}</h4>
+                <h4 class="card-title text-center text-light">Informations sur la Banque  <span class="text-uppercase">{{ $banque->code }}</span></h4>
             </div>
             <div class="card-body">
                 <div class="row">

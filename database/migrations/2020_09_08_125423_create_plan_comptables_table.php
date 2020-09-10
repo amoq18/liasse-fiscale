@@ -15,12 +15,12 @@ class CreatePlanComptablesTable extends Migration
     {
         Schema::create('plan_comptables', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('numero_compte')->nullable();
+            $table->string('numero_compte')->nullable();
             $table->string('poste')->nullable();
             $table->string('intitule_compte')->nullable();
             $table->string('nature')->nullable();
-            $table->bigInteger('solde_debit')->nullable();
-            $table->bigInteger('solde_credit')->nullable();
+            $table->string('solde_debit')->nullable();
+            $table->string('solde_credit')->nullable();
             $table->timestamps();
         });
     }
