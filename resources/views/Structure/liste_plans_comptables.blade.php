@@ -59,8 +59,8 @@
                                 <td class="{{ (strlen((string)$plan_comptable->numero_compte) <= 3) ? 'font-weight-bold' : '' }}">{{ $plan_comptable->poste }}</td>
                                 <td class="{{ (strlen((string)$plan_comptable->numero_compte) <= 3) ? 'font-weight-bold' : '' }}">{{ $plan_comptable->intitule_compte }}</td>
                                 <td class="{{ (strlen((string)$plan_comptable->numero_compte) <= 3) ? 'font-weight-bold' : '' }}">{{ $plan_comptable->nature }}</td>
-                                <td class="{{ (strlen((string)$plan_comptable->numero_compte) <= 3) ? 'font-weight-bold' : '' }}">{{ $plan_comptable->solde_debit }}</td>
-                                <td class="{{ (strlen((string)$plan_comptable->numero_compte) <= 3) ? 'font-weight-bold' : '' }}">{{ $plan_comptable->solde_credit }}</td>
+                                <td class="text-primary {{ (strlen((string)$plan_comptable->numero_compte) <= 3) ? 'font-weight-bold' : '' }}">{{ $plan_comptable->solde_debit }}</td>
+                                <td class="text-danger {{ (strlen((string)$plan_comptable->numero_compte) <= 3) ? 'font-weight-bold' : '' }}">{{ $plan_comptable->solde_credit }}</td>
                                 {{-- <td> --}}
                                     {{-- <a href="#" class="btn btn-success btn-sm mr-1" title="Voir">
                                         <i class="fa fa-eye text-light"></i>
