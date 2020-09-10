@@ -8,7 +8,7 @@
                 <h4 class="card-title text-center text-light">Numéro de Compte pour la Banque</h4>
             </div>
             <div class="card-body">
-                <form action="{{ route('banque.create') }}" method="POST">
+                <form action="{{ route('compte-bancaire.create') }}" method="POST">
                     @csrf
                     <div class="form-group row">
                         <label class="col-form-label col-md-2">Entreprise:</label>
@@ -27,7 +27,7 @@
                             <select class="form-control" name="banque_id">
                                 <option value="0">-- Choisir --</option>
                                 @foreach ($banques as $banque)
-                                    <option value="{{ $banque->id }}">{{ $banque->nom }}</option>
+                                    <option value="{{ $banque->id }}">{{ $banque->denomination }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -35,7 +35,15 @@
                     <div class="form-group row">
                         <label class="col-form-label col-md-2">N° de Compte</label>
                         <div class="col-md-10">
-                            <input type="number" min="0" name="numero_compte_banque" class="form-control">
+                            <input type="number" min="0" name="numero_compte_bancaire" class="form-control">
+                        </div>
+                    </div>
+                    {{-- Intitulé Compte --}}
+                    <div class="form-group row">
+                        <label class="col-form-label col-md-2">Intitulé Compte</label>
+                        <div class="col-md-10">
+                            <input required type="text" name="intitule_compte_bancaire" class="form-control @error('') is-invalid @enderror" value="">
+                            @error('') <span class="invalid-feedback">{{ $errors->first('') }}</span> @enderror
                         </div>
                     </div>
                     {{-- submit --}}

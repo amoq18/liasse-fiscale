@@ -148,11 +148,11 @@
                             <div class="col-md-6">
                                 <h4>Adresse Géographique</h4>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-7">
                                         <div class="form-group">
                                             <label> Pays:</label>
                                             <div class="row">
-                                                <div class="col-md-5">
+                                                <div class="col-md-5 pr-0">
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text font-weight-bold" style="background: whitesmoke">+</span>
@@ -165,7 +165,7 @@
                                                         class="invalid-feedback">{{ $errors->first('pays_entreprise') }}</span>
                                                     @enderror --}}
                                                 </div>
-                                                <div class="col-md-7 pl-0">
+                                                <div class="col-md-7">
                                                     <input required type="text" name="pays_entreprise" value="{{ old('pays_entreprise') }}"
                                                         class="form-control @error('pays_entreprise') is-invalid @enderror" />
                                                     @error('pays_entreprise') <span
@@ -175,7 +175,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-5">
                                         <div class="form-group">
                                             <label> Ville:</label>
                                             <input required type="text" name="ville_entreprise" value="{{ old('ville_entreprise') }}"
