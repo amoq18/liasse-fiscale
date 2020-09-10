@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Pays;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class PaysController extends Controller
@@ -39,7 +40,10 @@ class PaysController extends Controller
     {
         $pays = new Pays;
         $pays->nom = request('nom_pays');
+        $pays->code = request('code_pays');
         $pays->save();
+
+        Toastr::success('Pays créée avec succès', 'Pays');
 
         return back()->with(["success_pays_create" => "Pays créée avec succès"]);
     }

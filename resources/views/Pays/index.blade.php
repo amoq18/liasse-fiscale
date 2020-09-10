@@ -19,7 +19,7 @@
         </div>
         @endif
         <div class="form-group text-right">
-            <a href="{{ route('pays.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Ajouter Pays </a>
+            <a href="{{ route('pays.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Ajouter un Pays </a>
         </div>
         <div class="card card-table">
             <div class="card-header">
