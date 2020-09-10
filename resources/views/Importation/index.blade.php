@@ -133,16 +133,16 @@
                                 @endif
                             </tbody>
                         </table>
-                        <div class="text-right mt-4">
-                            {{-- <a href="#" class="btn btn-danger"><i
-                                    class="fa fa-arrow-left"></i> Retour</a> --}}
-                            <a href="" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Enregistrer</a>
-                            {{-- @php
-                            Brian2694\Toastr\Facades\Toastr::success('ook','Importation Excel');
-                            @endphp --}}
-                        </div>
                     </div>
                 </div>
+            </div>
+            <div class="text-right mt-2 mb-5">
+                {{-- <a href="#" class="btn btn-danger"><i
+                        class="fa fa-arrow-left"></i> Retour</a> --}}
+                <a href="" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Enregistrer</a>
+                {{-- @php
+                Brian2694\Toastr\Facades\Toastr::success('ook','Importation Excel');
+                @endphp --}}
             </div>
         </div>
     </div>

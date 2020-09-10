@@ -87,5 +87,13 @@
         <script src="{{ asset('assets/js/toastr.min.js') }}"></script>
         {!! Toastr::message() !!}
 
+        {{-- Table resizable --}}
+        {{-- <script src="{{ asset('assets/js/colResizable.min.js') }}"></script>
+        <script>
+            $(function(){
+                $("table").colResizable();
+            })
+        </script> --}}
+
     </body>
 </html>

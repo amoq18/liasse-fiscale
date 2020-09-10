@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Imports\PlansImport;
+use App\Model\Entreprise;
 use App\Model\PlanComptable;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
@@ -25,9 +26,11 @@ class PlanComptableController extends Controller
     public function index()
     {
         PlanComptable::where('poste', 'Poste')->delete();
-        
+
         $plans_comptables = PlanComptable::all();
 
-        return view('Structure.liste_plans_comptables', compact('plans_comptables'));
+        $entreprises = Entreprise::with('exercices')->get();
+
+        return view('Structure.liste_plans_comptables', compact('plans_comptables', 'entreprises'));
     }
 }

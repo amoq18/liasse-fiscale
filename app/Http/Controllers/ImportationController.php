@@ -16,17 +16,18 @@ class ImportationController extends Controller
     {
         $entreprises = Entreprise::all();
 
-        $exercices = Exercice::all();
-
         Balance::where('intitule_compte', null)->delete();
 
         $balances = Balance::all();
 
-        return view('Importation.index', compact('entreprises', 'exercices', 'balances'));
+        return view('Importation.index', compact('entreprises', 'balances'));
     }
 
     public function excel()
     {
+        // Supprime tout le contenu de la bdd
+        Balance::select('*')->delete();
+
         Excel::import(new BalancesImport, request()->file('excel_file')->store('temp'));
 
         Toastr::success('Le fichier excel a été bien importé','Importation Excel');
