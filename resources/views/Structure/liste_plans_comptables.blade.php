@@ -13,6 +13,20 @@
 @section('content')
 <div class="row">
     <div class="col-sm-12">
+        {{-- Form for upload Excel file --}}
+        <div class="form-group text-right">
+            {{-- <a href="" class="btn btn-primary"><i class="fa fa-plus"></i> Ajouter un Plan Comptable</a> --}}
+            <form action="{{ route('structure.plan-comptable.excel') }}" method="post" enctype="multipart/form-data">
+                @csrf
+                {{-- <label for="">Importer</label> --}}
+                <input type="file" name="excel_file" id="excel_file">
+                <button type="submit">Envoyer</button>
+                {{-- <label for="file-upload" class="custom-file-upload">
+                    <i class="fa fa-cloud-upload"></i> Custom Upload
+                </label>
+                <input id="file-upload" type="file"/> --}}
+            </form>
+        </div>
         <div class="card card-table">
             <div class="card-header bg-primary">
                 <h4 class="card-title text-light text-center">Liste des Plans Comptables</h4>

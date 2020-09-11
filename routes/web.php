@@ -120,6 +120,14 @@ Route::group(['prefix' => 'structure'], function () {
     Route::get('impots', 'StructureController@index_impots')->name('structure.impots.index');
 });
 
+//Route sur Traitement
+Route::group(['prefix' => 'traitement'], function () {
+Route::get('controle-conformite', 'ControleConformiteController@index')->name('traitement.controle-conformite.index');
+Route::get('controle-equilibre', 'ControleEquilibreController@index')->name('traitement.controle-equilibre.index');
+Route::get('controle-coherence', 'ControleCoherenceController@index')->name('traitement.controle-coherence.index');
+});
+
+// Route sur Edition
 Route::group(['prefix' => 'edition'], function () {
     Route::get('apercu-etat', 'EtatController@indexApercu')->name('edition.apercu-etat.index');
     Route::get('generation-etat', 'EtatController@indexGeneration')->name('edition.generation-etat.index');

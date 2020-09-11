@@ -58,14 +58,14 @@
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a href="#" class="{{ Request::is('importation*') ? 'active font-weight-bold' : ''}}">
+                    <a href="#" class="{{ Request::is('traitement*') ? 'active font-weight-bold' : ''}}">
                         <i class="fa fa-cogs"></i> <span> Traitement</span> <span class="menu-arrow"></span>
                     </a>
                     <ul style="display: none;">
                         <li><a href="{{ route('importation.index') }}" class="{{ Route::currentRouteName() == 'importation.index' ? 'bg-primary-light font-weight-bold' : '' }}">Importation Balance</a></li>
-                        <li><a href="#">Contrôle de conformité</a></li>
-                        <li><a href="#">Contrôle d'équilibre</a></li>
-                        <li><a href="#">Contrôle de cohérence</a></li>
+                        <li><a href="{{ route('traitement.controle-conformite.index') }}" class="{{ Route::currentRouteName() == 'traitement.controle-conformite.index' ? 'bg-primary-light font-weight-bold' : '' }}">Contrôle de conformité</a></li>
+                        <li><a href="{{ route('traitement.controle-equilibre.index') }}" class="{{ Route::currentRouteName() == 'traitement.controle-equilibre.index' ? 'bg-primary-light font-weight-bold' : '' }}">Contrôle d'équilibre</a></li>
+                        <li><a href="{{ route('traitement.controle-coherence.index') }}" class="{{ Route::currentRouteName() == 'traitement.controle-coherence.index' ? 'bg-primary-light font-weight-bold' : '' }}">Contrôle de cohérence</a></li>
                     </ul>
                 </li>
                 <li class="submenu">

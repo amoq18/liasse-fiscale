@@ -1,10 +1,4 @@
-@extends('layouts.app')
 
-@section('css')
-    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-select.min.css') }}">
-@endsection
-
-@section('content')
 <div class="col-md-12">
     <div class="card">
         <div class="card-header bg-primary">
@@ -12,9 +6,9 @@
         </div>
         <div class="card-body">
             <ul class="nav nav-tabs nav-tabs-solid nav-tabs-rounded nav-justified">
-                <li class="nav-item"><a class="nav-link active" href="#solid-rounded-justified-tab1" data-toggle="tab">Contrôle de Conformité</a></li>
-                <li class="nav-item"><a class="nav-link" href="#solid-rounded-justified-tab2" data-toggle="tab" style="">Contrôle d'Equilibre</a></li>
-                <li class="nav-item"><a class="nav-link" href="#solid-rounded-justified-tab3" data-toggle="tab" style="">Contrôle de Cohérence</a></li>
+                <li class="nav-item"><a class="nav-link {{ $state1 ?? ''}}" href="#solid-rounded-justified-tab1" data-toggle="tab">Contrôle de Conformité</a></li>
+                <li class="nav-item"><a class="nav-link {{ $state2 ?? ''}}" href="#solid-rounded-justified-tab2" data-toggle="tab" style="">Contrôle d'Equilibre</a></li>
+                <li class="nav-item"><a class="nav-link {{ $state3 ?? ''}}" href="#solid-rounded-justified-tab3" data-toggle="tab" style="">Contrôle de Cohérence</a></li>
             </ul>
             <div class="tab-content">
                 {{-- Debut Tab 1 --}}
@@ -201,13 +195,3 @@
         </div>
     </div>
 </div>
-@endsection
-
-@section('js')
-<script src="{{ asset('assets/js/bootstrap-select.min.js') }}"></script>
-<script>
-    $(document).ready(function () {
-
-    });
-</script>
-@endsection
