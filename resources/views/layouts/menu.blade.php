@@ -64,9 +64,17 @@
                     <ul style="display: none;">
                         <li><a href="{{ route('importation.index') }}" class="{{ Route::currentRouteName() == 'importation.index' ? 'bg-primary-light font-weight-bold' : '' }}">Importation Balance</a></li>
                         <li><a href="#">Contrôle de conformité</a></li>
+                        <li><a href="#">Contrôle d'équilibre</a></li>
                         <li><a href="#">Contrôle de cohérence</a></li>
-                        <li><a href="#">Génération Liasse</a></li>
-                        <li><a href="#"></a></li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <a href="#" class="{{ Request::is('edition*') ? 'active font-weight-bold' : ''}}">
+                        <i class="fa fa-cogs"></i> <span> Editiion</span> <span class="menu-arrow"></span>
+                    </a>
+                    <ul style="display: none;">
+                        <li><a href="{{ route('edition.apercu-etat.index') }}" class="{{ Route::currentRouteName() == 'edition.apercu-etat.index' ? 'bg-primary-light font-weight-bold' : '' }}">Aperçu des Etats</a></li>
+                        <li><a href="{{ route('edition.generation-etat.index') }}" class="{{ Route::currentRouteName() == 'edition.generation-etat.index' ? 'bg-primary-light font-weight-bold' : '' }}">Génération des Etats</a></li>
                     </ul>
                 </li>
                 <li class="menu-title">

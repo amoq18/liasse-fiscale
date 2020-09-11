@@ -115,3 +115,8 @@ Route::group(['prefix' => 'structure'], function () {
     Route::post('plans-comptables/excel', 'PlanComptableController@excel')->name('structure.plan-comptable.excel');
     Route::get('impots', 'StructureController@index_impots')->name('structure.impots.index');
 });
+
+Route::group(['prefix' => 'edition'], function () {
+    Route::get('apercu-etat', 'EtatController@indexApercu')->name('edition.apercu-etat.index');
+    Route::get('generation-etat', 'EtatController@indexGeneration')->name('edition.generation-etat.index');
+});
