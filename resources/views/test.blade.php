@@ -1,16 +1,28 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row">
-    <div class="col-md-12">
-        <div class="card p-5">
-            <h2>fgf</h2>
-            <input type="text" class="form-control" name="" placeholder="your text" id="ok">
-            <div class="row col-md-6 list" >
-                <button class="col-md-12 btn btn-success" value="btn1" id="btn1"> btn 1</button>
-                <button class="col-md-12 btn btn-success bg-success-light" value="btn2" id="btn2"> btn 2</button>
-                <button class="col-md-12 btn btn-success" value="btn3" id="btn3"> btn 3</button>
-                <button class="col-md-12 btn btn-success bg-success-light" value="btn4" id="btn4"> btn 4</button>
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Rounded justified</h4>
+        </div>
+        <div class="card-body">
+            <ul class="nav nav-tabs nav-tabs-solid nav-tabs-rounded nav-justified">
+                <li class="nav-item"><a class="nav-link active" href="#solid-rounded-justified-tab1" data-toggle="tab">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#solid-rounded-justified-tab2" data-toggle="tab" style="">Profile</a></li>
+                <li class="nav-item"><a class="nav-link" href="#solid-rounded-justified-tab3" data-toggle="tab" style="">Messages</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane show active" id="solid-rounded-justified-tab1">
+                    Tab content 1 <br>
+                    <a class="btn btn-primary" href="http://192.168.8.116:3000/test#solid-rounded-justified-tab2">btn 1</a>
+                </div>
+                <div class="tab-pane" id="solid-rounded-justified-tab2">
+                    Tab content 2
+                </div>
+                <div class="tab-pane" id="solid-rounded-justified-tab3">
+                    Tab content 3
+                </div>
             </div>
         </div>
     </div>
@@ -19,22 +31,6 @@
 
 @section('js')
 <script>
-    $('button').hide()
-    // $('option').hide()
-    $('#ok').on('keyup', function () {
-        $('option').show()
-        if($('#ok').val() == 'btn1') {
-            $('#btn1').show()
-        }
-        else {
-            $('#btn1').hide()
-        }
-    })
-
-    $('#btn1').click(function () {
-        $('#ok').val('Hello ' + this.value)
-        $('button').hide()
-    })
-
+    
 </script>
 @endsection
