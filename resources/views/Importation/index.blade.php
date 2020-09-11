@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-select.min.css') }}">
     <style>
         /* input[type="file"] {
                         display: none;
@@ -27,16 +28,20 @@
                             <div class="row">
                                 <label class="col-form-label col-md-3">Entreprise:</label>
                                 <div class="col-md-9">
-                                    <select class="form-control" name="entreprise_exercice" id="entreprise_exercice">
-                                        <option value="0">-- Choisir --</option>
+                                    <select class="form-control selectpicker"
+                                        data-live-search="true"
+                                        title="-- Choisir --"
+                                        id="entreprise_exercice">
                                         @foreach ($entreprises as $entreprise)
-                                            <optgroup id="EtpName" label="{{ $entreprise->denomination }}" data-label="{{ $entreprise->denomination }}">
+                                            <optgroup
+                                                label="{{ $entreprise->denomination }}"
+                                                data-tokens="{{ $entreprise->denomination }}">
+
                                                 @foreach ($entreprise->exercices as $exercice)
                                                     <option
-                                                        id="exerciceSelect"
+                                                        title="{{ $entreprise->denomination }}"
                                                         value="{{ (new Carbon\Carbon($exercice->date_fin))->format('Y') }}">
-                                                        Exercice
-                                                        {{ (new Carbon\Carbon($exercice->date_fin))->format('d/m/Y') }}
+                                                            Exercice {{ (new Carbon\Carbon($exercice->date_fin))->format('d/m/Y') }}
                                                     </option>
                                                 @endforeach
                                             </optgroup>
@@ -150,8 +155,10 @@
 @endsection
 
 @section('js')
+    <script src="{{ asset('assets/js/bootstrap-select.min.js') }}"></script>
     <script>
         $(document).ready(function() {
+            // Désactive les bouttons d'importations de fichiers
             $('button[name=submitExcel]').prop('disabled', true)
             $('#excel_file').prop('disabled', true)
 
@@ -165,9 +172,7 @@
                     $('#excel_file').prop('disabled', false)
                 }
 
-
-                alert($('#EtpName').data('label'))
-                // $('entreprise_exercice').text('ttt')
+                // Affiche l'année de l'exercice sélectionné dans exercice input
                 $('#exercice').val(this.value)
             })
 
@@ -185,7 +190,8 @@
                 return val;
             }
 
-            $('table tr').each(function() {
+            // Masque saise pour les nombres
+            // $('table tr').each(function() {
                 // var value = getNum(parseInt($(this).find(".mask-number").html()));
                 // console.log(value)
                 // var maskValue = (Number(value).toLocaleString("ar-MA"))
@@ -193,7 +199,7 @@
 
 
                 // $(this).find(".mask-number").html(maskValue)
-            });
+            // });
         });
 
     </script>
