@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-select.min.css') }}">
+@endsection
+
 @section('content')
 <div class="col-md-12">
     <div class="card">
@@ -24,13 +28,14 @@
                     Tab content 3
                 </div>
             </div>
+
         </div>
     </div>
 </div>
 @endsection
 
 @section('js')
+<script src="{{ asset('assets/js/bootstrap-select.min.js') }}"></script>
 <script>
-    
 </script>
 @endsection

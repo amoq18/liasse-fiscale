@@ -67,7 +67,6 @@
 
 		<!-- jQuery -->
         <script src="{{ asset('assets/js/jquery-3.2.1.min.js') }}"></script>
-        @yield('js')
 
 		<!-- Bootstrap Core JS -->
         <script src="{{ asset('assets/js/popper.min.js') }}"></script>
@@ -86,6 +85,8 @@
         <!-- Toastr JS -->
         <script src="{{ asset('assets/js/toastr.min.js') }}"></script>
         {!! Toastr::message() !!}
+
+        @yield('js')
 
         {{-- Table resizable --}}
         {{-- <script src="{{ asset('assets/js/colResizable.min.js') }}"></script>
