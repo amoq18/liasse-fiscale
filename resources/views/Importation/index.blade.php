@@ -4,8 +4,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-select.min.css') }}">
     <style>
         /* input[type="file"] {
-                        display: none;
-                    } */
+            display: none;
+        } */
         .custom-file-upload {
             border: 1px solid #ccc;
             display: inline-block;
