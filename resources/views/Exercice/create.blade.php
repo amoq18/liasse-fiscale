@@ -100,7 +100,7 @@
                         <div class="row mt-4">
                             <div class="col-md-12">
                                 <div class="text-right">
-                                    <a href="{{ route('exercice.index') }}" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Retour</a>
+                                    <a href="{{ route('exercice.index') }}" class="btn btn-danger"><i class="fa fa-close"></i> Fermer</a>
                                     <button type="submit" class="btn btn-primary" id="exerciceSubmit">
                                         <i class="fa fa-floppy-o"></i> Enregistrer
                                     </button>

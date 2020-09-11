@@ -6,7 +6,7 @@
                     <span>Main</span>
                 </li>
                 <li class="">
-                    <a href="#" class="{{ Request::is('home*') ? 'active font-weight-bold' : '' }}">
+                    <a href="{{ route('home') }}" class="{{ Route::currentRouteName() == 'home' ? 'bg-primary-light font-weight-bold' : '' }}">
                         <i class="fe fe-home"></i> <span>Accueil</span>
                     </a>
                 </li>

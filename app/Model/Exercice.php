@@ -12,4 +12,9 @@ class Exercice extends Model
     {
         return $this->belongsTo(Entreprise::class);
     }
+
+    public function balance()
+    {
+        return $this->hasOne(Balance::class);
+    }
 }

@@ -43,6 +43,7 @@ class BalancesImport implements ToModel
 
         return new Balance([
             'numero_compte' => $row[0],
+            'exercice_id' => 1,
             'intitule_compte' => $row[1],
             'deb_periode_c' => $row[2],
             'deb_periode_d' => $row[3],

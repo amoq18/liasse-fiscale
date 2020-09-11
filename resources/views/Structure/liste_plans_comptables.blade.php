@@ -32,11 +32,11 @@
                 <h4 class="card-title text-light text-center">Liste des Plans Comptables</h4>
             </div>
             <div class="card-body">
-                <div class="table-responsive">
+                <div class="table-responsive table-sm">
                     <table class="table mb-0 table-hover table-bordered">
                         <thead>
                             <tr>
-                                <th data-field="id" data-sortable="true">ID</th>
+                                <th>ID</th>
                                 <th>N° de Compte</th>
                                 <th>Poste</th>
                                 <th>Intitulé de compte</th>

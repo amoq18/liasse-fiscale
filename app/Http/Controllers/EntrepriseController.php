@@ -80,6 +80,12 @@ class EntrepriseController extends Controller
 
             return redirect()->route('structure.banque.create');
         }
+        elseif (request('redirect') == 'importation-balance1')
+        {
+            Toastr::warning("Vous devez maintenant créer l'Exercice concernant l'Entreprise", "Exercice");
+
+            return redirect()->route('exercice.create')->withRedirect('importation-balance2');
+        }
 
         return back();
     }

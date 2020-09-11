@@ -2,6 +2,12 @@
 <!DOCTYPE html>
 <html lang="en">
 
+    <?php
+        // header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1.
+        // header("Pragma: no-cache"); // HTTP 1.0.
+        // header("Expires: 0 "); // Proxies.
+    ?>
+
 <!-- Mirrored from dreamguys.co.in/demo/ventura/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 14 Oct 2019 17:25:22 GMT -->
 <head>
         <meta charset="utf-8">

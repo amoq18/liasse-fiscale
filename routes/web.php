@@ -21,6 +21,11 @@ Route::get('test', function () {
     return view('test');
 });
 
+Route::post('test', function () {
+    dd(request()->all());
+    return 1;
+});
+
 // Routes sur Entreprise
 Route::group(['prefix' => 'entreprise'], function () {
     // Creer et enregistrer une entreprise

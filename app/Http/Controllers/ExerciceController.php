@@ -63,7 +63,7 @@ class ExerciceController extends Controller
 
         Toastr::success('Exercice créé avec succès','Exercice');
 
-        if (request('redirect') == 'importation-balance')
+        if (request('redirect') == 'importation-balance2')
         {
             Toastr::success('Vous pouvez maintenant importer la Balance', 'Balance');
 

@@ -20,11 +20,17 @@ class ImportationController extends Controller
 
         $entreprises = Entreprise::with('exercices')->get();
 // @dd($entreprises->first()->exercices->first());
-        if (empty($entreprises->first()->exercices->first()))
+        if (empty($entreprises['0']))
+        {
+            Toastr::warning("Vous devez créer l'Entreprise", "Entreprise");
+
+            return redirect()->route('entreprise.create')->withRedirect('importation-balance1');
+        }
+        elseif (empty($entreprises['0']->exercices['0']))
         {
             Toastr::warning("Vous devez créer l'Exercice concernant l'Entreprise", "Exercice");
 
-            return redirect()->route('exercice.create')->withRedirect('importation-balance');
+            return redirect()->route('exercice.create')->withRedirect('importation-balance2');
         }
 
         return view('Importation.index', compact('entreprises', 'balances'));

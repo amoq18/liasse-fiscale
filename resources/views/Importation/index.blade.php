@@ -20,7 +20,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header bg-primary">
-                    <h4 class="card-title text-center text-light">Importation</h4>
+                    <h4 class="card-title text-center text-light">Importation Balance</h4>
                 </div>
                 <div class="card-body">
                     <div class="form-group row">
@@ -31,16 +31,17 @@
                                     <select class="form-control selectpicker"
                                         data-live-search="true"
                                         title="-- Choisir --"
-                                        id="entreprise_exercice">
+                                        id="entreprise_exercice"
+                                        name="entreprise">
                                         @foreach ($entreprises as $entreprise)
                                             <optgroup
                                                 label="{{ $entreprise->denomination }}"
                                                 data-tokens="{{ $entreprise->denomination }}">
-
                                                 @foreach ($entreprise->exercices as $exercice)
                                                     <option
                                                         title="{{ $entreprise->denomination }}"
                                                         value="{{ (new Carbon\Carbon($exercice->date_fin))->format('Y') }}">
+                                                        {{-- value="{{ $exercice->id }}" --}}
                                                             Exercice {{ (new Carbon\Carbon($exercice->date_fin))->format('d/m/Y') }}
                                                     </option>
                                                 @endforeach
@@ -93,13 +94,13 @@
                             <tbody>
                                 @if (!empty($balances['0']))
                                     @php
-                                    $count = 1;
-                                    $total_deb_periode_c = 0;
-                                    $total_deb_periode_d = 0;
-                                    $total_mvt_periode_c = 0;
-                                    $total_mvt_periode_d = 0;
-                                    $total_fin_periode_c = 0;
-                                    $total_fin_periode_d = 0;
+                                        $count = 1;
+                                        $total_deb_periode_c = 0;
+                                        $total_deb_periode_d = 0;
+                                        $total_mvt_periode_c = 0;
+                                        $total_mvt_periode_d = 0;
+                                        $total_fin_periode_c = 0;
+                                        $total_fin_periode_d = 0;
                                     @endphp
 
                                     @foreach ($balances as $balance)
@@ -145,7 +146,7 @@
             <div class="text-right mt-2 mb-5">
                 {{-- <a href="#" class="btn btn-danger"><i
                         class="fa fa-arrow-left"></i> Retour</a> --}}
-                <a href="" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Enregistrer</a>
+                <a href="{{ route('traitement.controle-conformite.index') }}" class="btn btn-primary"><i class="fa fa-cogs"></i> Contrôle de Conformité</a>
                 {{-- @php
                 Brian2694\Toastr\Facades\Toastr::success('ook','Importation Excel');
                 @endphp --}}

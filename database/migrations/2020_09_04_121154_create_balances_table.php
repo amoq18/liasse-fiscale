@@ -14,7 +14,8 @@ class CreateBalancesTable extends Migration
     public function up()
     {
         Schema::create('balances', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->unsignedInteger('exercice_id');
             $table->string('numero_compte')->nullable();
             $table->string('intitule_compte')->nullable();
             $table->string('deb_periode_c')->nullable();
@@ -23,7 +24,10 @@ class CreateBalancesTable extends Migration
             $table->string('mvt_periode_d')->nullable();
             $table->string('fin_periode_c')->nullable();
             $table->string('fin_periode_d')->nullable();
+            $table->string('statut')->nullable();
             $table->timestamps();
+
+            $table->foreign('exercice_id')->references('id')->on('exercices')->onDelete('cascade');
         });
     }
 
