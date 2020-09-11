@@ -62,6 +62,14 @@ class ExerciceController extends Controller
         $exercice->save();
 
         Toastr::success('Exercice créé avec succès','Exercice');
+
+        if (request('redirect') == 'importation-balance')
+        {
+            Toastr::success('Vous pouvez maintenant importer la Balance', 'Balance');
+
+            return redirect()->route('importation.index');
+        }
+
         return back();
     }
 
@@ -112,7 +120,7 @@ class ExerciceController extends Controller
         $exercice->save();
 
         Toastr::success('Exercice modifié avec succès', 'Exercice');
-        
+
         return redirect()->route('exercice.index');
     }
 

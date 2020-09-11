@@ -3,14 +3,6 @@
 @section('content')
 <div class="row">
     <div class="col-md-12">
-        @if(Session::has('success_staff_create'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <h5><strong>{{ Session::get('success_staff_create') }}</strong></h5>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-        @endif
         <div class="card">
             <div class="card-header bg-primary">
                 <h4 class="card-title text-center text-light">Créer un Staff</h4>

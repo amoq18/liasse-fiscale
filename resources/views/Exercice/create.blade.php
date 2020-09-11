@@ -3,14 +3,6 @@
 @section('content')
 <div class="row">
     <div class="col-md-12">
-        @if(Session::has('success_exercice_create'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <h5><strong>{{ Session::get('success_exercice_create') }}</strong></h5>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-        @endif
         <div class="card">
             <div class="card-header bg-primary">
                 <h4 class="card-title text-center text-light">Créer un nouvel Exercice</h4>
@@ -20,6 +12,9 @@
                 {{-- <h4>Informations sur l'Exercice</h4> --}}
                 <form action="{{ route('exercice.create') }}" method="POST">
                     @csrf
+                    @if (Session::has('redirect'))
+                        <input name="redirect" type="hidden" value="{{ Session::get('redirect') }}">
+                    @endif
                     <div class="form-group row">
                         <label class="col-form-label col-md-1">Entreprise:</label>
                         <div class="col-md-11">
@@ -139,7 +134,7 @@
             });
 
             $('#exerciceSubmit').prop('disabled', true)
-            
+
             $('select[name=entreprise_id]').change(function ()
             {
                 if ($('select[name=entreprise_id]').val() == 0)

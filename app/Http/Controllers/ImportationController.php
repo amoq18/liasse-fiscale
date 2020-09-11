@@ -14,11 +14,18 @@ class ImportationController extends Controller
 {
     public function index()
     {
-        $entreprises = Entreprise::all();
-
         Balance::where('intitule_compte', null)->delete();
 
         $balances = Balance::all();
+
+        $entreprises = Entreprise::with('exercices')->get();
+// @dd($entreprises->first()->exercices->first());
+        if (empty($entreprises->first()->exercices->first()))
+        {
+            Toastr::warning("Vous devez créer l'Exercice concernant l'Entreprise", "Exercice");
+
+            return redirect()->route('exercice.create')->withRedirect('importation-balance');
+        }
 
         return view('Importation.index', compact('entreprises', 'balances'));
     }

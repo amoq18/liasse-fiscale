@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+Route::get('test', function () {
+    return view('test');
+});
+
 // Routes sur Entreprise
 Route::group(['prefix' => 'entreprise'], function () {
     // Creer et enregistrer une entreprise

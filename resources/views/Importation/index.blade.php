@@ -28,11 +28,12 @@
                                 <label class="col-form-label col-md-3">Entreprise:</label>
                                 <div class="col-md-9">
                                     <select class="form-control" name="entreprise_exercice" id="entreprise_exercice">
-                                        <option>-- Choisir --</option>
+                                        <option value="0">-- Choisir --</option>
                                         @foreach ($entreprises as $entreprise)
-                                            <optgroup label="{{ $entreprise->denomination }}">
+                                            <optgroup id="EtpName" label="{{ $entreprise->denomination }}" data-label="{{ $entreprise->denomination }}">
                                                 @foreach ($entreprise->exercices as $exercice)
                                                     <option
+                                                        id="exerciceSelect"
                                                         value="{{ (new Carbon\Carbon($exercice->date_fin))->format('Y') }}">
                                                         Exercice
                                                         {{ (new Carbon\Carbon($exercice->date_fin))->format('d/m/Y') }}
@@ -60,7 +61,7 @@
                                 {{-- <label for="">Importer</label>
                                 --}}
                                 <input type="file" name="excel_file" id="excel_file">
-                                <button type="submit">Envoyer</button>
+                                <button type="submit" class="btn btn-primary" name="submitExcel">Ajouter</button>
                                 {{-- <label for="file-upload" class="custom-file-upload">
                                     <i class="fa fa-cloud-upload"></i> Custom Upload
                                 </label>
@@ -151,7 +152,22 @@
 @section('js')
     <script>
         $(document).ready(function() {
+            $('button[name=submitExcel]').prop('disabled', true)
+            $('#excel_file').prop('disabled', true)
+
             $('#entreprise_exercice').change(function() {
+                //Bloquer le bouton d'import fichier excel tant que Entreprise et l'exercice sont pas choisi
+                if($('#entreprise_exercice').val() == 0) {
+                    $('button[name=submitExcel]').prop('disabled', true)
+                    $('#excel_file').prop('disabled', true)
+                } else {
+                    $('button[name=submitExcel]').prop('disabled', false)
+                    $('#excel_file').prop('disabled', false)
+                }
+
+
+                alert($('#EtpName').data('label'))
+                // $('entreprise_exercice').text('ttt')
                 $('#exercice').val(this.value)
             })
 
